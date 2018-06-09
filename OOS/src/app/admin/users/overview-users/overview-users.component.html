@@ -1,0 +1,89 @@
+<div class="col-md-12">
+
+  <div class="section-title">
+    <h3 class="title">Search Users</h3>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <input class="input" type="text" id="inputEmailSearch" placeholder="Email" [(ngModel)]="email">
+    </div>
+    <div class="col-md-4">
+      <input class="input" type="text" id="inputPhoneSearch" placeholder="Phone" [(ngModel)]="phone">
+    </div>
+    <div class="col-md-4 pull-right">
+      <div class="pull-right"> 
+          <button class="primary-btn" (click)="searchUser()">Search</button>
+          <button class="primary-btn" (click)="refresh()">Refresh</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">
+    <h3 class="title">Overview Users</h3>
+  </div>
+
+  <div class="pull-right">
+    <div class="btn-group">
+      <a routerLink="../create" class="primary-btn">Create New</a>
+    </div>
+  </div>
+
+  <table class="shopping-cart-table table table">
+    <thead class="thead-dark">
+      <tr>          
+        <th scope="col">Username</th>
+        <th scope="col">FirstName</th>
+        <th scope="col">LastName</th>
+        <th scope="col">Email</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let user of listUsers; let i = index">
+      <tr>
+        <td>
+          <a routerLink="../{{user.id}}" routerLinkActive="active">{{user.userName}}</a>
+        </td>        
+        <td>{{user.firstName}}</td>
+        <td>{{user.lastName}}</td>
+        <td>{{user.email}}</td>
+        <td class="text-right">
+          <button class="main-btn icon-btn" routerLink="{{user.id}}" (click)="getUser(user)" >
+            <i class="fa fa-edit"></i>
+          </button>
+          <button class="main-btn icon-btn" data-toggle="modal" data-target="#myModal" (click)="get(user.id)">
+            <i class="fa fa-close"></i>
+          </button>
+
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  
+
+</div>
+
+
+
+
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="section-title">
+          <h4 class="modal-title">Confirm</h4>
+        </div>
+        <p>
+          Are you sure to want to delele
+          <strong>{{userDel.username}}</strong> ??
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="primary-btn" (click)="delete()" data-dismiss="modal">Yes</button>
+        <button type="button" class="main-btn" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

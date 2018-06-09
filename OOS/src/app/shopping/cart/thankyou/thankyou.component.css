@@ -1,0 +1,35 @@
+.idbill {
+    background-color: #F8694A;
+    width: 250px;
+    font-size: 25px;
+    color: white;    
+}
+
+.hightlight {
+    font-size: 20px;
+    color: blue;
+}
+
+ul.midpage {
+    /* text-align: center; */
+    padding: 0px 0px 0px 70px;
+}
+
+ul.midpage li {        
+    float: left;
+    margin-left: 80px;
+}
+
+ul.midpage li.rightpage {
+    width: 600px;    
+}
+
+.info-ship {
+    font-size: 20px;
+    color: black;
+}
+
+.contact-link {
+    color: blue;
+    text-decoration: underline;
+}

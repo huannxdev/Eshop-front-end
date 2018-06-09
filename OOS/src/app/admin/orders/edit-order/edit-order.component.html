@@ -1,0 +1,212 @@
+<div *ngIf="order">
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <div class="section-title">
+        <h3 class="title">Order information</h3>
+      </div>
+      <p>Email
+        <b>(This mail will be used to confirm your order)</b>
+        <p>
+          <input type="email" class="input" placeholder="Email" [(ngModel)]="order.email" [ngModelOptions]="{standalone: true}">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-12">
+      <div class="section-title">
+        <h5 class="title">Shipping Address</h5>
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+
+      <p>Name</p>
+      <input type="text" class="input" id="inputName" [(ngModel)]="order.address[0].name" [ngModelOptions]="{standalone: true}">
+
+    </div>
+    <div class="form-group col-md-6">
+      <p>Phone</p>
+      <input type="text" class="input" id="inputPhone" [(ngModel)]="order.address[0].phone" [ngModelOptions]="{standalone: true}">
+    </div>
+    <div class="form-group col-md-4">
+      <p>Province</p>
+      <input type="text" class="input" id="inputPhone" [(ngModel)]="order.address[0].province" [ngModelOptions]="{standalone: true}">
+    </div>
+    <div class="form-group col-md-4">
+      <p>District</p>
+      <input type="text" class="input" id="inputPhone" [(ngModel)]="order.address[0].district" [ngModelOptions]="{standalone: true}">
+    </div>
+    <div class="form-group col-md-4">
+      <p>Street</p>
+      <input type="text" class="input" id="inputStreet" [(ngModel)]="order.address[0].street" [ngModelOptions]="{standalone: true}">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <div class="section-title">
+        <h5 class="title">Billing Address</h5>
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <p>Name</p>
+      <input type="text" class="input" id="inputName" [(ngModel)]="order.address[1].name" [ngModelOptions]="{standalone: true}">
+    </div>
+    <div class="form-group col-md-6">
+      <p>Phone</p>
+      <input type="text" class="input" id="inputPhone" [(ngModel)]="order.address[1].phone" [ngModelOptions]="{standalone: true}">
+    </div>
+    <div class="form-group col-md-4">
+      <p>Province</p>
+      <input type="text" class="input" id="inputPhone" [(ngModel)]="order.address[1].province" [ngModelOptions]="{standalone: true}">
+    </div>
+    <div class="form-group col-md-4">
+      <p>District</p>
+      <input type="text" class="input" id="inputPhone" [(ngModel)]="order.address[1].district" [ngModelOptions]="{standalone: true}">
+    </div>
+    <div class="form-group col-md-4">
+      <p>Street</p>
+      <input type="text" class="input" id="inputStreet" [(ngModel)]="order.address[1].street" [ngModelOptions]="{standalone: true}">
+    </div>
+  </div>
+  <!--
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col" class="col-md-1">ID</th>
+          <th scope="col" class="col-md-6">Name Product</th>
+          <th scope="col" class="col-md-1">Price</th>
+          <th scope="col" class="col-md-1">Quantity</th>
+          <th scope="col" class="col-md-2">Total Price</th>
+          <th scope="col" class="col-md-1"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let orderDetail of order.orderDetails">
+          <th scope="row">{{orderDetail.idProduct}}</th>
+          <td>{{orderDetail.nameProduct}}</td>
+          <td>{{orderDetail.price}}</td>
+          <td>
+            <input type="number" class="input" id="inputQuantity" [(ngModel)]="{{orderDetail.quantity}}">
+          </td>
+          <td>{{orderDetail.totalPrice}}</td>
+          <td>
+            <button class="btn btn-danger">Delete</button>
+          </td>
+        </tr>
+  
+      </tbody>
+    </table>
+  -->
+  <div class="col-md-12">
+    <div class="order-summary clearfix">
+      <div class="section-title">
+        <h3 class="title">Order Details</h3>
+      </div>
+
+      <div class="section-title-search">
+        <input #searchBox (keyup)="search(searchBox.value)" type="text" class="input" placeholder="Find your product.." aria-describedby="basic-addon2"
+          [(ngModel)]="searchResult">
+        <ul class="list-group" style="position:absolute; z-index:100; width:100%">
+          <!-- <li class="list-group-item list-group-item-action" *ngFor="let product of listProduct | async"> -->
+          <a style="cursor: pointer;" class="list-group-item list-group-item-action" *ngFor="let product of listProduct | async" (click)="chooseProduct(product)"
+            disabled="disabled">{{product.name}}</a>
+          <!-- </li> -->
+        </ul>
+
+
+      </div>
+
+      <table class="shopping-cart-table table">
+        <thead>
+          <tr>
+
+            <th>Code</th>
+            <th class="text-center">Product</th>
+            <th class="text-center">Price</th>
+            <th class="text-center">Quantity</th>
+            <th class="text-center">Total</th>
+            <th class="text-right"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let orderDetail of order.orderDetails">
+            <td class="details">
+
+              <a href="#">{{orderDetail.code}}</a>
+            </td>
+            <td class="price text-center">
+              <strong>{{orderDetail.nameProduct}}</strong>
+
+            </td>
+            <td class="price text-center">
+              <strong>{{orderDetail.price}}</strong>
+              <br>
+            </td>
+
+            <td class="qty text-center">
+              <input class="input" type="number" [(ngModel)]="orderDetail.quantity" [ngModelOptions]="{standalone: true}" min=1 (click)="updateTotal(orderDetail)"
+                (keyup)="updateTotal(orderDetail)">
+            </td>
+
+            <td class="total text-center">
+              <strong class="primary-color">{{orderDetail.totalPrice}}</strong>
+            </td>
+            <td class="text-right">
+              <button class="main-btn icon-btn" data-toggle="modal" data-target="#myModal" (click)="setDetailDelete(orderDetail)">
+                <i class="fa fa-close"></i>
+              </button>
+            </td>
+            <div class="modal fade" id="myModal" role="dialog">
+              <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">Confirm</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p>Are you sure you want to delete this product?</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" (click)="delete()" data-dismiss="modal">Yes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal fade" id="myModal2" role="dialog" >
+              <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">Success</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p>You have successfully updated this order.</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" (click)="setBackSaved()" data-dismiss="modal">Ok</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th class="empty" colspan="3"></th>
+            <th>TOTAL</th>
+            <th colspan="2" class="total">{{order.total}}</th>
+          </tr>
+        </tfoot>
+      </table>
+      <div class="pull-left">
+        <a routerLink="/admin/manager/orders" routerLinkActive="active" class="primary-btn">Back</a>
+      </div>
+
+      <div class="pull-right">
+        <button *ngIf="saved" data-toggle="modal" data-target="#myModal2" class="primary-btn" (click)="edit()">Save</button>
+      </div>
+      
+    </div>
+
+    <br>
+  </div>

@@ -1,0 +1,61 @@
+<div class="col-md-12">
+    <div class="section-title ">
+      <h3 class="title">Customer FeedBack</h3>
+    </div>
+ 
+    <table class="shopping-cart-table table table">
+      <thead class="thead-dark">
+        <tr>        
+          <th scope="col">ID</th>    
+          <th scope="col">Email</th>
+          <th scope="col">Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let feedback of listFeedback; let i = index">
+        <tr>        
+          <td class="">
+            <a routerLink="../{{feedback.id}}" routerLinkActive="active">{{feedback.id}}</a>
+          </td>
+          <td>{{feedback.toEmail}}</td>
+          <td>
+              {{feedback.status}}
+          </td>
+  
+          <td class="text-right">
+            <a routerLink="../{{feedback.id}}" routerLinkActive="active">
+              <!-- <button class="main-btn icon-btn" (click)="getCate(feedback)">
+                <i class="fa fa-edit"></i>
+              </button> -->
+            </a>
+            <button class="main-btn icon-btn" data-toggle="modal" data-target="#myModal" (click)="setId(feedback.id)">
+              <i class="fa fa-close"></i>
+            </button>
+  
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  
+  
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="section-title">
+            <h4 class="modal-title">Confirm</h4>
+          </div>
+          <p>
+            Are you sure to want to delele?
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="primary-btn" (click)="delete()" data-dismiss="modal">Yes</button>
+          <button type="button" class="main-btn" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

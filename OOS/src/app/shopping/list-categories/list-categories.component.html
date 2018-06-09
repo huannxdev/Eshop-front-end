@@ -1,0 +1,8 @@
+<ul class="category-list" >
+  <li *ngFor="let category of categories; let i = index">
+    
+    <a [routerLink]="['../'] + category.id">{{category.name}}</a>
+
+  </li>
+</ul>
+

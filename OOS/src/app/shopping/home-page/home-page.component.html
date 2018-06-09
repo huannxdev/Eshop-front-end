@@ -1,0 +1,116 @@
+<!-- HOME -->
+<div class="autohidden" id="home">
+	<!-- container -->
+	<div class="container">
+		<!-- home wrap -->
+		<div class="home-wrap">
+			<!-- home slick -->
+			<div id="home-slick">
+				<!--banner -->
+				<app-carousel [listBanners]="listBanners"></app-carousel>
+				<!-- /banner -->
+			</div>
+			<!-- /home slick -->
+		</div>
+		<!-- /home wrap -->
+	</div>
+	<!-- /container -->
+</div>
+<!-- /HOME -->
+
+<!-- section -->
+<div class="autohidden section">
+	<!-- container -->
+	<div class="container">
+		<!-- row -->
+		<div class="row">
+			<!-- banner -->
+			<div class="col-md-4 col-sm-6">
+				<a class="banner banner-1" href="#">
+					<img src="/assets/img/banner10.jpg" alt="">
+					<div class="banner-caption text-center">
+						<h2 class="white-color">NEW COLLECTION</h2>
+					</div>
+				</a>
+			</div>
+			<!-- /banner -->
+
+			<!-- banner -->
+			<div class="col-md-4 col-sm-6">
+				<a class="banner banner-1" href="#">
+					<img src="/assets/img/banner11.jpg" alt="">
+					<div class="banner-caption text-center">
+						<h2 class="white-color">NEW COLLECTION</h2>
+					</div>
+				</a>
+			</div>
+			<!-- /banner -->
+
+			<!-- banner -->
+			<div class="col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-3">
+				<a class="banner banner-1" href="#">
+					<img src="/assets/img/banner12.jpg" alt="">
+					<div class="banner-caption text-center">
+						<h2 class="white-color">NEW COLLECTION</h2>
+					</div>
+				</a>
+			</div>
+			<!-- /banner -->
+
+		</div>
+		<!-- /row -->
+	</div>
+	<!-- /container -->
+</div>
+<!-- /section -->
+
+<!--//delele display widget//-->
+<!--this is widget-->
+
+<div class="section">
+	<!-- container -->
+	<div class="container">
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="section-title">
+					<h2 class="title">TOP NEW PRODUCT</h2>
+					<div class="pull-right">
+						<div class="product-slick-dots-2 custom-dots">
+						</div>
+					</div>
+				</div>
+			</div>
+			<app-widget-products [productList]="newestProduct"></app-widget-products>
+		</div>
+
+		<div class="row">
+			<!-- section title -->
+			<div class="col-md-12">
+				<div class="section-title">
+					<h2 class="title">TOP DISCOUNT</h2>
+					<div class="pull-right">
+						<div class="product-slick-dots-2 custom-dots">
+						</div>
+					</div>
+				</div>
+			</div>
+			<app-widget-products [productList]="topDiscount"></app-widget-products>
+		</div>
+
+		<div class="row">
+			<!-- section title -->
+			<div class="col-md-12">
+				<div class="section-title">
+					<h2 class="title">TOP SALES</h2>
+					<div class="pull-right">
+						<div class="product-slick-dots-2 custom-dots">
+						</div>
+					</div>
+				</div>
+			</div>
+			<app-widget-products [productList]="topSales"></app-widget-products>
+		</div>
+
+	</div>
+</div>

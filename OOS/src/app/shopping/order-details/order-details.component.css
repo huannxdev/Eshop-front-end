@@ -1,0 +1,79 @@
+p {
+  margin: 0;
+}
+
+.component {
+  margin-top: 15px;
+}
+
+.component label {
+  padding-left: 15px;
+}
+
+.wrapper {
+  padding: 10px;
+  margin-top: 20px;
+  border: 1px solid #e7e7e7;
+}
+
+.wrapper {
+  position: relative;
+}
+
+.wrapper label {
+  position: absolute;
+  top: 0;
+  transform: translateY(-50%);
+  left: 10px;
+  background: white;
+  padding: 0px 1px;
+  margin: 0px;
+  font-size: x-small;
+  font-style: italic;
+  color: gray;
+}
+
+.order-bill {
+  overflow: hidden;
+  border-top: 1px solid #e7e7e7;
+}
+
+.item-details {
+  padding: 10px 0;
+  vertical-align: middle;
+  display: table-cell;
+}
+
+.item-details img {
+  height: 120px;
+  width: 90px;
+  float: left;
+  margin-right: 10px;
+}
+
+.item-color {
+  border-radius: 50%;
+}
+
+.details {}
+
+.text-center {
+  vertical-align: middle;
+}
+
+.order-bill .row-infor {
+  padding-top: 10px;
+overflow: hidden;
+}
+.order-bill .right{
+    width: 280px;
+    float: right;
+}
+.lbl {
+  width: 150px;
+  float: left;
+  text-align: right;
+}
+.fee {
+  float: right;
+}

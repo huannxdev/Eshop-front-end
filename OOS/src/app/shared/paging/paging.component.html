@@ -1,0 +1,14 @@
+<div class="pagination-frame pull-right" >
+
+  <div class="page-filter" >
+    <span>SHOW:</span>
+    <select class="dropdown-eshop" [(ngModel)]="pSize" (change)="getPageSize(pSize)">
+      <option *ngFor="let op of options" [value]="op.value">{{op.name}}</option>
+    </select>
+    
+    <span>PAGE:</span>
+    <ngb-pagination [collectionSize]="itemCount" [(page)]="pNow" [pageSize]="pSize" 
+    [maxSize]="3" [rotate]="true" [ellipses]="false" (pageChange)="changePage()"></ngb-pagination>
+  </div>
+
+</div>

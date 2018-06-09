@@ -1,0 +1,58 @@
+<form #createForm="ngForm">
+  <div class="container register">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 align-self-center">
+          <div class="section-title">
+            <h3>Register Account</h3>
+          </div>
+
+          <div class="form-group">
+            Email:
+            <input id="email" name="email" #email="ngModel" [(ngModel)]="user.email" 
+              type="email" class="input" required (focusout)="checkEmail()">
+            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+              <div *ngIf="email.errors.required">
+                Email is required.
+              </div>
+              <div *ngIf="email.errors">
+                Please enter valid email address.
+              </div>
+            </div>
+            <div *ngIf="isExistEmail!=null && (email.dirty || email.touched)" class="alert alert-danger">
+              Email {{user.email}} is already taken.
+            </div>
+            
+          </div>
+        
+          <div class="form-group">
+            Password:
+            <input id="password" name="password" #password="ngModel" [(ngModel)]="user.password"  
+              type="password" class="input" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{8,}$">
+            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+              Password must have at least 1 number, 1 letter, 1 special character and contain at least 8 characters.
+              <div *ngIf="password.errors.required">
+                Password is required.
+              </div>
+            </div>
+          </div>
+        
+          <div class="form-group">
+            Confirm Password:
+            <input id="confirmPassword" name="confirmPassword" #confirmPassword="ngModel" [(ngModel)]="user.confirmPassword" 
+              type="password"  class="input" required (keyup)="checkPassword()">
+            <div *ngIf="!isPasswordConfirm && (confirmPassword.dirty || confirmPassword.touched)" class="alert alert-danger">
+              Password doesn't match.
+            </div>
+            <div *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)" class="alert alert-danger">
+              <div *ngIf="confirmPassword.errors.required">
+                Please confirm your password.
+              </div>
+            </div>
+          </div>
+  
+          <button class="primary-btn" [disabled]="isDisabled || createForm.invalid" (click)="add()">Register</button>
+          <button routerLink="" class="main-btn">Back</button>
+        </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,149 @@
+<div class="container">
+  <br>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="section-title">
+        <h3 class="title">Billing Address</h3>
+      </div>
+      <div class="form-group">
+        <label>Name: </label>
+        <strong>{{ order.address && order.address[1].name}}</strong>
+      </div>
+      <div class="form-group">
+        <label>Phone: </label>
+        <strong>{{order.address && order.address[1].phone}}</strong>
+      </div>
+      <div class="form-group">
+        <label>Address: </label>
+        <strong>{{order.address && order.address[1].street}} street, {{order.address && order.address[1].district}} district, {{order.address
+          && order.address[1].province}} province</strong>
+      </div>
+
+    </div>
+    <!-- Billing Address -->
+    <div class="col-md-6">
+      <!-- Shipping Address -->
+      <div class="section-title">
+        <h3 class="title">Shipping Address</h3>
+      </div>
+      <div class="form-group">
+        <label>Name: </label>
+        <strong>{{order.address && order.address[0].name}}</strong>
+      </div>
+      <div class="form-group">
+        <label>Phone: </label>
+        <strong>{{order.address && order.address[0].phone}}</strong>
+      </div>
+      <div class="form-group">
+        <label>Address: </label>
+        <strong>{{order.address && order.address[0].street}} street, {{order.address && order.address[0].district}} district, {{order.address
+          && order.address[0].province}} province</strong>
+      </div>
+      <!-- Shipping Address -->
+    </div>
+    <br>
+    <!-- Order Review -->
+    <div class="col-md-12">
+      <div class="order-summary clearfix">
+        <div class="section-title">
+          <h3 class="title">Order Details</h3>
+          <div class="pull-right idbill">{{order.idBill}} - <span class="status">{{status[order.status]}}</span></div>
+        </div>
+        <table class="shopping-cart-table table">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th class="text-center">Price</th>
+              <th></th>
+              <th class="text-center">Quantity</th>
+              <th class="text-center">Total</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let orderDetail of order.orderDetails">
+            <tr>
+              <td class="detail">
+                <h4>{{orderDetail.nameProduct}}</h4>
+                <ul>
+                  <li *ngIf="orderDetail.color">
+                    <span>Color:
+                      <span class="product-color" [style.background]="orderDetail.color">&nbsp;&nbsp;&nbsp;</span>
+                    </span>
+                  </li>
+                  <li *ngIf="orderDetail.size">
+                    <span>Size: {{orderDetail.size}}</span>
+                  </li>
+                </ul>
+              </td>
+              <td class="price text-center">
+                <strong>{{orderDetail.price | number}} VND</strong>
+              </td>
+              <td></td>
+              <td class="price text-center">
+                <strong>{{orderDetail.quantity | number}}</strong>
+              </td>
+              <td class="total text-center">
+                <strong>{{orderDetail.totalPrice | number}} VND</strong>
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th class="empty" colspan="3"></th>
+              <th>TOTAL</th>
+              <th colspan="2" class="total">{{order.total | number}} VND</th>
+            </tr>
+          </tfoot>
+        </table>
+        <div class="pull-left">
+          <a routerLink="/account/order-history" routerLinkActive="active" class="primary-btn">Back</a>
+        </div>
+
+        <div class="pull-right">
+          <button class="primary-btn" data-toggle="modal" data-target="#myModal">
+            Delete
+          </button>
+        </div>
+
+
+        <div class="modal fade" id="myModal" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content" *ngIf="order.status == 0; else cantdelete">
+              <div class="modal-body">
+                <div class="section-title">
+                  <h4 class="modal-title">Confirm</h4>
+                </div>
+                <p>Are you sure you want to delete this order?</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="primary-btn" (click)="delete()" data-dismiss="modal">Yes</button>
+                <button type="button" class="main-btn" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+
+            <ng-template #cantdelete>
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-body">
+                  <div class="section-title">
+                    <h4 class="modal-title">Delete unsuccessful!</h4>
+                  </div>
+                  <p>Your order can't be deleted because it has been confirmed!</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="primary-btn" data-dismiss="modal">Understood</button>
+                </div>
+              </div>
+              </ng-template>
+
+          </div>
+        </div>
+
+      </div>
+      <!-- Order Review -->
+    </div>
+  </div>
+  <br>
+
+</div>

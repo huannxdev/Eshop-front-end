@@ -1,0 +1,67 @@
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="order-summary clearfix">
+          <h1 class="display-3  text-center">Thanks for your order!</h1>          
+          <ul class="midpage">
+            <li class="leftpage">
+              <img src="http://www.alphademenagements.com/public/img/big/ok-1976099_960_720.png" width="250px" />
+            </li>
+
+            <li class="rightpage">              
+              <br>
+              <div class="info-ship">
+
+                <div *ngIf="Paypal">
+                  <p>Bạn đã chọn thanh toán bằng
+                    <strong class="hightlight">Paypal</strong>
+                  </p>
+                  <p>- Hàng của bạn sẽ được chuyển tới trong vòng
+                    <strong>1 tuần</strong> sau khi thanh toán.</p>
+                  <p>- Nếu có gì thắc mắc vui lòng
+                    <a class="contact-link" routerLink="../../contact">liên hệ chúng tôi</a>.</p>
+                  <p>- Đơn hàng của bạn đã được gửi về email
+                    <a class="contact-link">eshopoos@gmail.com</a>.</p>
+                </div>
+                <div *ngIf="Bank">
+                  Bạn đã chọn thanh toán bằng
+                  <strong class="hightlight">Ngân hàng</strong>
+                  <br/>                  
+                  - Đơn hàng của bạn đã được gửi về email
+                  <a class="contact-link">eshopoos@gmail.com</a>.<br/>
+                  - Nếu có gì thắc mắc vui lòng
+                    <a class="contact-link" routerLink="../../contact">liên hệ chúng tôi</a>.                  
+                  <br/> - Vui lòng gửi tiền qua
+                  <strong class="hightlight">một trong số tài khoản sau:</strong>
+                  <br/>
+                  <p>+ Vietcombank: 0531 0022 2300 8
+                    <br/> + Techcombank: 1162 1632 8080 19
+                    <br/> + ACB: 3909 6729
+                    <br/> + Đông Á: 0044 1923 0008
+                    <br/> + Agribank: 6380 2010 0835 9
+                    <br/> + Vietinbank: 1080 0398 8368
+                    <br/> + BIDV: 1251 0000 5863 28
+                    <br/> + Sacombabank: 0200 0426 2498</p>
+                </div>
+                <div *ngIf="COD">
+                    Bạn đã chọn thanh toán khi nhận hàng                    
+                    <br/>                  
+                    - Đơn hàng của bạn đã được gửi về email
+                    <a class="contact-link">eshopoos@gmail.com</a>.<br/>
+                    - Nếu có gì thắc mắc vui lòng
+                      <a class="contact-link" routerLink="../../contact">liên hệ chúng tôi</a>.<br/>
+                    - Đơn hàng của bạn sẽ được chuyển tới trong vòng <strong>1 tuần</strong>.
+                </div>
+
+
+
+              </div>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

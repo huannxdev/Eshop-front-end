@@ -1,0 +1,9 @@
+diff a/OOS/src/app/shared/services/spinner.service.ts b/OOS/src/app/shared/services/spinner.service.ts	(rejected hunks)
+@@ -17,7 +17,6 @@
+   }
+ 
+   turnOffSpinner(){
+-    setTimeout(function() {
+     this.spinnerService.hide();
+   }  
+ }

@@ -1,0 +1,47 @@
+<!-- NAVIGATION -->
+<div id="navigation">
+  <div class="container">
+    <div id="responsive-nav">
+      <!-- category nav -->
+      <div class="category-nav">
+        <span class="category-header">Modules</span>
+        <ul class="category-list" style="position:absolute">
+          <li>
+            <a [routerLink]="['./categories']">Categories</a>
+          </li>
+          <li>
+            <a [routerLink]="['./products']">Products</a>
+          </li>
+          <li>
+            <a [routerLink]="['./users']">Users</a>
+          </li>
+          <li>
+            <a [routerLink]="['./orders']">Orders</a>
+          </li>
+          <li>
+            <a [routerLink]="['./config']">Configuration</a>
+          </li>
+          <li>
+            <a [routerLink]="['./customerfeedback']">Customer Feedback</a>
+          </li>
+          <li>
+            <a [routerLink]="['./social']">Social Network</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="home">
+  <!-- router -->
+  <div class="container">
+    <div class="home-wrap" style="min-height:700px">
+
+      <div class="col-md-12">
+        <breadcrumb prefix="E-shop"></breadcrumb>
+      </div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

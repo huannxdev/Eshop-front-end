@@ -1,0 +1,47 @@
+<!-- Product Single -->
+<div class="col-md-3 col-sm-6 col-xs-6">
+  <div class="product product-single ">
+    <div class="product-thumb">
+      <div (click)="routeProduct()">
+        <!-- <button class="main-btn quick-view" (click)="routeProduct()">
+        <i class="fa fa-search-plus"></i> Quick view</button> -->
+        <div *ngIf="productDetail.basicImage==null">
+          <img src="https://colorlib.com/etc/e-shop/img/thumb-product01.jpg" alt="{{productDetail.name}}" height="320" width="270">
+        </div>
+        <div class="product-image"><img src="{{productDetail.basicImage}}" alt="{{productDetail.name}}" height="320" width="270" pad></div>
+        <div>
+        <div class="product-price">
+        <h3 style="color:#F8694A">{{productDetail.minPrice | number}} {{currencyDefine[currency]}}</h3>
+        </div>
+        <div class="product-rating">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star-o empty"></i>
+        </div>
+      </div>
+        <h2 class="product-name">
+          <p>{{productDetail.name}}</p>
+        </h2>
+      </div>
+    </div>
+    <div class="product-body">
+      <div class="product-btns">
+        <button class="main-btn icon-btn" (click)="wish()" *ngIf="!productDetail.isLove">
+          <i class="fa fa-heart"></i>
+        </button>
+        <button class="main-btn-wish icon-btn" (click)="removeWish()" *ngIf="productDetail.isLove">
+          <i class="fa fa-heart"></i>
+        </button>
+        <button class="main-btn icon-btn">
+          <i class="fa fa-exchange"></i>
+        </button>
+        <button class="primary-btn add-to-cart" (click)="addProductCart(productDetail)">
+          <i class="fa fa-shopping-cart"></i> Add to Cart</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- /Product Single -->

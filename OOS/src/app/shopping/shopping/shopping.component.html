@@ -1,0 +1,710 @@
+<!-- HEADER -->
+<header>
+  <!-- header -->
+  <div id="header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2 col-sm-12 col-xs-12">
+          <div class="pull-left">
+
+            <!-- Logo -->
+            <div class="header-logo">
+              <a class="logo" routerLink="">
+                <img src="/assets/img/logo.png" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- LOGIN1 -->
+        <div class="hidden-lg hidden-md hidden-xs hidden-sm">
+          <ul *ngIf="!user" class="header-btns">
+            <!-- Account -->
+            <li class="header-account dropdown default-dropdown">
+
+              <div class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="true">
+                <div class="header-btns-icon">
+                  <i class="fa fa-user-o"></i>
+                </div>
+                <strong class="text-uppercase"> My Account
+                  <i class="fa fa-caret-down"></i>
+                </strong>
+              </div>
+              <a routerLink="/account/login" class="text-uppercase">Login</a> /
+              <a class="text-uppercase" routerLink="/account/register">Join</a>
+            </li>
+            <!-- /Account -->
+
+            <!-- Cart -->
+            <li>
+              <app-cart></app-cart>
+            </li>
+            <!-- /Cart -->
+
+            <!-- Mobile nav toggle-->
+            <li class="nav-toggle">
+              <button class="nav-toggle-btn main-btn icon-btn">
+                <i class="fa fa-bars"></i>
+              </button>
+            </li>
+            <!-- / Mobile nav toggle -->
+          </ul>
+          <ul *ngIf="user" class="header-btns">
+            <!-- Account -->
+            <li class="header-account dropdown default-dropdown">
+
+              <div class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="true">
+                <div class="header-btns-icon">
+                  <i class="fa fa-user-o"></i>
+                </div>
+                <strong class="text-uppercase, shortName">{{user.userName}}
+                  <i class="fa fa-caret-down"></i>
+                </strong>
+              </div>
+              <span class="text-uppercase">Account</span>
+              <ul class="custom-menu">
+                <li>
+                  <a routerLink="/account/profile">
+                    <i class="fa fa-user-o"></i> My Account</a>
+                </li>
+                <li>
+                  <a routerLink="/account/order-history">
+                    <i class="fa fa-book"></i> Order History</a>
+                </li>
+                <li>
+
+                  <a routerLink="/account/profile">
+                    <i class="fa fa-heart-o"></i> My Wishlist
+                  </a>
+
+                  <li>
+                    <a>
+                      <i class="fa fa-exchange"></i> Compare</a>
+                  </li>
+                  <li>
+                    <a>
+                      <i class="fa fa-check"></i> Checkout</a>
+                  </li>
+                  <li>
+                    <a routerLink="/account/register">
+                      <i class="fa fa-user-plus"></i> Create An Account
+                    </a>
+                  </li>
+                  <li>
+                    <a (click)="logout()">
+                      <i class="fa fa-check"></i> Logout</a>
+                  </li>
+              </ul>
+              </li>
+              <!-- /Account -->
+
+              <!-- Cart -->
+              <li>
+                <app-cart></app-cart>
+              </li>
+              <!-- /Cart -->
+
+              <!-- Mobile nav toggle-->
+              <li class="nav-toggle">
+                <button class="nav-toggle-btn main-btn icon-btn">
+                  <i class="fa fa-bars"></i>
+                </button>
+              </li>
+              <!-- / Mobile nav toggle -->
+          </ul>
+        </div>
+        <!-- END LOGIN1 -->
+
+        <!-- Search -->
+        <div class="col-md-5 col-sm-12 col-xs-12">
+          <div class="pull-left">
+            <div class="header-search" style="width:100%; max-width:400px">
+              <form>
+
+                <button class="search-btn" (click)="searchProduct()">
+                  <i class="fa fa-search"></i>
+                </button>
+
+                <input class="input search-input input-group" [(ngModel)]="keyword" name="keyword" (blur)="hide()" #searchBox (keyup)="search(searchBox.value)"
+                  (click)="search(searchBox.value)" type="text" autocomplete="off" placeholder="Enter your keyword" aria-describedby="basic-addon2"
+                  value="{{searchResult}}">
+
+                <div class="input-group" id="suggest-box">
+                  <ul [hidden]="hidden">
+                    <li class="search-result" *ngFor="let product of listProduct | async" (mousedown)="routeProduct(product)" style="padding:15px; cursor:pointer">
+                      <span>
+                        <p style="display:inline; font-weight:bold">{{product.name}}</p> in
+                        <p style="display:inline; color: #F8694A">{{categoryName(product.idCategory)}}</p>
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+
+                <select class="input search-categories" (change)="search(searchBox.value)" [(ngModel)]="idCategory" name="idCategory" style="max-width:140px">
+                  <option value="all">All Categories</option>
+                  <option *ngFor="let category of categories" [ngValue]="category.id">{{category.name}}</option>
+                </select>
+
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- End Search -->
+
+        <!-- LOGIN2 -->
+        <div class="col-md-5 col-sm-12 col-xs-12">
+          <div class="pull-right">
+            <ul *ngIf="!user" class="header-btns">
+              <!-- Account -->
+              <li class="header-account dropdown default-dropdown">
+
+                <div class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="true">
+                  <div class="header-btns-icon">
+                    <i class="fa fa-user-o"></i>
+                  </div>
+                  <strong class="text-uppercase"> My Account
+                    <i class="fa fa-caret-down"></i>
+                  </strong>
+                </div>
+                <a routerLink="/account/login" class="text-uppercase">Login</a> /
+                <a class="text-uppercase" routerLink="/account/register">Join</a>
+              </li>
+              <!-- /Account -->
+
+              <!-- Cart -->
+              <li>
+                <app-cart></app-cart>
+              </li>
+              <!-- /Cart -->
+            </ul>
+            <ul *ngIf="user" class="header-btns">
+              <!-- Account -->
+              <li class="header-account dropdown default-dropdown">
+
+                <div class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="true">
+                  <div class="header-btns-icon">
+                    <i class="fa fa-user-o"></i>
+                  </div>
+                  <strong class="text-uppercase, shortName">{{user.userName}}
+                    <i class="fa fa-caret-down"></i>
+                  </strong>
+                </div>
+                <span class="text-uppercase">Account</span>
+                <ul class="custom-menu">
+                  <li>
+                    <a routerLink="/account/profile">
+                      <i class="fa fa-user-o"></i> My Account</a>
+                  </li>
+                  <li>
+                    <a routerLink="/account/order-history">
+                      <i class="fa fa-book"></i> Order History</a>
+                  </li>
+                  <li>
+
+                    <a routerLink="/account/wishlist">
+                      <i class="fa fa-heart-o"></i> My Wishlist</a>
+
+                    <li>
+                      <a>
+                        <i class="fa fa-exchange"></i> Compare</a>
+                    </li>
+                    <li>
+                      <a>
+                        <i class="fa fa-check"></i> Checkout</a>
+                    </li>
+                    <li>
+                      <a routerLink="/account/register">
+                        <i class="fa fa-user-plus"></i> Create An Account
+                      </a>
+                    </li>
+                    <li>
+                      <a (click)="logout()">
+                        <i class="fa fa-check"></i> Logout</a>
+                    </li>
+                </ul>
+                </li>
+                <!-- /Account -->
+
+                <!-- Cart -->
+                <li>
+                  <app-cart></app-cart>
+                </li>
+                <!-- /Cart -->
+
+                <!-- Mobile nav toggle-->
+                <li class="nav-toggle">
+                  <button class="nav-toggle-btn main-btn icon-btn">
+                    <i class="fa fa-bars"></i>
+                  </button>
+                </li>
+                <!-- / Mobile nav toggle -->
+            </ul>
+          </div>
+        </div>
+        <!-- END LOGIN2 -->
+
+        <!-- Mobile nav toggle-->
+        <div class="nav-toggle col-sm-12 col-xs-12">
+          <button class="nav-toggle-btn main-btn icon-btn dropdown-toggle" data-toggle="dropdown">
+            <i class="fa fa-bars"></i>
+          </button>
+          <!-- <app-list-categories [hidden]="categoryHidden"></app-list-categories> -->
+          <ul class="nav-toggle-list dropdown-menu" [style.display]="dblock">
+            <li *ngFor="let category of categories; let i = index" style="cursor: pointer">
+              <a (click)="routeCategory(category.id, category.name)">{{category.name}}</a>
+            </li>
+          </ul>
+        </div>
+        <!-- / Mobile nav toggle -->
+
+      </div>
+    </div>
+
+  </div>
+  <!-- header -->
+
+  <!-- container -->
+</header>
+<!-- /HEADER -->
+
+<!-- NAVIGATION -->
+<div id="navigation">
+  <!-- container -->
+  <div class="container">
+    <div id="responsive-nav">
+      <!-- category nav -->
+      <div class="category-nav">
+        <span class="category-header dropdown-toggle" data-toggle="dropdown">Categories
+          <i class="fa fa-list"></i>
+        </span>
+        <!-- <app-list-categories [hidden]="categoryHidden"></app-list-categories> -->
+        <ul class="category-list dropdown-menu" [style.display]="dblock">
+          <li *ngFor="let category of categories; let i = index" style="cursor: pointer">
+            <a (click)="routeCategory(category.id, category.name)">{{category.name}}</a>
+          </li>
+        </ul>
+      </div>
+      <!-- /category nav -->
+
+      <!-- menu nav -->
+      <div class="menu-nav">
+        <span class="menu-header">Menu
+          <i class="fa fa-bars"></i>
+        </span>
+        <ul class="menu-list">
+          <li>
+            <a routerLink="">Home</a>
+          </li>
+          <li>
+            <a>Shop</a>
+          </li>
+          <li class="dropdown mega-dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Women
+              <i class="fa fa-caret-down"></i>
+            </a>
+            <div class="custom-menu">
+              <div class="row">
+                <div class="col-md-4">
+                  <ul class="list-links">
+                    <li>
+                      <h3 class="list-links-title">Categories</h3>
+                    </li>
+                    <li>
+                      <a>Women’s Clothing</a>
+                    </li>
+                    <li>
+                      <a>Men’s Clothing</a>
+                    </li>
+                    <li>
+                      <a>Phones & Accessories</a>
+                    </li>
+                    <li>
+                      <a>Jewelry & Watches</a>
+                    </li>
+                    <li>
+                      <a>Bags & Shoes</a>
+                    </li>
+                  </ul>
+                  <hr class="hidden-md hidden-lg">
+                </div>
+                <div class="col-md-4">
+                  <ul class="list-links">
+                    <li>
+                      <h3 class="list-links-title">Categories</h3>
+                    </li>
+                    <li>
+                      <a>Women’s Clothing</a>
+                    </li>
+                    <li>
+                      <a>Men’s Clothing</a>
+                    </li>
+                    <li>
+                      <a>Phones & Accessories</a>
+                    </li>
+                    <li>
+                      <a>Jewelry & Watches</a>
+                    </li>
+                    <li>
+                      <a>Bags & Shoes</a>
+                    </li>
+                  </ul>
+                  <hr class="hidden-md hidden-lg">
+                </div>
+                <div class="col-md-4">
+                  <ul class="list-links">
+                    <li>
+                      <h3 class="list-links-title">Categories</h3>
+                    </li>
+                    <li>
+                      <a>Women’s Clothing</a>
+                    </li>
+                    <li>
+                      <a>Men’s Clothing</a>
+                    </li>
+                    <li>
+                      <a>Phones & Accessories</a>
+                    </li>
+                    <li>
+                      <a>Jewelry & Watches</a>
+                    </li>
+                    <li>
+                      <a>Bags & Shoes</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="row hidden-sm hidden-xs">
+                <div class="col-md-12">
+                  <hr>
+                  <a class="banner banner-1">
+                    <img src="/assets/img/banner05.jpg" alt="">
+                    <div class="banner-caption text-center">
+                      <h2 class="white-color">NEW COLLECTION</h2>
+                      <h3 class="white-color font-weak">HOT DEAL</h3>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="dropdown mega-dropdown full-width">
+            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Men
+              <i class="fa fa-caret-down"></i>
+            </a>
+            <div class="custom-menu">
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="hidden-sm hidden-xs">
+                    <a class="banner banner-1">
+                      <img src="/assets/img/banner06.jpg" alt="">
+                      <div class="banner-caption text-center">
+                        <h3 class="white-color text-uppercase">Women’s</h3>
+                      </div>
+                    </a>
+                    <hr>
+                  </div>
+                  <ul class="list-links">
+                    <li>
+                      <h3 class="list-links-title">Categories</h3>
+                    </li>
+                    <li>
+                      <a>Women’s Clothing</a>
+                    </li>
+                    <li>
+                      <a>Men’s Clothing</a>
+                    </li>
+                    <li>
+                      <a>Phones & Accessories</a>
+                    </li>
+                    <li>
+                      <a>Jewelry & Watches</a>
+                    </li>
+                    <li>
+                      <a>Bags & Shoes</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-md-3">
+                  <div class="hidden-sm hidden-xs">
+                    <a class="banner banner-1">
+                      <img src="/assets/img/banner07.jpg" alt="">
+                      <div class="banner-caption text-center">
+                        <h3 class="white-color text-uppercase">Men’s</h3>
+                      </div>
+                    </a>
+                  </div>
+                  <hr>
+                  <ul class="list-links">
+                    <li>
+                      <h3 class="list-links-title">Categories</h3>
+                    </li>
+                    <li>
+                      <a>Women’s Clothing</a>
+                    </li>
+                    <li>
+                      <a>Men’s Clothing</a>
+                    </li>
+                    <li>
+                      <a>Phones & Accessories</a>
+                    </li>
+                    <li>
+                      <a>Jewelry & Watches</a>
+                    </li>
+                    <li>
+                      <a>Bags & Shoes</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-md-3">
+                  <div class="hidden-sm hidden-xs">
+                    <a class="banner banner-1">
+                      <img src="/assets/img/banner08.jpg" alt="">
+                      <div class="banner-caption text-center">
+                        <h3 class="white-color text-uppercase">Accessories</h3>
+                      </div>
+                    </a>
+                  </div>
+                  <hr>
+                  <ul class="list-links">
+                    <li>
+                      <h3 class="list-links-title">Categories</h3>
+                    </li>
+                    <li>
+                      <a>Women’s Clothing</a>
+                    </li>
+                    <li>
+                      <a>Men’s Clothing</a>
+                    </li>
+                    <li>
+                      <a>Phones & Accessories</a>
+                    </li>
+                    <li>
+                      <a>Jewelry & Watches</a>
+                    </li>
+                    <li>
+                      <a>Bags & Shoes</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-md-3">
+                  <div class="hidden-sm hidden-xs">
+                    <a class="banner banner-1">
+                      <img src="/assets/img/banner09.jpg" alt="">
+                      <div class="banner-caption text-center">
+                        <h3 class="white-color text-uppercase">Bags</h3>
+                      </div>
+                    </a>
+                  </div>
+                  <hr>
+                  <ul class="list-links">
+                    <li>
+                      <h3 class="list-links-title">Categories</h3>
+                    </li>
+                    <li>
+                      <a>Women’s Clothing</a>
+                    </li>
+                    <li>
+                      <a>Men’s Clothing</a>
+                    </li>
+                    <li>
+                      <a>Phones & Accessories</a>
+                    </li>
+                    <li>
+                      <a>Jewelry & Watches</a>
+                    </li>
+                    <li>
+                      <a>Bags & Shoes</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <a>Sales</a>
+          </li>
+          <li class="dropdown default-dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Pages
+              <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="custom-menu">
+              <li>
+                <a routerLink="">Home</a>
+              </li>
+              <li>
+                <a>Products</a>
+              </li>
+              <li>
+                <a>Product Details</a>
+              </li>
+              <li>
+                <a>Checkout</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a routerLink="/contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+      <!-- menu nav -->
+    </div>
+  </div>
+  <!-- /container -->
+</div>
+<!-- /NAVIGATION -->
+
+<div id="home">
+  <router-outlet></router-outlet>
+</div>
+
+<!-- FOOTER -->
+<footer id="footer" class="section section-grey">
+  <!-- container -->
+  <div class="container">
+    <!-- row -->
+    <div class="row">
+      <!-- footer widget -->
+      <div class="col-md-3 col-sm-6 col-xs-6">
+        <div class="footer">
+          <!-- footer logo -->
+          <div class="footer-logo">
+            <a class="logo" routerLink="">
+              <img src="/assets/img/logo.png" alt="">
+            </a>
+          </div>
+          <!-- /footer logo -->
+
+          <ul class="">
+            <li>
+              <a>
+                <i class="">Ðịa chỉ :{{socialnetworks.address}}</i>
+              </a>
+            </li>
+            <li>
+              <a>
+                <i class="">Hotline :{{socialnetworks.hostline}}</i>
+              </a>
+            </li>
+            <li>
+              <a>
+                <i class="">Email: {{socialnetworks.email}}</i>
+              </a>
+            </li>
+          </ul>
+
+          <!-- footer social -->
+          <ul class="footer-social">
+            <li>
+              <a href="{{socialnetworks.linkFB}}">
+                <i class="fa fa-facebook"></i>
+              </a>
+            </li>
+            <li>
+              <a href="{{socialnetworks.linkTwitter}}">
+                <i class="fa fa-twitter"></i>
+              </a>
+            </li>
+            <li>
+              <a href="{{socialnetworks.linkInstagram}}">
+                <i class="fa fa-instagram"></i>
+              </a>
+            </li>
+            <li>
+              <a href="{{socialnetworks.linkGooglePlus}}">
+                <i class="fa fa-google-plus"></i>
+              </a>
+            </li>
+            <li>
+              <a href="{{socialnetworks.linkPinterest}}">
+                <i class="fa fa-pinterest"></i>
+              </a>
+            </li>
+          </ul>
+          <!-- /footer social -->
+        </div>
+      </div>
+      <!-- /footer widget -->
+
+      <!-- footer widget -->
+      <div class="col-md-3 col-sm-6 col-xs-6">
+        <div class="footer">
+          <h3 class="footer-header">Thông tin tài khoản</h3>
+          <ul class="list-links">
+            <li>
+              <a>Tài khoản của tôi</a>
+            </li>
+            <li>
+              <a>Danh sách </a>
+            </li>
+            <li>
+              <a>Kiểm Tra</a>
+            </li>
+            <li>
+              <a>Ðăng nhập</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- /footer widget -->
+
+      <div class="clearfix visible-sm visible-xs"></div>
+
+      <!-- footer widget -->
+      <div class="col-md-3 col-sm-6 col-xs-6">
+        <div class="footer">
+          <h3 class="footer-header">Chăm sóc Khách Hàng</h3>
+          <ul class="list-links">
+            <li>
+              <a routerLink="/contact">Liên Hệ</a>
+            </li>
+            <li>
+              <a routerLink="/shipping-return">Chính sách giao và trả hàng</a>
+            </li>
+            <li>
+              <a routerLink="/shipping-guide">Huớng dẫn mua hàng</a>
+            </li>
+            <li>
+              <a routerLink="/faq">FAQ</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- /footer widget -->
+
+      <!-- footer subscribe -->
+      <div class="col-md-3 col-sm-6 col-xs-6">
+        <div class="footer">
+          <h3 class="footer-header">Ðang ký nhận tin E-Shop</h3>
+          <p style="font-size: 12px">Ðừng bỏ lỡ hàng ngàn sản phẩm và chuong trình siêu hấp dẫn.</p>
+          <!-- <form> -->
+          <div class="form-group">
+            <input class="input" type="email" placeholder="Ðịa chỉ Email của bạn" id="emailSubscribe" [(ngModel)]="emailSubscribe" required>
+          </div>
+          <button class="primary-btn" (click)="sentEmailSubscribe()">Ðăng ký</button>
+          <!-- </form> -->
+        </div>
+      </div>
+      <!-- /footer subscribe -->
+    </div>
+    <!-- /row -->
+    <hr>
+    <!-- row -->
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 text-center">
+        <!-- footer copyright -->
+        <div class="footer-copyright">
+          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          Copyright &copy; Orient E-Shop
+          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        </div>
+        <!-- /footer copyright -->
+      </div>
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+</footer>
+<!-- /FOOTER -->
+<toaster-container></toaster-container>
+<!-- <my-toast></my-toast> -->

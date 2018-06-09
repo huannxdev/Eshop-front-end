@@ -1,0 +1,32 @@
+
+<!-- container -->
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="section-title">Contact Form</h2>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input class="input" placeholder="Title" [(ngModel)]="subject">
+          </div>
+          <div class="form-group">
+            <label for="title">Email</label>
+            <input class="input" placeholder="Enter Email Address" id="toEmail" [(ngModel)]="toEmail">
+          </div>
+          <div class="form-group">
+            <label for="title">Message</label>
+            <textarea class="input" placeholder="Write something.." style="height:200px" [(ngModel)]="content"></textarea>
+          </div>
+          <button class="primary-btn" (click)="sentEmail()">Send Feedback</button>
+          <div>
+          </div>
+        </div>
+        <div class="col-md-6">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.122547238712!2d106.63919801452869!3d10.801925092304208!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175294fe7593643%3A0x75fc2555a7f3e79!2zRXRvd24sIEPhu5luZyBIw7JhLCBwaMaw4budbmcgMTMsIFTDom4gQsOsbmgsIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1521792751960" width="733" height="390" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+      </div>
+  </div>
+</div>
+<br>
+

@@ -1,0 +1,33 @@
+<div class="container">
+  <br>
+  <div class="section-title">
+    <h3 class="title">Orders History</h3>
+  </div>
+
+  <table class="shopping-cart-table table table">
+    <thead class="thead-dark">
+      <tr>
+        <th>Order ID</th>
+        <!-- <th>Create Date</th> -->
+        <th >Created Date</th>
+        <th class="text-center">Total</th>
+        <th class="text-center">Status</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let order of listOrders; let i = index">
+      <tr>
+        <td>{{order.idBill}}</td>
+        <!-- <td>{{order.createdDate| date: 'dd/MM/yyyy'}}</td> -->
+        <td >{{order.createdDate | date:'MMM d, y, h:mm a'}}</td>
+        <td class="text-center">{{order.total | number}} VND</td>
+        <td class="text-center">{{status[order.status]}}</td>
+        <td class="text-right">
+          <button class="main-btn icon-btn" routerLink="/account/order-history/{{order.id}}" routerLinkActive="active">
+            <i class="fa fa-edit"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>

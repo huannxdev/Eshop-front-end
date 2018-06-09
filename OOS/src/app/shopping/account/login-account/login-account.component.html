@@ -1,0 +1,34 @@
+<div class="container">
+    <form #loginForm="ngForm">
+        <div class="row">
+            <div class="col-sm-6 col-md-4 col-md-offset-4">
+                <!-- <h1 class="text-center login-title">Admin Login</h1> -->
+                <!-- <div class="account-wall"></div> -->
+                <div class="section-title">
+                    <h3 class="title">Login</h3>
+                </div>
+                <img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
+                    alt="">
+                <div class="form-signin">
+                    <input name="email" [(ngModel)]="email" type="email" placeholder="Email" class="input" #email_validation="ngModel" ngModel required EmailValidator>
+                    <show-errors [control]="email_validation"></show-errors>
+                    <br/>
+                    <br/>
+                    <input name="password" type="password" class="input" placeholder="Password" required [(ngModel)]="password">
+                    <button class="primary-btn btn-block" [disabled]="!loginForm.valid" (click)="login()">
+                        Sign in
+                    </button>
+                    
+                    <label class="checkbox pull-left shiftleft">
+                        <input name="remember" type="checkbox" value="remember-me" [(ngModel)]="remember"> Remember me
+                    </label>
+
+                    <a href="" class="pull-right need-help">Need help? </a>
+                    <div class="fb-login-button" data-width="auto" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
+                    <span class="clearfix"></span>
+                </div>
+                <!-- <a href="#" class="text-center new-account">Create an account </a> -->
+            </div>
+        </div>
+    </form>
+</div>

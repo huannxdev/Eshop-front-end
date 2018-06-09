@@ -1,0 +1,65 @@
+<div class="col-md-12">
+   <table class="shopping-cart-table table" *ngIf="wishListProduct.length > 0">
+    <thead>
+      <tr>
+        <th class="text-center">Image</th>
+        <th class="text-center">Product</th>
+        <th class="text-center">Price(.000.VND)</th>
+        <th ></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of wishListProduct; let i = index">
+        <td class="thumb">
+          <img src="{{product.basicImage}}" alt="">
+        </td>
+        <td class="details">
+          <a (click)="routeProduct(product)" class="primary-color" >{{product.name}}</a>
+          <ul>
+            <li>
+              <span><strong>Code:</strong> {{product.code}}</span>
+            </li>
+            <li>
+              <span><strong>Category:</strong> {{product.categoryName}}</span>
+            </li>
+          </ul>
+        </td>
+        <td class="qty text-center">
+          {{product.minPrice | number}}
+        </td>
+        <td class="text-right">
+          <button class="primary-btn add-to-cart" [disabled]="flagCartButton" (click)="addToCart(product)">
+            Add to cart
+          </button>
+          <button class="main-btn icon-btn" data-toggle="modal" data-target="#myModal" (click)="setId(product.id)">
+            <i class="fa fa-close"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 *ngIf="wishListProduct.length==0">You don't have any product in wish list.</h4>
+</div>
+
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-body">
+      <div class="section-title">
+        <h4 class="modal-title">Confirm</h4>
+      </div>
+        <p>Are you sure you want to remove this product from your wish list?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="primary-btn" (click)="deleteProduct()" data-dismiss="modal">Yes</button>
+        <button type="button" class="main-btn" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+<!-- </div>
+<app-paging
+[itemCount]="itemCount"
+(page)="getPage($event)"
+(pageSize)="getPageSize($event)"
+></app-paging> -->

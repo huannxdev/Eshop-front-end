@@ -1,0 +1,138 @@
+<div *ngIf="orderIsExist; then content else invalid_content">
+</div>
+<ng-template #content>
+  <div class="container">
+    <div class="section">
+      <!-- TITLE -->
+      <div class="row ">
+        <div class="col-md-8 col-sm-8 col-xs-8">
+          <h3>Order detail {{order.idBill}} - #shipping_status</h3>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-4">
+          <h5 style="text-align:right">Order date: {{order.createdDate}}</h5>
+        </div>
+      </div>
+      <!-- END TITLE -->
+      <!-- TIMELINE -->
+      <!-- <div class="row component"> -->
+      <!-- <div class="col-md-12"> -->
+      <div class="wrapper">
+        <label>TIMELINE</label>
+        <div class="row ">
+          <div class="col-md-2 col-sm-4 ">
+            <span> #time 1:</span>
+          </div>
+          <div class="col-md-10 col-sm-8 ">
+            <span> #delivery_action_1</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2 col-sm-4 ">
+            <span> #time 2:</span>
+          </div>
+          <div class="col-md-10 col-sm-8 ">
+            <span> #delivery_action_2</span>
+          </div>
+        </div>
+        <!-- </div> -->
+        <!-- </div> -->
+      </div>
+      <!-- END TIMELINE -->
+      <!-- DELIVERY INFOR -->
+      <div class="row component">
+        <div class="col-md-6 col-sm-6">
+          <div class="wrapper">
+            <label>SHIPPING INFORMATION</label>
+            <b>Name: {{order.address[0].name}}</b>
+            <p>Phone: {{order.address[0].phone}}</p>
+            <p>Address: {{order.address[0].street}}-{{order.address[0].district}}-{{order.address[0].province}}</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-6">
+          <div class="wrapper">
+            <label>BILLING INFORMATION</label>
+            <b>Name: {{order.address[1].name}}</b>
+            <p>Phone: {{order.address[1].phone}}</p>
+            <p>Address: {{order.address[1].street}}-{{order.address[1].district}}-{{order.address[1].province}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-sm-6">
+          <div class="wrapper">
+            <label>SHIPPING METHOD</label>
+            <p>#Giao hàng tiết kiệm( không giao vào T7-CN)</p>
+            <p>#shipping_price</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-6">
+          <div class="wrapper">
+            <label>BILLING METHOD</label>
+            <p>Credit/Debit Card</p>
+            <p>#Visa(Smart Challenger)</p>
+          </div>
+        </div>
+      </div>
+      <!-- END DELIVERY INFOR -->
+      <!-- ITEMS -->
+      <div class="row component">
+        <div class="col-md-12">
+          <div class="wrapper">
+            <label>ITEMS</label>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="text-center">Product</th>
+                  <th class="text-center">Price (VND)</th>
+                  <th class="text-center">Quantity</th>
+                  <th class="text-center">Total Price (VND)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of order.orderDetails; let i = index">
+                  <th class="item-details">
+                    <img src="http://www.print100.com/hk/NewUI/Images/products/Paper_Bags.jpg" alt="">
+                    <div class="details">
+                      <a routerLink="" routerLinkActive="active" class="primary-color">{{item.nameProduct}}</a>
+                      <p>
+                        <strong>Color: </strong>
+                        <span class="item-color" [style.background]="item.color">&nbsp;&nbsp;&nbsp;<br></span>
+                        <strong>Size: </strong>{{item.size|| "Default"}}</p>
+                    </div>
+                  </th>
+                  <th class="text-center">{{item.price}} 000 </th>
+                  <th class="text-center">{{item.quantity}}</th>
+                  <th class="text-center">{{item.totalPrice}} 000</th>
+                </tr>
+              </tbody>
+            </table>
+            <div class="order-bill">
+              <div class="right">
+                <div class="row-infor">
+                  <span class="lbl">Subtotal:</span>
+                  <span class="fee">{{order.subtotal}} 000 VND</span>
+                </div>
+                <div class="row-infor">
+                  <span class="lbl">Shipping price:</span>
+                  <span class="fee">#shipping_price</span>
+                </div>
+                <div class="row-infor">
+                  <span class="lbl">
+                    <b>Total:</b>
+                  </span>
+                  <span class="fee">
+                    <b>{{order.total}} 000 VND</b>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END ITEMS -->
+    </div>
+  </div>
+</ng-template>
+<ng-template #invalid_content>
+  <h2>Page note found(ID is invalid).</h2>
+</ng-template>

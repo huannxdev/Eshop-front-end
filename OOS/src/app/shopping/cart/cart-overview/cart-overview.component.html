@@ -1,0 +1,26 @@
+<div class="section">
+  <div class="container">
+    <!-- Process Bar -->
+    <div class="row smpl-step">
+      <div class="progress-step col-xs-4 col-sm-4 col-md-4 smpl-step-step" *ngFor="let title of listtitle; let i = index" [ngClass]="{
+                  'complete': step > i+1,
+                  'active': step === i+1,
+                  'disabled': step < i+1
+                }">
+        <div class="progress">
+          <div class="progress-bar"></div>
+        </div>
+        <a class="smpl-step-icon">
+          <i class="glyphicon" [ngClass]="{
+            'glyphicon-repeat repeat-icon' : step === i+1 && step !== 3,
+            'glyphicon-ok ok-icon' : step !== i+1 || step === 3
+          }">
+          </i>
+        </a>
+        <div class="smpl-step-info text-center">{{title}}</div>
+      </div>
+    </div>
+    <!-- Process Bar -->
+    <router-outlet></router-outlet>
+  </div>
+</div>

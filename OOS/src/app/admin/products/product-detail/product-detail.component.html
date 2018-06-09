@@ -1,0 +1,47 @@
+<div *ngIf="flag; then content else other_content"></div>
+<ng-template #content>
+  <!--  Product Details -->
+  <div class="product product-details clearfix">
+    <div class="col-md-6">
+      <div id="product-main-view">
+        <div class="product-view">
+          <img src="{{product.image}}" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="product-body">
+        <div class="product-label">
+          <span>New</span>
+          <span class="product-label">-20%</span>
+        </div>
+        <h2 class="product-name">{{product.name}}</h2>
+        <h3 class="product-price">${{product.price}}
+          <del class="product-old-price">${{product.price}}</del>
+        </h3>
+        <p>
+          <strong>Id:</strong> {{product.id}}</p>
+        <p>
+          <strong>Id Category:</strong> {{product.idCategory}}</p>
+        <p>
+          <strong>Create Date:</strong> {{product.createDate}}</p>
+        <p>
+          <strong>createBy:</strong> {{product.createBy}}</p>
+        <p>
+          <strong>Update Date:</strong> {{product.updateDate}}</p>
+        <p>
+          <strong>Update By:</strong> {{product.updateBy}}</p>
+        <p>
+          <strong>Status:</strong> {{product.status}}</p>
+        <p>
+          <strong>Description:</strong> {{product.description}}</p>
+      </div>
+      <button class = "primary-btn" routerLink="/admin/products/edit"
+       routerLinkActive="active">Edit</button>
+    </div>
+  </div>
+</ng-template>
+<ng-template #other_content>
+  <h2>Page note found(ID is invalid).</h2>
+</ng-template>
+

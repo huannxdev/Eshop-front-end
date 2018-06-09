@@ -1,0 +1,38 @@
+.shortName{
+width: 90px;
+display: inline-block;
+overflow: hidden;
+white-space: nowrap;
+text-overflow: ellipsis;
+}
+
+.row-account{
+    display: inline;
+    margin-right: auto;
+}
+
+.header-search{
+    padding: 15px 15px;
+}
+
+@media only screen and (min-width: 768px)
+{
+    .header-search{
+        max-width: 70%;
+    }
+
+    .header-logo{
+        margin-top: -1px;
+    }
+}
+
+@media only screen and (max-width: 768px)
+{
+    .header-search {
+        padding: 15px 0px;
+    }
+    .header-logo{
+        padding-left: 0px;
+        margin-top: 7px;
+    }
+}

@@ -1,0 +1,80 @@
+<div class="col-md-12">
+
+  <form #createUserForm="ngForm">
+
+    <div class="section-title">
+      <h3>Create User</h3>
+    </div>
+
+    <div class="form-group">
+
+      Email:
+
+      <input name="email" [(ngModel)]="user.email" type="text" class="input" #email_validation="ngModel" ngModel required EmailValidator>
+      <show-errors [control]="email_validation"></show-errors>
+
+    </div>
+
+    <div class="form-group">
+      Password:
+      <input id="password" name="password" #password="ngModel" [(ngModel)]="user.password"  
+        type="password" class="input" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d\W]{8,20}">
+      <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+        Password must have at least 1 number, 1 letter and contain from 8 - 20 character.
+        <div *ngIf="password.errors.required">
+          Password is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+
+      Confirm Password:
+
+      <input name="confirmPassword" [(ngModel)]="user.confirmPassword" type="password" class="input" #confirmPassword_validation="ngModel"
+        ngModel required ConfirmPassword [password]="user.password">
+      <show-errors [control]="confirmPassword_validation"></show-errors>
+
+    </div>
+
+    <div class="form-group">
+
+      First Name:
+
+      <input name="firstName" [(ngModel)]="user.firstName" type="text" class="input">
+
+    </div>
+
+    <div class="form-group">
+
+      Last Name:
+
+      <input name="lastName" [(ngModel)]="user.lastName" type="text" class="input">
+
+    </div>
+
+    <div class="form-group">
+
+        Phone:
+  
+        <input name="phoneNumber" [(ngModel)]="user.phoneNumber" type="text" class="input">
+  
+      </div>
+
+    <div class="form-group">
+
+      Gender:
+
+      <div class="form-inline">
+        <select name="gender" class="input custom-select" [(ngModel)]="user.gender">
+          <option *ngFor = "let gender of listGender" [value] = "gender">{{genderEnum[gender]}}</option>
+      </select>
+      </div>
+
+    </div>
+
+    <button class="primary-btn" [disabled]="!createUserForm.valid" (click)="add()">Save</button>
+    <button routerLink='../' class="main-btn">Back</button>
+
+  </form>
+</div>

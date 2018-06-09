@@ -1,0 +1,14 @@
+<div class="col-md-12">
+
+  <div class="section-title">
+    <h3 class="title">{{title}}</h3>
+  </div>
+
+  <div class="order-list" [froalaEditor] [(froalaModel)]="content"></div>
+  
+  <div class="pull-left">
+    <button class="primary-btn btn-save" (click)="save()">Save</button>
+    <button routerLink='/admin/manager/config' class="main-btn">Back</button>
+  </div>
+
+</div>

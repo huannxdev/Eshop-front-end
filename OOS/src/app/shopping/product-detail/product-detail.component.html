@@ -1,0 +1,213 @@
+<div *ngIf="productIsExist; then content else other_content"></div>
+<ng-template #content>
+<div class="section">
+	<!-- container -->
+	<div class="container">
+		<!-- row -->
+		<div class="row">
+			<!--  Product Details -->
+			<div class="product product-details clearfix">
+				<div class="col-md-6">
+					<app-carousel-product [listBanners]="listImages"></app-carousel-product>	
+				</div>
+				<div class="col-md-6">
+					<div class="product-body">
+						<div class="product-label">
+							<span>New</span>
+							<span class="sale" *ngIf="DiscountExisted">{{product.discount}}%</span>
+						</div>
+						<h2 class="product-name">{{product.name}}</h2>
+						<h3 class="product-price">{{price}} {{currencyDefine[currency]}}  <del class="product-old-price" *ngIf="DiscountExisted">{{oldPrice}} {{currencyDefine[currency]}}</del></h3>
+						<div>
+							<div class="product-rating">
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star-o empty"></i>
+							</div>
+							<a href="#">3 Review(s) / Add Review</a>
+						</div>
+						<p><strong>Availability:</strong> {{available}}</p>
+						<p><strong>Brand:</strong> E-SHOP</p>
+						<p>{{product.description}}</p>
+					
+							<span>COLOR: </span>
+							<div class="custom-radios" style="display:inline">
+								<div *ngFor="let color of listColor">
+								  <input type="radio" [id]="color" name="color" [value]="color" checked [(ngModel)]="colorSelected" (change)="onChange()">
+								  <label for={{color}}>
+									<span [style.background]="color">
+									  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/242518/check-icn.svg" alt="Checked Icon" />
+									</span>
+								  </label>
+							</div>
+							</div>
+							<div class="product-options color" style="display:inline ; border-top: none;" *ngIf="SizeExisted">
+								<!-- <span class="text-uppercase">Color:</span>
+								<p style="display: inline;"><select class=" input custom-select" [(ngModel)]="colorSelected" (change)="onChange()"style="width:auto" [style.background]="colorSelected">
+								<option *ngFor="let color of listColor" [value]="color" [style.background]="color" ></option>
+								</select></p> -->
+								<span class="text-uppercase">Size:</span>
+								<p style="display: inline;"><select class=" input custom-select" [(ngModel)]="sizeSelected" style="width:auto" (change)="onChangeColor()">
+								<option *ngFor="let tail of listSize" [value]="tail" >{{tail}}</option>
+								</select></p>
+								
+							</div>
+								  
+
+							<br />
+						
+
+						<div class="product-btns" style="margin-top:10px">
+							<div class="qty-input">
+								<span class="text-uppercase">QTY: </span>
+								<input class="input" type="number" min="0" [max] ="quantityAvailble" [(ngModel)]="quantity">
+							</div>
+							<button class="primary-btn add-to-cart" [disabled]="flagCartButton" (click)="AddToCart()"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+							
+							<div class="pull-right">
+								<button class="main-btn icon-btn" *ngIf = "!product.isLove" (click) = "wish()"><i class="fa fa-heart" ></i></button>
+								<button class="main-btn-wish icon-btn" *ngIf = "product.isLove"  (click) = "removeWish()"><i class="fa fa-heart"></i></button>
+								<button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
+								<button class="main-btn icon-btn"><i class="fa fa-share-alt"></i></button>
+							</div>
+						</div>
+						<br>
+						<div id="fb-root"></div>
+						<a class="fb-share-button" data-href="http://eshop.pcworld.com.vn/" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Feshop.pcworld.com.vn%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a></a>
+						<!-- <div class="fb-share-button" data-href="http://localhost:4200/product/29327f6e-23c9-4ccf-9bfc-fa1637544923_Giay_the%20thao%20nu%20MWC" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4200%2Fproduct%2F29327f6e-23c9-4ccf-9bfc-fa1637544923_Giay_the%2520thao%2520nu%2520MWC&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a></div> -->
+
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="product-tab">
+						<ul class="tab-nav">
+							<li class="active"><a data-toggle="tab" href="#tab1">Description</a></li>
+							<li><a data-toggle="tab" href="#tab3">Details</a></li>
+							<li><a data-toggle="tab" href="#tab2">Reviews (3)</a></li>
+						</ul>
+						<div class="tab-content">
+							<div id="tab1" class="tab-pane fade in active">
+								<p>{{product.description}}</p>
+							</div>
+							<div id="tab3" class="tab-pane fade in tab-details" [innerHTML]="product.details">
+								
+							</div>
+							<div id="tab2" class="tab-pane fade in">
+
+								<div class="row">
+									<div class="col-md-6">
+										<div class="product-reviews">
+											<div class="single-review">
+												<div class="review-heading">
+													<div><a href="#"><i class="fa fa-user-o"></i> John</a></div>
+													<div><a href="#"><i class="fa fa-clock-o"></i> 27 DEC 2017 / 8:0 PM</a></div>
+													<div class="review-rating pull-right">
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star-o empty"></i>
+													</div>
+												</div>
+												<div class="review-body">
+												</div>
+											</div>
+
+											<div class="single-review">
+												<div class="review-heading">
+													<div><a href="#"><i class="fa fa-user-o"></i> John</a></div>
+													<div><a href="#"><i class="fa fa-clock-o"></i> 27 DEC 2017 / 8:0 PM</a></div>
+													<div class="review-rating pull-right">
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star-o empty"></i>
+													</div>
+												</div>
+												<div class="review-body">
+													<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute
+														irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+												</div>
+											</div>
+
+											<div class="single-review">
+												<div class="review-heading">
+													<div><a href="#"><i class="fa fa-user-o"></i> John</a></div>
+													<div><a href="#"><i class="fa fa-clock-o"></i> 27 DEC 2017 / 8:0 PM</a></div>
+													<div class="review-rating pull-right">
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star-o empty"></i>
+													</div>
+												</div>
+												<div class="review-body">
+													<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute
+														irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+												</div>
+											</div>
+
+											<ul class="reviews-pages">
+												<li class="active">1</li>
+												<li><a href="#">2</a></li>
+												<li><a href="#">3</a></li>
+												<li><a href="#"><i class="fa fa-caret-right"></i></a></li>
+											</ul>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<h4 class="text-uppercase">Write Your Review</h4>
+										<p>Your email address will not be published.</p>
+										<form class="review-form">
+											<div class="form-group">
+												<input class="input" type="text" placeholder="Your Name" />
+											</div>
+											<div class="form-group">
+												<input class="input" type="email" placeholder="Email Address" />
+											</div>
+											<div class="form-group">
+												<textarea class="input" placeholder="Your review"></textarea>
+											</div>
+											<div class="form-group">
+												<div class="input-rating">
+													<strong class="text-uppercase">Your Rating: </strong>
+													<div class="stars">
+														<input type="radio" id="star5" name="rating" value="5" /><label for="star5"></label>
+														<input type="radio" id="star4" name="rating" value="4" /><label for="star4"></label>
+														<input type="radio" id="star3" name="rating" value="3" /><label for="star3"></label>
+														<input type="radio" id="star2" name="rating" value="2" /><label for="star2"></label>
+														<input type="radio" id="star1" name="rating" value="1" /><label for="star1"></label>
+													</div>
+												</div>
+											</div>
+											<button class="primary-btn">Submit</button>
+										</form>
+									</div>
+								</div>
+
+
+
+							</div>
+						</div>
+					</div>
+					
+						<div id="fb-root"></div>
+						<div class="fb-comments" attr.data-href="http://comment.com/product/{{link}}" data-numposts="3" data-order-by="reverse_time"></div>
+
+				</div>
+
+			</div>
+			<!-- /Product Details -->
+		</div>
+		<!-- /row -->
+	</div>
+	<!-- /container -->
+</div>
+</ng-template>
+<ng-template #other_content>
+	<h2>Page note found(ID is invalid).</h2>
+  </ng-template>

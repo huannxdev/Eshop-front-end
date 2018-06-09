@@ -1,0 +1,110 @@
+<br>
+<div class="container" *ngIf="user">
+  <div class="row">
+    <div class="form-group col-md-3 ">
+      <div class="center-content">
+        <img src="http://farm9.staticflickr.com/8130/29541772703_6ed8b50c47_b.jpg" class="img-responsive" style="width:200px; height:200px">
+      </div>
+      <div class="center-content">
+        <h3>{{user.firstName}} {{user.middleName}} {{user.lastName}}</h3>
+      </div>
+      <div class="center-content">
+        <a>Edit your photo profile</a>
+      </div>
+      <br>
+      <div class="category-nav">
+        <h3 class="account-header">My account</h3>
+        <ul class="category-list" style="position:relative;">
+          <li>
+            <a data-toggle="tab" href="#account">Profile</a>
+          </li>
+          <li>
+            <a data-toggle="tab" href="#order">Order Management</a>
+          </li>
+          <li>
+            <a data-toggle="tab" href="#payment">Payment Information</a>
+          </li>
+          <li>
+            <a data-toggle="tab" href="#wishlist">My Wishlist</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="form-group col-md-9 tab-content">
+      <div id="account" class="tab-pane fade in active">
+        <div class="section-title">
+          <h3 class="title">Profile</h3>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              First Name:
+              <input class="input" placeholder="First Name" [(ngModel)]="user.firstName">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              Middle Name:
+              <input class="input" placeholder="Middle Name" [(ngModel)]="user.middleName">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              Last Name:
+              <input class="input" placeholder="Last Name" [(ngModel)]="user.lastName">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          Email:
+          <input class="input" placeholder="Email" [disabled]="true" [(ngModel)]="user.email">
+        </div>
+        <div class="form-group">
+          Phone number:
+          <input class="input" placeholder="Phone number" [(ngModel)]="user.phoneNumber">
+        </div>
+        <div class="form-group">
+          Gender:
+          <select class=" input custom-select" [(ngModel)]="user.gender">
+            <option *ngFor="let gender of listGender" [value]="gender">{{genderEnum[gender]}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          Date of birth:
+          <form #myForm="ngForm" >
+            <my-date-picker [selDate]="selDate" name="mydate" [options]="myDatePickerOptions" (dateChanged)="onDateChanged($event)"></my-date-picker>
+          </form>
+        </div>
+        <div class="form-group">
+          Country:
+          <input class="input" placeholder="Country" [(ngModel)]="user.country" [disabled]="true">
+        </div>
+      </div>
+      <div id="order" class="tab-pane fade">
+        <div class="section-title">
+          <h3 class="title">Order Management</h3>
+        </div>
+      </div>
+      <div id="payment" class="tab-pane fade">
+        <div class="section-title">
+          <h3 class="title">Payment Information</h3>
+        </div>
+      </div>
+      <div id="wishlist" class="tab-pane fade">
+        <div class="section-title">
+          <h3 class="title">My Wishlist</h3>
+        </div>
+        <app-wishlist-account [userId]="idUser"></app-wishlist-account>
+      </div>
+    </div>
+  </div>
+  <div class="pull-left">
+    <a routerLink="" routerLinkActive="active" class="primary-btn">Back</a>
+  </div>
+  <div class="pull-right">
+    <button  class="primary-btn" (click)="update()" >Save</button>
+  </div>
+</div>
+<br>
+

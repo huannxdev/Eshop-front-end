@@ -1,0 +1,37 @@
+<!-- Product Single -->
+<div class="col-md-4 col-sm-6 col-xs-6">
+  <div class="product product-single">
+    <div class="product-thumb">
+        <div (click)="routeProduct()">
+      <div *ngIf="productDetail.basicImage==null">
+          <img src="https://colorlib.com/etc/e-shop/img/thumb-product01.jpg" alt="{{productDetail.name}}" height="320" width="270">
+      </div>
+      <img src="{{productDetail.basicImage}}" alt="{{productDetail.name}}" height="320" width="270">
+    </div>
+    <div class="product-body">
+      <h3 style="color:#F8694A" class="product-price">{{productDetail.minPrice | number}} $</h3>
+      <div class="product-rating">
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star-o empty"></i>
+      </div>
+      <h2 class="product-name">
+       <a (click)="routeProduct()">{{productDetail.name}}</a>
+      </h2>
+      </div>
+      <div class="product-btns">
+        <button class="main-btn icon-btn">
+          <i class="fa fa-heart"></i>
+        </button>
+        <button class="main-btn icon-btn">
+          <i class="fa fa-exchange"></i>
+        </button>
+        <button class="primary-btn add-to-cart" (click)="addProductCart(productDetail)">
+          <i class="fa fa-shopping-cart"></i> Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Product Single -->

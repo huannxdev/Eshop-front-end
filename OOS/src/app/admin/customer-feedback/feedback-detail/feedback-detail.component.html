@@ -1,0 +1,21 @@
+<div class="col-md-12">
+  <div class="billing-details">
+      <form #editCategoryForm="ngForm">
+          <div class="section-title">
+              <h3 class="title">FeedBack Detail</h3>
+          </div>
+          <div class="form-group">
+
+            content:
+
+              <input name="description" type="text" class="input"[(ngModel)]="feed.content" 
+              #description_validation="ngModel" ngModel maxlength="250">
+              <show-errors [control]="description_validation"></show-errors>
+
+              <br/>
+          </div>
+
+      </form>
+      <button class="primary-btn" routerLink="/admin/manager/customerfeedback" routerLinkActive="active">Back</button>
+  </div>
+</div>

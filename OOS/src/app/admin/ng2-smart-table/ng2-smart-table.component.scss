@@ -1,0 +1,64 @@
+:host {
+  font-size: 1rem;
+
+  /deep/ {
+    * {
+      box-sizing: border-box;
+    }
+
+    button,
+    input,
+    optgroup,
+    select,
+    textarea {
+      color: inherit;
+      font: inherit;
+      margin: 0;
+    }
+
+    table {
+      line-height: 1.5em;
+      border-collapse: collapse;
+      border-spacing: 0;
+      display: table;
+      width: 100%;
+      max-width: 100%;
+      overflow: hidden;
+      // word-break: normal;
+      word-break: break-all;
+
+      tr {
+        // th {
+        //   font-weight: bold;
+        //   width:15%;
+        // }
+        th.image {
+          font-weight: bold;
+          width:25%;
+        }
+        th {
+          font-weight: bold;
+          width:15%;
+        }
+        section {
+          font-size: .75em;
+          font-weight: bold;
+        }
+        td,
+        th {
+          font-size: 14px;
+          margin: 0;
+          padding: 0.5em 1em;
+        }
+      }
+    }
+
+    a {
+      color:#F8694A;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

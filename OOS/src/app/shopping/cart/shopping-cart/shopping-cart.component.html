@@ -1,0 +1,81 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="order-summary clearfix">
+				<div *ngIf="cart.length; else shopping">
+					<div class="section-title">
+						<h3 class="title">Order Review</h3>
+					</div>
+					<table class="shopping-cart-table table">
+						<thead>
+							<tr>
+								<th>Product</th>
+								<th></th>
+								<th class="text-center">Price</th>
+								<th class="text-center">Quantity</th>
+								<th class="text-center">Total</th>
+								<th class="text-right"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let item of cart">
+								<td class="thumb">
+									<img src="{{item.product.image}}" alt="" class="img-responsive" style="width:100px; height:100px">
+								</td>
+								<td class="details">
+									<a style="cursor: pointer" (click)="routeProduct(item.product.name,item.product.id)">{{item.product.name}}</a>
+									<ul>
+										<li *ngIf="item.product.color">
+											<span>Color:
+												<span class="product-color" [style.background]="item.product.color">&nbsp;&nbsp;&nbsp;</span>
+											</span>
+										</li>
+										<li *ngIf="item.product.size">
+											<span>Size: {{item.product.size}}</span>
+										</li>
+									</ul>
+								</td>
+								<td class="price text-center">
+									<strong>{{item.product.price | number}}</strong>
+									<br>
+								</td>
+								<td class="qty text-center">
+									<button class="number-btn" (click)="decrease(item.product,quantity.value)">&minus;</button>
+									<input class="input" id="number" type="number" min="1" value="{{item.quantity}}" #quantity
+									 (change)="updateQuantity(item.product,quantity.value)">
+									<button class="number-btn" (click)="increase(item.product,quantity.value)">+</button>
+								</td>
+								<td class="total text-center">
+									<strong class="primary-color">{{item.product.price*item.quantity | number}}</strong>
+								</td>
+								<td class="text-right">
+									<button class="main-btn icon-btn" (click)="remove(item.product)">
+										<i class="fa fa-close"></i>
+									</button>
+								</td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr>
+								<th class="empty" colspan="3"></th>
+								<th>TOTAL</th>
+								<th colspan="2" class="total">{{total | number}}</th>
+							</tr>
+						</tfoot>
+					</table>
+					<div class="pull-right">
+						<button class="primary-btn" routerLink="payment">Place Order</button>
+					</div>
+				</div>
+				<ng-template #shopping>
+					<div align="center">
+						<div>
+							<h4>Your cart is empty.</h4>
+						</div>
+						<button class="primary-btn" routerLink="/">Continue Shopping</button>
+					</div>
+				</ng-template>
+			</div>
+		</div>
+	</div>
+</div>
