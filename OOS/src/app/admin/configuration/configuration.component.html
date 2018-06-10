@@ -7,7 +7,7 @@
     <h4 class="title">CURRENCY</h4>
   </div>
   <div class="dropdown">
-    <select class="input custom-select" [(ngModel)]="configuration.currency">
+    <select class="input custom-select" [(ngModel)]="configuration.Currency">
       <option *ngFor="let item of currency" [value]="item">{{Currency[item]}}</option>
     </select>
   </div>
@@ -26,34 +26,6 @@
       <a routerLink="/admin/manager/faq">FAQ</a>
     </button>
   </div>
-
-  <div class="section-title">
-    <h4 class="title">Page Size</h4>
-  </div>
-  <div class="form-group">
-    <button type="submit" class="primary-btn" (click)="savePageSize()">Save</button>
-    <button routerLink='../' class="main-btn">Back</button>
-    <a class="pull-right">
-      <button type="submit" class="primary-btn" (click)="addPageSize()" align="right">+</button>
-    </a>
-    <div id="page-size-alert" class="alert alert-danger" *ngIf="checkUnique">Page sizes must not be the same.</div>
-    <form>
-      <div id="page-config" *ngFor="let item of configuration.pageSize; let i = index; trackBy: trackById">
-        <input id="page" name="page" type="number"  [(ngModel)]="configuration.pageSize[i]" (change)="minLimit(i)"
-          [ngModelOptions]="{standalone: true}" required min="1" #page="ngModel" />
-        <button class="close page-size" (click)="deletePageSize(i)">
-          <h4>X</h4>
-        </button>
-        <div *ngIf="page.invalid && (page.dirty || page.touched)" class="alert alert-danger page-alert">
-          <div *ngIf="page.errors.required">
-            Page size is required.
-          </div>
-        </div>
-      </div>
-    </form>
-  </div>
-
-
   <div class="section-title">
     <h4 class="title">Carousel</h4>
   </div>
@@ -65,14 +37,14 @@
     </a>
   </div>
   <div class="form-group">
-    <a *ngFor="let item of configuration.carousel, let i = index">
+    <a *ngFor="let item of configuration.Carousel, let i = index">
       <div class="img-wrap">
         <button class="close" (click)="delete(i)">
           <h1>X</h1>
         </button>
         <img src="{{item}}" class="img-responsive" style="width:640;height:360">
       </div>
-      <input [(ngModel)]="configuration.carousel[i]" type="text" class="input" placeholder="Picture URL">
+      <input [(ngModel)]="configuration.Carousel[i]" type="text" class="input" placeholder="Picture URL">
     </a>
   </div>
 </div>

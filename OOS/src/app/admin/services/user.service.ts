@@ -12,7 +12,7 @@ export class UserService {
 
   get(username: string, email: string, phone: string): Observable<any> {
     return this.authHttpService.get(
-      this.API_PATH+'/')
+      this.API_PATH +'/')
       .map(res => res.json() || []);
   }
   getById(id): Observable<UserModel> {

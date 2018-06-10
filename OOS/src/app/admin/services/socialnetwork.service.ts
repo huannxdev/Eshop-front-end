@@ -6,7 +6,7 @@ import { SocialNetworkModel } from '../models/SocialNetworkModel';
 @Injectable()
 export class SocialNetworkService {
   [x: string]: any;
-  private API_PATH = 'https://eshop-springboot.herokuapp.com/api/SocialNetwork/';
+  private API_PATH = 'https://eshop-springboot.herokuapp.com/api/socialnetwork/';
 
   constructor(private authHttpService: AuthHttpService) { }
   get(): Observable<SocialNetworkModel> {

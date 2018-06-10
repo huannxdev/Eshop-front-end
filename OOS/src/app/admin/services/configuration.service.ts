@@ -5,7 +5,7 @@ import { ConfigurationModel } from '../models/configuration';
 
 @Injectable()
 export class ConfigurationService {
-  private API_PATH = 'https://eshop-springboot.herokuapp.com/api/Configuration';
+  private API_PATH = 'https://eshop-springboot.herokuapp.com/api/Configuration/';
 
   constructor(private authHttpService: AuthHttpService) { }
   get(): Observable<ConfigurationModel> {
@@ -18,6 +18,6 @@ export class ConfigurationService {
   }
 
   edit(task: ConfigurationModel): Observable<any> {
-    return this.authHttpService.put(this.API_PATH + "/1", task);
+    return this.authHttpService.put(this.API_PATH + "1", task);
   }
 }

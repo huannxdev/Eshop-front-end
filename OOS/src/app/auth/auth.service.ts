@@ -9,6 +9,8 @@ export class AuthService {
     public setRequestOptions(options?: RequestOptionsArgs) {
         const authHeaders = new Headers();
         authHeaders.append('Content-Type', 'application/json');
+        if(localStorage.getItem('token'))
+        authHeaders.append('Authorization',localStorage.getItem('token'));
 
         if (options) {
             if (options.headers) {

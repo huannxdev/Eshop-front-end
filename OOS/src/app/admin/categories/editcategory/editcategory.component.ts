@@ -19,7 +19,7 @@ export class EditCategoryComponent implements OnInit {
     private breadcrumbService:BreadcrumbService
   ) {}
 
-  public cate = new CategoryModel;
+  public cate: CategoryModel = new CategoryModel;
   public status = CategoryStatus;
   public keys: Array<string>;
   public item: number;

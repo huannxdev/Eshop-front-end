@@ -15,7 +15,7 @@ export class ProductService {
   constructor(private authHttpService: AuthHttpService) { }
 
   get(id): Observable<ProductModel> {
-    return this.authHttpService.get(this.API_PATH + id).map(res => res.json() || []);
+    return this.authHttpService.get(this.API_PATH + '/' + id).map(res => res.json() || []);
   }
   delete(id): Observable<any> {
     return this.authHttpService.delete(this.API_PATH + id);
@@ -24,7 +24,7 @@ export class ProductService {
     this.idProduct = id;
   }
   gets(): Observable<any> {
-    var path = this.API_PATH+'/';
+    var path = this.API_PATH +'/';
     return this.authHttpService.get(path)
       //.map(res => res.json() || []);
       .map(res => res.json());

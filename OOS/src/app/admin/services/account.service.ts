@@ -17,7 +17,7 @@ export class AccountService {
   constructor(private http: Http, private authHttpService: AuthHttpService) { }  
 
   loginAccount(login){
-    return this.authHttpService.post(this.API_PATH + "login", login);
+    return this.authHttpService.post(this.API_PATH + "loginAdmin", login);
   }
 
   setUserSession(){

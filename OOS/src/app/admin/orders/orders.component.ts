@@ -19,9 +19,6 @@ export class OrdersComponent implements OnInit {
 
   email: string ="";
   phone: string = "";
-  pageSize: number;
-  page: number;
-
   itemCount: number;
   pNow: number = 1;
   constructor(
@@ -44,9 +41,8 @@ export class OrdersComponent implements OnInit {
     this.spinnerService.startLoadingSpinner();
     this.ordersService.getList(this.email, this.phone).subscribe(data => {
       this.spinnerService.turnOffSpinner();
-      this.listOrders = data.items;
-      this.itemCount = data.totalItemCount;
-      console.log(data);
+      this.listOrders = data;
+      this.itemCount = this.listOrders.length;
     });
   }
 

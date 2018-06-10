@@ -21,21 +21,21 @@
     <tbody *ngFor="let category of listCategories; let i = index">
       <tr>        
         <td class="">
-          <a routerLink="../{{category.id}}" routerLinkActive="active">{{category.name}}</a>
+          <a routerLink="../{{category.Id}}" routerLinkActive="active">{{category.Name}}</a>
         </td>
-        <td>{{category.description}}</td>
+        <td>{{category.Description}}</td>
         
         <td>
-            {{status[category.status]}}
+            {{status[category.Status]}}
         </td>
 
         <td class="text-right">
-          <a routerLink="../{{category.id}}" routerLinkActive="active">
+          <a routerLink="../{{category.Id}}" routerLinkActive="active">
             <button class="main-btn icon-btn" (click)="getCate(category)">
               <i class="fa fa-edit"></i>
             </button>
           </a>
-          <button class="main-btn icon-btn" data-toggle="modal" data-target="#myModal" (click)="get(category.id)">
+          <button class="main-btn icon-btn" data-toggle="modal" data-target="#myModal" (click)="get(category.Id)">
             <i class="fa fa-close"></i>
           </button>
 
@@ -57,7 +57,7 @@
         </div>
         <p>
           Are you sure to want to delele
-          <strong>{{cateDel.name}}</strong> ?
+          <strong>{{cateDel.Name}}</strong> ?
         </p>
       </div>
       <div class="modal-footer">

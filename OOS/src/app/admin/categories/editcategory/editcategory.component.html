@@ -9,7 +9,7 @@
 
                 Name:
 
-                <input name="name" type="text" class="input" [(ngModel)]="cate.name" 
+                <input name="name" type="text" class="input" [(ngModel)]="cate.Name" 
                 #name_validation="ngModel" ngModel required minlength="3" maxlength="25">
                 <show-errors [control]="name_validation"></show-errors>
 
@@ -19,7 +19,7 @@
 
                 Description:
 
-                <input name="description" type="text" class="input" [(ngModel)]="cate.description" 
+                <input name="description" type="text" class="input" [(ngModel)]="cate.Description" 
                 #description_validation="ngModel" ngModel maxlength="250">
                 <show-errors [control]="description_validation"></show-errors>
 
@@ -28,7 +28,7 @@
 
             Status:
             <div>
-                <select name="status" class="input custom-select" [(ngModel)]="cate.status">
+                <select name="status" class="input custom-select" [(ngModel)]="cate.Status">
                     <option *ngFor="let item of keys" [value]="item">{{status[item]}}</option>
                 </select>
             </div>

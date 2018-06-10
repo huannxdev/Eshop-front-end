@@ -39,20 +39,20 @@
     </thead>
     <tbody *ngFor="let order of listOrders; let i = index">
       <tr>
-        <td>{{order.idBill}}</td>
-        <td>{{order.email}}</td>
+        <td>{{order.IdBill}}</td>
+        <td>{{order.Email}}</td>
         <!-- <td>{{order.createdDate| date: 'dd/MM/yyyy'}}</td> -->
         <td>
-          <select class=" input custom-select" [(ngModel)]="order.status" (change)="updateStatus(order)">
-            <option *ngFor="let status of listStatus" [value]="status.id">{{status.name}}</option>
+          <select class=" input custom-select" [(ngModel)]="order.Status" (change)="updateStatus(order)">
+            <option *ngFor="let status of listStatus" [value]="status.Id">{{status.Name}}</option>
           </select>
         </td>
-        <td class="text-center">{{order.total}}</td>
+        <td class="text-center">{{order.Total | number}}</td>
         <td class="text-right">
           <button class="main-btn icon-btn" (click)="edit(order)" routerLink="/admin/manager/orders/edit" routerLinkActive="active">
             <i class="fa fa-edit"></i>
           </button>
-          <button class="main-btn icon-btn" data-toggle="modal" data-target="#myModal" (click)="get(order.id)">
+          <button class="main-btn icon-btn" data-toggle="modal" data-target="#myModal" (click)="get(order.Id)">
             <i class="fa fa-close"></i>
           </button>
         </td>

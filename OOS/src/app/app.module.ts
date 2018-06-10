@@ -19,6 +19,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { NouisliderModule } from 'ng2-nouislider';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { MyToastModule } from './shared/my-toast.component';
+import { AuthModule} from 'angular2-jwt';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { MyToastModule } from './shared/my-toast.component';
     Ng5BreadcrumbModule.forRoot(),
     FroalaEditorModule.forRoot(), 
     FroalaViewModule.forRoot(),
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    AuthModule
   ],
   providers: [
     AuthService, 

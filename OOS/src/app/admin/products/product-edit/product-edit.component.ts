@@ -82,28 +82,28 @@ export class ProductEditComponent implements OnInit {
 
   settings = {
     columns: {
-      image: {
+      Image: {
         title: 'Image',
         filter: false,
         editor: {
           type: 'textarea',
         },
       },
-      color: {
+      Color: {
         title: 'Color',
         filter: false,
         validation: 'color',
       },
-      size: {
+      Size: {
         title: 'Size',
         filter: false,
       },
-      price: {
+      Price: {
         title: 'Price',
         filter: false,
         validation: 'number',
       },
-      quantity: {
+      Quantity: {
         title: 'Quantity',
         filter: false,
         validation: 'number',

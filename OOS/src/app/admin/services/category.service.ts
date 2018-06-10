@@ -14,7 +14,7 @@ export class CategoryService {
   constructor(private authHttpService: AuthHttpService) { }
   
   get(): Observable<CategoryModel[]> {    
-    return this.authHttpService.get(this.API_PATH)
+    return this.authHttpService.get(this.API_PATH + "/")
       .map(res => res.json() || []);
   }
 

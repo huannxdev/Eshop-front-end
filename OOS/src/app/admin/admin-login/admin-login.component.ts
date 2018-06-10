@@ -17,8 +17,8 @@ export class AdminLoginComponent implements OnInit {
   email: string = '';
   password: string = '';
   remember: boolean = false;
-  currentUser=new Subject<UserModel>();
-  user : UserModel = new UserModel();
+  currentUser = new Subject<UserModel>();
+  user: UserModel = new UserModel();
 
   constructor(
     private router: Router,
@@ -38,17 +38,18 @@ export class AdminLoginComponent implements OnInit {
 
     this.accountService.loginAccount(login).subscribe((data: any) => {
       this.spinnerService.turnOffSpinner();
-      if(data){
-        localStorage.setItem('token',JSON.stringify(data._body));
+      if (data) {
+        localStorage.setItem('token', 'Bearer ' + data._body.toString());
         let token = jwt_decode(localStorage.getItem("token"));
         this.user.UserName = token.sub;
-        sessionStorage.setItem('user',JSON.stringify(this.user));
+        sessionStorage.setItem('user', JSON.stringify(this.user));
         this.accountService.setUserSession();
         this.router.navigate(['./admin/manager'])
-      } 
-      else{
+      }
+    },
+      (error: any) => {
         alert('Your username or password is incorrect')
-      }  
-    });
+      }
+    );
   }
 }

@@ -10,14 +10,12 @@ import { SpinnerService } from '../../../shared/services/spinner.service';
 })
 export class OverviewUsersComponent implements OnInit {
 
-  listUsers: Array<Object>;
+  listUsers: Array<UserModel>;
 
   userDel = new UserModel;
 
   //for paging
   itemCount: number;
-  pageSize: number = 10;
-  page: number = 1;
 
   //for searching
   email: string = "";
@@ -44,13 +42,8 @@ export class OverviewUsersComponent implements OnInit {
     this.userService.get("", this.email, this.phone).subscribe(data => {
       this.spinnerService.turnOffSpinner();
 
-      this.listUsers = data.items;
-      this.itemCount = data.totalItemCount;
-
-      // reverse sort
-      this.listUsers.sort((a, b) => {
-        return 1; //reverse the array
-      })
+      this.listUsers = data;
+      this.itemCount = this.listUsers.length;
     })
   }
 
@@ -59,9 +52,6 @@ export class OverviewUsersComponent implements OnInit {
   }
 
   refresh() {
-    this.pageSize = 10;
-    this.page = 1;
-
     this.email = "";
     this.phone = "";
     this.getUsersList();
@@ -78,15 +68,5 @@ export class OverviewUsersComponent implements OnInit {
 
   getUser(user: UserModel) {
     this.userService.getUser(user);
-  }
-
-  getPage(page: number) {
-      this.page = page;
-      this.getUsersList();
-  }
-
-  getPageSize(pageSize: number) {
-      this.pageSize = pageSize;
-      this.getUsersList();
   }
 }

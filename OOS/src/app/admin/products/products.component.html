@@ -40,12 +40,12 @@
         <td class="text-center">{{product.TotalQuantity | number}}</td>
         <td class="text-center">{{statusDefine[product.Status]}}</td>
         <td class="text-center">
-          <button class="main-btn icon-btn"  routerLink="./edit/{{product.id}}" routerLinkActive="active">
+          <button class="main-btn icon-btn"  routerLink="./edit/{{product.Id}}" routerLinkActive="active">
             <i class="fa fa-edit"></i>
           </button>
         </td>
         <td class="text-right">
-          <button class="main-btn icon-btn" data-toggle="modal" data-target="#myModal" (click)="setId(product.id)">
+          <button class="main-btn icon-btn" data-toggle="modal" data-target="#myModal" (click)="setId(product.Id)">
             <i class="fa fa-close"></i>
           </button>
         </td>

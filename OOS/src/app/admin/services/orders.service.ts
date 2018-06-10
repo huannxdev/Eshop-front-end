@@ -8,7 +8,7 @@ import { OrdersModel } from '../models/order';
 @Injectable()
 export class OrdersService {
 
-  private API_PATH = 'https://eshop-springboot.herokuapp.com/api/order/';
+  private API_PATH = 'https://eshop-springboot.herokuapp.com/api/Order/';
 
   listOrder: Array<OrdersModel>;
 
@@ -27,7 +27,7 @@ export class OrdersService {
   }
   
   getList(email: string, phone: string): Observable<any> {
-    return this.authHttpService.get(this.API_PATH+"?Email="+email+"&Phone="+phone)
+    return this.authHttpService.get(this.API_PATH)
       .map(res => res.json() || [])
   }
 
@@ -45,8 +45,6 @@ export class OrdersService {
   put(id :string,order: OrdersModel): Observable<OrdersModel> {
     return this.authHttpService.put(this.API_PATH + id, order)
       .map(res => {
-        console.log("order service res =" + res)
-        console.log("order service res.json =" + res.json())
         return res.json() || []})
   }
 

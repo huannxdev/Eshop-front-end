@@ -52,18 +52,7 @@ import { FeedbackDetailComponent } from './customer-feedback/feedback-detail/fee
 import { SocialNetworkComponent } from './social-network/social-network.component';
 import { SocialNetworkService } from './services/socialnetwork.service';
 import { SharedModule } from '../shared/modules/shared.module';
-
-
-export function authHttpServiceFactory(http: Http, options: RequestOptions) {
-  return new AuthHttp(new AuthConfig({
-    tokenName: 'token',
-    noClientCheck: true,
-    tokenGetter: (() => {
-      return localStorage.getItem('token');
-    })
-    // ,globalHeaders: [{ 'Content-Type': 'application/json' }]
-  }), http, options);
-}
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -77,7 +66,8 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     FroalaViewModule.forRoot(),
     NgbModule,
     MyDatePickerModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule
   ],
     
   declarations: [
