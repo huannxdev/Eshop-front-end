@@ -57,7 +57,7 @@
                 <div class="header-btns-icon">
                   <i class="fa fa-user-o"></i>
                 </div>
-                <strong class="text-uppercase, shortName">{{user.userName}}
+                <strong class="text-uppercase, shortName">{{user.UserName}}
                   <i class="fa fa-caret-down"></i>
                 </strong>
               </div>
@@ -133,8 +133,8 @@
                   <ul [hidden]="hidden">
                     <li class="search-result" *ngFor="let product of listProduct | async" (mousedown)="routeProduct(product)" style="padding:15px; cursor:pointer">
                       <span>
-                        <p style="display:inline; font-weight:bold">{{product.name}}</p> in
-                        <p style="display:inline; color: #F8694A">{{categoryName(product.idCategory)}}</p>
+                        <p style="display:inline; font-weight:bold">{{product.Name}}</p> in
+                        <p style="display:inline; color: #F8694A">{{categoryName(product.IdCategory)}}</p>
                       </span>
                     </li>
                   </ul>
@@ -142,7 +142,7 @@
 
                 <select class="input search-categories" (change)="search(searchBox.value)" [(ngModel)]="idCategory" name="idCategory" style="max-width:140px">
                   <option value="all">All Categories</option>
-                  <option *ngFor="let category of categories" [ngValue]="category.id">{{category.name}}</option>
+                  <option *ngFor="let category of categories" [ngValue]="category.Id">{{category.Name}}</option>
                 </select>
 
               </form>
@@ -185,7 +185,7 @@
                   <div class="header-btns-icon">
                     <i class="fa fa-user-o"></i>
                   </div>
-                  <strong class="text-uppercase, shortName">{{user.userName}}
+                  <strong class="text-uppercase, shortName">{{user.UserName}}
                     <i class="fa fa-caret-down"></i>
                   </strong>
                 </div>
@@ -251,7 +251,7 @@
           <!-- <app-list-categories [hidden]="categoryHidden"></app-list-categories> -->
           <ul class="nav-toggle-list dropdown-menu" [style.display]="dblock">
             <li *ngFor="let category of categories; let i = index" style="cursor: pointer">
-              <a (click)="routeCategory(category.id, category.name)">{{category.name}}</a>
+              <a (click)="routeCategory(category.Id, category.Name)">{{category.Name}}</a>
             </li>
           </ul>
         </div>
@@ -280,7 +280,7 @@
         <!-- <app-list-categories [hidden]="categoryHidden"></app-list-categories> -->
         <ul class="category-list dropdown-menu" [style.display]="dblock">
           <li *ngFor="let category of categories; let i = index" style="cursor: pointer">
-            <a (click)="routeCategory(category.id, category.name)">{{category.name}}</a>
+            <a (click)="routeCategory(category.Id, category.Name)">{{category.Name}}</a>
           </li>
         </ul>
       </div>

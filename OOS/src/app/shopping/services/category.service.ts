@@ -9,7 +9,7 @@ import { CategoryModel } from '../models/category';
 
 @Injectable()
 export class CategoryService {
-  private API_PATH = 'http://fbinterns.azurewebsites.net/api/Category';
+  private API_PATH = 'https://eshop-springboot.herokuapp.com/api/Category';
 
   constructor(private authHttpService: AuthHttpService) { }
 

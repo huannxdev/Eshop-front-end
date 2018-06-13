@@ -8,7 +8,7 @@
 
           <div class="form-group">
             Email:
-            <input id="email" name="email" #email="ngModel" [(ngModel)]="user.email" 
+            <input id="email" name="email" #email="ngModel" [(ngModel)]="user.Email" 
               type="email" class="input" required (focusout)="checkEmail()">
             <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
               <div *ngIf="email.errors.required">

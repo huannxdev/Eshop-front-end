@@ -52,7 +52,7 @@ export class CreateAccountComponent implements OnInit {
   {
     this.accountService.checkUserExist(this.user.Email).
       subscribe(email => {
-        this.isExistEmail = email;
+        this.isExistEmail = true;
         console.log(this.isExistEmail);
       });
   }
@@ -79,6 +79,5 @@ export class CreateAccountComponent implements OnInit {
 export class InformCreateSucces implements OnInit {
   constructor( private router:Router ) { }
   ngOnInit() {
-    setTimeout(()=>{ this.router.navigate(['/account/login'])}, 5000);
   }
 }

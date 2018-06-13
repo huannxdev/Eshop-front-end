@@ -9,10 +9,10 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
     <div *ngFor="let banner of listBanners; let i = index" [ngClass]="i == 0 ? 'item active' : 'item'">
-        <img src="{{banner.image}}" alt="{{i}}" style="width:100%;">
+        <img src="{{banner.Image}}" alt="{{i}}" style="width:100%;">
         <div class="carousel-caption">
           <h1>{{banner.title}}</h1>
-          <h3 class="white-color font-weak">{{banner.content}}</h3>
+          <h3 class="white-color font-weak">{{banner.Content}}</h3>
         </div>
     </div>
   </div>

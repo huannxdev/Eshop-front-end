@@ -43,30 +43,14 @@ export class CategoryDetailsComponent implements OnInit {
     this.productService.getByCategory(this.idCategory, this.sort, this.range[0], this.range[1], this.pageSize, this.page)
       .subscribe(data => {
         this.spinner.turnOffSpinner();
-        this.products = data.items;
-        this.itemCount = data.totalItemCount;
+        this.products = data;
         if (this.products.length == 0) this.check = true;
         else this.check = false;
       });
   }
 
-  getPage(page: number) {
-    if (this.page != page) {
-      this.page = page;
-      this.loadProducts();
-    }
-  }
-
-  getPageSize(pageSize: number) {
-    if (this.pageSize != pageSize) {
-      this.pageSize = pageSize;
-      this.loadProducts();
-    }
-  }
-
   changeSort() {
-    this.page = 1;
-    this.loadProducts();
+    this.sortListProduct();
   }
 
   changePrice() {
@@ -76,4 +60,29 @@ export class CategoryDetailsComponent implements OnInit {
       this.newrange = this.range;
     }
   }
+
+  sortListProduct(){
+    if(this.sort =='name')
+    this.products.sort(function(a,b){
+      var nameA = a.Name.toUpperCase();
+      var nameB = b.Name.toUpperCase();
+      if(nameA < nameB){
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      return 0;
+    });
+    if(this.sort=='price'){
+      this.products.sort(function(a,b){
+        if(a.MinPrice < b.MinPrice)
+          return -1;
+        if(a.MinPrice > b.MinPrice)
+          return 1;
+        return 0;
+      });
+    }
+  }
+
 }

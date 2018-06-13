@@ -13,7 +13,7 @@ import { PagingModel } from '../models/paging';
 
 @Injectable()
 export class ProductService {
-  private API_PATH = 'http://fbinterns.azurewebsites.net/api/Product/';
+  private API_PATH = 'https://eshop-springboot.herokuapp.com/api/Product/';
 
   idProduct: string;
   constructor(private authHttpService: AuthHttpService) { }

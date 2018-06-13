@@ -14,9 +14,9 @@
 					<div class="product-body">
 						<div class="product-label">
 							<span>New</span>
-							<span class="sale" *ngIf="DiscountExisted">{{product.discount}}%</span>
+							<span class="sale" *ngIf="DiscountExisted">{{product.Discount}}%</span>
 						</div>
-						<h2 class="product-name">{{product.name}}</h2>
+						<h2 class="product-name">{{product.Name}}</h2>
 						<h3 class="product-price">{{price}} {{currencyDefine[currency]}}  <del class="product-old-price" *ngIf="DiscountExisted">{{oldPrice}} {{currencyDefine[currency]}}</del></h3>
 						<div>
 							<div class="product-rating">
@@ -30,7 +30,7 @@
 						</div>
 						<p><strong>Availability:</strong> {{available}}</p>
 						<p><strong>Brand:</strong> E-SHOP</p>
-						<p>{{product.description}}</p>
+						<p>{{product.Description}}</p>
 					
 							<span>COLOR: </span>
 							<div class="custom-radios" style="display:inline">
@@ -68,7 +68,7 @@
 							
 							<div class="pull-right">
 								<button class="main-btn icon-btn" *ngIf = "!product.isLove" (click) = "wish()"><i class="fa fa-heart" ></i></button>
-								<button class="main-btn-wish icon-btn" *ngIf = "product.isLove"  (click) = "removeWish()"><i class="fa fa-heart"></i></button>
+								<button class="main-btn-wish icon-btn" *ngIf = "product.IsLove"  (click) = "removeWish()"><i class="fa fa-heart"></i></button>
 								<button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
 								<button class="main-btn icon-btn"><i class="fa fa-share-alt"></i></button>
 							</div>
@@ -89,7 +89,7 @@
 						</ul>
 						<div class="tab-content">
 							<div id="tab1" class="tab-pane fade in active">
-								<p>{{product.description}}</p>
+								<p>{{product.Description}}</p>
 							</div>
 							<div id="tab3" class="tab-pane fade in tab-details" [innerHTML]="product.details">
 								

@@ -24,7 +24,7 @@ export class CartService {
   set(product: ProductCartModel, quantity: number) {
     var data = JSON.parse(localStorage.getItem(this.key));
     if (!data) data = [];
-    if (!data.find(x => x.product.id == product.Id && x.product.Color == product.Color && x.product.Size == product.Size)) {
+    if (!data.find(x => x.Product.Id == product.Id && x.Product.Color == product.Color && x.Product.Size == product.Size)) {
       var item = new CartModel();
       item.Product = product;
       item.Quantity = quantity;
@@ -33,20 +33,20 @@ export class CartService {
       this.value.next(data);
     }
     else {
-      this.updateQuantity(product, data.find(x => x.product.Id == product.Id && x.product.Color == product.Color && x.product.Size == product.Size).Quantity + quantity);
+      this.updateQuantity(product, data.find(x => x.Product.Id == product.Id && x.Product.Color == product.Color && x.Product.Size == product.Size).Quantity + quantity);
     }
   }
 
   remove(product: ProductCartModel) {
     var data = JSON.parse(localStorage.getItem(this.key));
-    data = data.filter(x => !(x.product.Id == product.Id && x.product.Color == product.Color && x.product.Size == product.Size));
+    data = data.filter(x => !(x.Product.Id == product.Id && x.Product.Color == product.Color && x.Product.Size == product.Size));
     localStorage.setItem(this.key, JSON.stringify(data));
     this.value.next(data);
   }
 
   updateQuantity(product: ProductCartModel, quantity: number) {
     var data = JSON.parse(localStorage.getItem(this.key));
-    data.filter(x => x.product.Id == product.Id && x.product.Color == product.Color && x.product.Size == product.Size)[0].Quantity = quantity;
+    data.filter(x => x.Product.Id == product.Id && x.Product.Color == product.Color && x.Product.Size == product.Size)[0].Quantity = quantity;
     localStorage.setItem(this.key, JSON.stringify(data));
     this.value.next(data);
   }

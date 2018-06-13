@@ -97,7 +97,6 @@ export class ShoppingComponent implements OnInit, PipeTransform {
     if (term === "") this.hidden = true;
     else this.hidden = false;
     this.searchTerms.next(term);
-    console.log(this.listProduct);
   }
 
   hide() {
@@ -110,14 +109,14 @@ export class ShoppingComponent implements OnInit, PipeTransform {
   }
 
   routeProduct(product: any) {
-    var path = "/product/" + product.id + "_" + this.transform(normalizeSync(product.name));
+    var path = "/product/" + product.id + "_" + this.transform(normalizeSync(product.Name));
     this.router.navigateByUrl(path);
   }
 
   categoryName(catid: string): string {
     var name;
     for (var i = 0; i < this.categories.length; i++) {
-      if (catid == this.categories[i].id) name = this.categories[i].name;
+      if (catid == this.categories[i].Id) name = this.categories[i].Name;
     }
     return name;
   }

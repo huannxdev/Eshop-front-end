@@ -32,8 +32,7 @@ export class ProductBoxComponent implements OnInit {
     this.toasterService = toasterService;
   }
 
-  ngOnInit() {
-    this.metadataService.setCurrency();    
+  ngOnInit() {    
     this.currency = this.metadataService.getCurrency(); 
   }
   transform(value: string) {
@@ -65,6 +64,6 @@ export class ProductBoxComponent implements OnInit {
     this.cartService.set(productCart, 1);
     this.spinnerService.turnOffSpinner();
     //pop up toaster
-    this.toasterService.pop('success', product.name, 'Added to cart success!');
+    this.toasterService.pop('success', product.Name, 'Added to cart success!');
   }
 }

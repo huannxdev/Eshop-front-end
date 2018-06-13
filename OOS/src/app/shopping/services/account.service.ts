@@ -13,7 +13,7 @@ import { UserModel } from '../models/user/user';
 export class AccountService {
   currentUser=new BehaviorSubject<CreateUserModel>(JSON.parse(sessionStorage.getItem('user')));
 
-  private API_PATH = 'http://fbinterns.azurewebsites.net/api/User/';
+  private API_PATH = 'https://eshop-springboot.herokuapp.com/api/User/';
   //private API_PATH = 'http://localhost:54766/api/User/';
 
   login:LoginAccountModel;
@@ -25,7 +25,11 @@ export class AccountService {
   }
 
   add(task: CreateUserModel): Observable<any> {
-    return this.authHttpService.post(this.API_PATH, task);
+    const user = {
+      Email: task.Email,
+      Password: task.Password
+    }
+    return this.authHttpService.post(this.API_PATH, user);
   }
 
   loginAccount(login){

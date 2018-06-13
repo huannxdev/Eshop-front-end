@@ -5,7 +5,7 @@ import { EmailSubscribeModel } from '../models/emailSubscribe';
 
 @Injectable()
 export class EmailService {
-  private API_PATH = 'http://fbinterns.azurewebsites.net/api/contact/';
+  private API_PATH = 'https://eshop-springboot.herokuapp.com/api/contact/';
 
   constructor(private authHttpService: AuthHttpService) { }
 

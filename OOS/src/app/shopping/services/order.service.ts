@@ -13,14 +13,14 @@ export class OrderService {
   constructor(private authHttpService: AuthHttpService) { }
 
 
-  private API_PATH = 'http://fbinterns.azurewebsites.net/api/order/';  
+  private API_PATH = 'https://eshop-springboot.herokuapp.com/api/order/';  
 
   add(order: OrdersModel): Observable<any> {
     return this.authHttpService.post(this.API_PATH, order);      
   }  
 
   getOderDetails(id): Observable<OrdersModel> {
-    return this.authHttpService.get(this.API_PATH + "/" + id)
+    return this.authHttpService.get(this.API_PATH + id)
       .map(res => res.json() || [])
   }
 
@@ -41,7 +41,7 @@ export class OrderService {
   }
 
   getList(email: string, phone: string, pageSize: number, page: number): Observable<PagingModel> {
-    return this.authHttpService.get(this.API_PATH+"?Email="+email+"&Phone="+phone+"&PageSize="+pageSize+"&Page="+page)
+    return this.authHttpService.get(this.API_PATH)
       .map(res => res.json() || [])
   }
 

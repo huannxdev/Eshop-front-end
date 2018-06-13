@@ -5,13 +5,13 @@
       <div (click)="routeProduct()">
         <!-- <button class="main-btn quick-view" (click)="routeProduct()">
         <i class="fa fa-search-plus"></i> Quick view</button> -->
-        <div *ngIf="productDetail.basicImage==null">
-          <img src="https://colorlib.com/etc/e-shop/img/thumb-product01.jpg" alt="{{productDetail.name}}" height="320" width="270">
+        <div *ngIf="productDetail.BasicImage==null">
+          <img src="https://colorlib.com/etc/e-shop/img/thumb-product01.jpg" alt="{{productDetail.Name}}" height="320" width="270">
         </div>
-        <div class="product-image"><img src="{{productDetail.basicImage}}" alt="{{productDetail.name}}" height="320" width="270" pad></div>
+        <div class="product-image"><img src="{{productDetail.BasicImage}}" alt="{{productDetail.Name}}" height="320" width="270" pad></div>
         <div>
         <div class="product-price">
-        <h3 style="color:#F8694A">{{productDetail.minPrice | number}} {{currencyDefine[currency]}}</h3>
+        <h3 style="color:#F8694A">{{productDetail.MinPrice | number}} {{currencyDefine[currency]}}</h3>
         </div>
         <div class="product-rating">
           <i class="fa fa-star"></i>
@@ -22,16 +22,16 @@
         </div>
       </div>
         <h2 class="product-name">
-          <p>{{productDetail.name}}</p>
+          <p>{{productDetail.Name}}</p>
         </h2>
       </div>
     </div>
     <div class="product-body">
       <div class="product-btns">
-        <button class="main-btn icon-btn" (click)="wish()" *ngIf="!productDetail.isLove">
+        <button class="main-btn icon-btn" (click)="wish()" *ngIf="!productDetail.IsLove">
           <i class="fa fa-heart"></i>
         </button>
-        <button class="main-btn-wish icon-btn" (click)="removeWish()" *ngIf="productDetail.isLove">
+        <button class="main-btn-wish icon-btn" (click)="removeWish()" *ngIf="productDetail.IsLove">
           <i class="fa fa-heart"></i>
         </button>
         <button class="main-btn icon-btn">
