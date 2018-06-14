@@ -20,36 +20,36 @@
 						<tbody>
 							<tr *ngFor="let item of cart">
 								<td class="thumb">
-									<img src="{{item.product.image}}" alt="" class="img-responsive" style="width:100px; height:100px">
+									<img src="{{item.Product.Image}}" alt="" class="img-responsive" style="width:100px; height:100px">
 								</td>
 								<td class="details">
-									<a style="cursor: pointer" (click)="routeProduct(item.product.name,item.product.id)">{{item.product.name}}</a>
+									<a style="cursor: pointer" (click)="routeProduct(item.Product.Name,item.Product.Id)">{{item.Product.Name}}</a>
 									<ul>
-										<li *ngIf="item.product.color">
+										<li *ngIf="item.Product.Color">
 											<span>Color:
-												<span class="product-color" [style.background]="item.product.color">&nbsp;&nbsp;&nbsp;</span>
+												<span class="product-color" [style.background]="item.Product.Color">&nbsp;&nbsp;&nbsp;</span>
 											</span>
 										</li>
-										<li *ngIf="item.product.size">
-											<span>Size: {{item.product.size}}</span>
+										<li *ngIf="item.Product.Size">
+											<span>Size: {{item.Product.Size}}</span>
 										</li>
 									</ul>
 								</td>
 								<td class="price text-center">
-									<strong>{{item.product.price | number}}</strong>
+									<strong>{{item.Product.Price | number}}</strong>
 									<br>
 								</td>
 								<td class="qty text-center">
-									<button class="number-btn" (click)="decrease(item.product,quantity.value)">&minus;</button>
-									<input class="input" id="number" type="number" min="1" value="{{item.quantity}}" #quantity
-									 (change)="updateQuantity(item.product,quantity.value)">
-									<button class="number-btn" (click)="increase(item.product,quantity.value)">+</button>
+									<button class="number-btn" (click)="decrease(item.Product,quantity.Value)">&minus;</button>
+									<input class="input" id="number" type="number" min="1" value="{{item.Quantity}}" #quantity
+									 (change)="updateQuantity(item.Product,quantity.Value)">
+									<button class="number-btn" (click)="increase(item.Product,quantity.Value)">+</button>
 								</td>
 								<td class="total text-center">
-									<strong class="primary-color">{{item.product.price*item.quantity | number}}</strong>
+									<strong class="primary-color">{{item.Product.Price*item.Quantity | number}}</strong>
 								</td>
 								<td class="text-right">
-									<button class="main-btn icon-btn" (click)="remove(item.product)">
+									<button class="main-btn icon-btn" (click)="remove(item.Product)">
 										<i class="fa fa-close"></i>
 									</button>
 								</td>
