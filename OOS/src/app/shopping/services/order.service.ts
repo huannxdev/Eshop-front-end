@@ -3,6 +3,7 @@ import { OrdersModel } from '../models/order';
 import { Observable } from 'rxjs/Observable';
 import { AuthHttpService } from '../../auth/auth-http.service';
 import { PagingModel } from '../models/paging';
+import { AuthShoppingHttpService } from '../../auth/auth-http-shopping.service';
 
 
 @Injectable()
@@ -10,7 +11,7 @@ export class OrderService {
   
   public order=new OrdersModel;  
 
-  constructor(private authHttpService: AuthHttpService) { }
+  constructor(private authHttpService: AuthShoppingHttpService) { }
 
 
   private API_PATH = 'https://eshop-springboot.herokuapp.com/api/order/';  

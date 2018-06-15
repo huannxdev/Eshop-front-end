@@ -6,12 +6,13 @@ import { HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 
 import { CategoryModel } from '../models/category';
+import { AuthShoppingHttpService } from '../../auth/auth-http-shopping.service';
 
 @Injectable()
 export class CategoryService {
   private API_PATH = 'https://eshop-springboot.herokuapp.com/api/Category';
 
-  constructor(private authHttpService: AuthHttpService) { }
+  constructor(private authHttpService: AuthShoppingHttpService) { }
 
   get(): Observable<CategoryModel[]> {    
     return this.authHttpService.get(this.API_PATH + "/1/status")

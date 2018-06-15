@@ -14,6 +14,7 @@ import { Currency } from '../models/configuration';
 import { MetaDataService } from '../services/meta-data.service';
 import { AccountService } from '../services/account.service';
 import { CreateUserModel } from '../models/user/create-user/create-user';
+import { UserModel } from '../models/user/user';
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
@@ -42,7 +43,7 @@ export class ProductDetailComponent implements OnInit {
   oldPrice: number;
   DiscountExisted: boolean = true;
   SizeExisted: boolean = true;
-  user: CreateUserModel
+  user: UserModel
 
 
   constructor(private productService: ProductService,

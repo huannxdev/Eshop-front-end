@@ -5,6 +5,8 @@ import { SpinnerService } from '../../../shared/services/spinner.service';
 import { CreateUserModel } from '../../models/user/create-user/create-user';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import * as jwt_decode from "jwt-decode";
+import { UserModel } from '../../models/user/user';
 declare var window: any;
 declare var FB: any;
 @Component({
@@ -19,7 +21,7 @@ export class LoginAccountComponent implements OnInit {
   password: string = '';
   remember: boolean = false;
 
-  user = new CreateUserModel;
+  user: UserModel = new UserModel();
 
   constructor(
     private router: Router,
@@ -44,15 +46,17 @@ export class LoginAccountComponent implements OnInit {
 
     this.accountService.loginAccount(login).subscribe((data: any) => {
       this.spinnerService.turnOffSpinner();
-      if(data.userName){
-        sessionStorage.setItem('user',JSON.stringify(data));
+        localStorage.setItem('token-client','Bearer ' + data._body.toString());
+        let token = jwt_decode(localStorage.getItem("token-client"));
+        this.user.UserName = token.sub;
+        sessionStorage.setItem('user-client', JSON.stringify(this.user));
         this.accountService.setUserSession();
         this.router.navigateByUrl('/')
-      } 
-      else{
-        alert('Your username or password is incorrect')
-      } 
-    });
+    },
+  (error: any) => {
+    this.spinnerService.turnOffSpinner();
+    alert('Your username or password is incorrect');
+  });
   }
 
   loginFB(token : string){

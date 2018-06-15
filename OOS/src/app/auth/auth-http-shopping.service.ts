@@ -11,7 +11,7 @@ import { RequestOptionsArgs } from '@angular/http/src/interfaces';
 import { AuthShoppingService } from './auth-shopping.service';
 
 @Injectable()
-export class AuthHttpService {
+export class AuthShoppingHttpService {
     constructor(private http: Http,
         private authService: AuthShoppingService) {
     }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AuthHttpService } from '../../auth/auth-http.service';
+import { AuthShoppingHttpService } from '../../auth/auth-http-shopping.service';
 import { Observable } from 'rxjs/Observable';
 //import { Orders } from '../models/orders';
 import { OrdersModel } from '../models/order';
@@ -14,7 +14,7 @@ export class OrdersService {
 
   order: OrdersModel;
 
-  constructor(private authHttpService: AuthHttpService) { }
+  constructor(private authHttpService: AuthShoppingHttpService) { }
 
   sendData(order: OrdersModel)
   {

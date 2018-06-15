@@ -16,6 +16,7 @@ import { CreateUserModel } from '../models/user/create-user/create-user';
 import { AccountService } from '../services/account.service';
 import { SocialNetworkModel } from '../../admin/models/SocialNetworkModel';
 import { SocialNetworkService } from '../../admin/services/socialnetwork.service';
+import { UserModel } from '../models/user/user';
 
 @Component({
   selector: 'app-shopping',
@@ -48,7 +49,7 @@ export class ShoppingComponent implements OnInit, PipeTransform {
 
   public emailSubscribe: string;
 
-  public user = new CreateUserModel;
+  public user = new UserModel;
 
   componentRef: any;
 
@@ -76,17 +77,17 @@ export class ShoppingComponent implements OnInit, PipeTransform {
       this.categories = data;
     });
 
-    this.listProduct = this.searchTerms.pipe(
+    // this.listProduct = this.searchTerms.pipe(
 
-      // wait 50ms after each keystroke before considering the term
-      debounceTime(50),
+    //   // wait 50ms after each keystroke before considering the term
+    //   debounceTime(50),
 
-      // ignore new term if same as previous term
-      //distinctUntilChanged(),
+    //   // ignore new term if same as previous term
+    //   //distinctUntilChanged(),
 
-      // switch to new search observable each time the term changes
-      switchMap((term: string) => this.productService.searchProduct(this.idCategory, term))
-    );
+    //   // switch to new search observable each time the term changes
+    //   switchMap((term: string) => this.productService.searchProduct(this.idCategory, term))
+    // );
     this.getfoter();
     this.accountService.getUserSession().subscribe(data => {
       this.user = data
@@ -140,15 +141,15 @@ export class ShoppingComponent implements OnInit, PipeTransform {
   }
 
   logout() {
-    sessionStorage.removeItem('user')
-    this.accountService.setUserSession()
-    this.router.navigateByUrl("")
+    sessionStorage.removeItem('user-client');
+    this.accountService.setUserSession();
+    this.router.navigateByUrl("");
+    localStorage.clear();
   }
 
   getfoter() {
     this.socialNetworkService.getfoter().subscribe(data => {
       this.socialnetworks = data;
-      console.log(this.socialnetworks);
     });
   }
 }

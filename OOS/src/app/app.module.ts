@@ -11,7 +11,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AuthService } from './auth/auth.service';
 import { AuthGuardService } from './auth/auth-guard.service';
-import { AuthHttpService } from './auth/auth-http.service'
+import { AuthHttpService } from './auth/auth-http.service';
+
+import {AuthGuardShoppingService} from './auth/auth-guard-shopping.service';
+import {AuthShoppingHttpService} from './auth/auth-http-shopping.service';
+import {AuthShoppingService} from './auth/auth-shopping.service';
 
 import { AppComponent } from './app.component';
 import { NotFoundPageComponent } from './not-found.component';
@@ -48,7 +52,10 @@ import { AuthModule} from 'angular2-jwt';
     AuthService, 
     AuthGuardService, 
     AuthHttpService,
-    BreadcrumbService
+    BreadcrumbService,
+    AuthGuardShoppingService,
+    AuthShoppingHttpService,
+    AuthShoppingService
   ],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { AuthHttpService } from '../../auth/auth-http.service';
 import { EmailModel } from '../models/email';
 import { EmailSubscribeModel } from '../models/emailSubscribe';
+import { AuthShoppingHttpService } from '../../auth/auth-http-shopping.service';
 
 @Injectable()
 export class EmailService {
   private API_PATH = 'https://eshop-springboot.herokuapp.com/api/contact/';
 
-  constructor(private authHttpService: AuthHttpService) { }
+  constructor(private authHttpService: AuthShoppingHttpService) { }
 
   email:EmailModel;
   emailSub:EmailSubscribeModel;

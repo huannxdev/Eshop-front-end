@@ -8,18 +8,19 @@ import { Http, Response, RequestOptions } from '@angular/http';
 import { BehaviorSubject } from 'rxjs';
 import { CreateUserModel } from '../models/user/create-user/create-user';
 import { UserModel } from '../models/user/user';
+import { AuthShoppingHttpService } from '../../auth/auth-http-shopping.service';
 
 @Injectable()
 export class AccountService {
-  currentUser=new BehaviorSubject<CreateUserModel>(JSON.parse(sessionStorage.getItem('user')));
+  currentUser=new BehaviorSubject<UserModel>(JSON.parse(sessionStorage.getItem('user-client')));
 
   private API_PATH = 'https://eshop-springboot.herokuapp.com/api/User/';
   //private API_PATH = 'http://localhost:54766/api/User/';
 
   login:LoginAccountModel;
-  constructor(private http: Http, private authHttpService: AuthHttpService) { }
+  constructor(private http: Http, private authHttpService: AuthShoppingHttpService) { }
 
-  checkUserExist(terms): Observable<CreateUserModel> {
+  checkUserExist(terms): Observable<UserModel> {
     return this.authHttpService.get(this.API_PATH + "CheckUserExist/" + terms)
       .map(res => res.json());
   }
@@ -32,28 +33,32 @@ export class AccountService {
     return this.authHttpService.post(this.API_PATH, user);
   }
 
-  loginAccount(login){
-    return this.authHttpService.post(this.API_PATH + "Login", login).map(res => res.json() || []);
+  loginAccount(login) : Observable<any>{
+    const user = {
+      UserName: login.Email,
+      Password: login.Password
+    }
+    return this.authHttpService.post(this.API_PATH + "login", user);
   }
 
   setUserSession(){
-    this.currentUser.next(JSON.parse(sessionStorage.getItem('user')));
+    this.currentUser.next(JSON.parse(sessionStorage.getItem('user-client')));
   }
 
   getUserSession(){
     return this.currentUser.asObservable();
   }
 
-  getById(id: string): Observable<UserModel> {
-    return this.authHttpService.get(this.API_PATH + id)
+  getByUserName(username: string): Observable<UserModel> {
+    return this.authHttpService.get(this.API_PATH + username)
       .map(res => {
         return res.json() || []
       }
       )
   }
 
-  put(id: string,user: UserModel): Observable<any> {
-    return this.authHttpService.put(this.API_PATH + "/" + id, user)
+  put(id: string,user: UserModel){
+    return this.authHttpService.put(this.API_PATH + id, user);
   }
 
   getWishList(userId:string):Observable<any[]>{

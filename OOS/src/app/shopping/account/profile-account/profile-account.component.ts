@@ -14,7 +14,7 @@ import { UserModel } from '../../models/user/user';
   styleUrls: ['./profile-account.component.css']
 })
 export class ProfileAccountComponent implements OnInit {
-  idUser: string
+  username: string
   user: UserModel
   public genderEnum = GenderType
   listGender: any
@@ -33,7 +33,7 @@ export class ProfileAccountComponent implements OnInit {
   onDateChanged(event: IMyDateModel) {
     // event properties are: event.date, event.jsdate, event.formatted and event.epoc
     // this.selDate = event.date;
-    this.user.dateOfBirth = event.date.month + "/" + event.date.day + "/" + event.date.year
+    this.user.DateOfBirth = new Date(event.date.year,event.date.month,event.date.day);
 
   }
 
@@ -43,12 +43,12 @@ export class ProfileAccountComponent implements OnInit {
   }
 
   getProfile() {
-    this.idUser = this.ss.currentUser.getValue().Id
-    this.ss.getById(this.idUser).subscribe(data => {
+    this.username = this.ss.currentUser.getValue().UserName
+    this.ss.getByUserName(this.username).subscribe(data => {
       this.user = data
-      this.user.gender += 1;
-      if (data.dateOfBirth != null) {
-        var date = new Date(data.dateOfBirth)
+      this.user.Gender += 1;
+      if (data.DateOfBirth != null) {
+        var date = data.DateOfBirth;
         this.selDate = {
           year: date.getFullYear(),
           month: date.getMonth() + 1,
@@ -70,8 +70,8 @@ export class ProfileAccountComponent implements OnInit {
   update() {
     this.spinnerService.startLoadingSpinner()
     var updateUser = Object.assign({}, this.user);
-    updateUser.gender -= 1;
-    this.ss.put(this.idUser,updateUser).subscribe(data => {
+    updateUser.Gender -= 1;
+    this.ss.put(this.user.Id,updateUser).subscribe(data => {
       this.spinnerService.turnOffSpinner()
       this.toasterService.pop("success", "success", "You have successfully updated your profile");
     })

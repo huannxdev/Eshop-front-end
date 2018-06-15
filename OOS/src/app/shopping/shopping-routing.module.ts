@@ -28,6 +28,7 @@ import { ProfileAccountComponent } from './account/profile-account/profile-accou
 import { OrderHistoryComponent } from './account/order-history/order-history.component';
 import { OrderHistoryDetailComponent } from './account/order-history/order-history-detail/order-history-detail.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
+import { AuthGuardShoppingService } from '../auth/auth-guard-shopping.service';
 
 
 
@@ -36,7 +37,7 @@ const shoppingRoutes: Routes = [
     path: '',
     component: ShoppingComponent,
     children: [
-      { path: 'paypal', component: PaypalComponent },
+      { path: 'paypal', component: PaypalComponent,canActivate: [AuthGuardShoppingService] },
       { path: '', component: HomePageComponent, pathMatch: 'full' },
       {
         path: 'cart',
@@ -44,8 +45,8 @@ const shoppingRoutes: Routes = [
         data: { step: 5 },
         children: [
           { path: '', component: ShoppingCartComponent, data: { step: 1 } },
-          { path: 'payment', component: PaymentComponent, data: { step: 2 } },
-          { path: 'thankyou', component: ThankyouComponent, data: { step: 3 } },
+          { path: 'payment', component: PaymentComponent, data: { step: 2 },canActivate: [AuthGuardShoppingService] },
+          { path: 'thankyou', component: ThankyouComponent, data: { step: 3 },canActivate: [AuthGuardShoppingService] },
         ]
       },
       {
@@ -73,15 +74,15 @@ const shoppingRoutes: Routes = [
       {
         path: 'account',
         children: [
-          { path: 'profile', component: ProfileAccountComponent },
+          { path: 'profile', component: ProfileAccountComponent,canActivate: [AuthGuardShoppingService] },
           { path: 'register', component: CreateAccountComponent },
           { path: 'login', component: LoginAccountComponent },
-          { path: 'order-history', component: OrderHistoryComponent },
-          { path: 'order-history/:id', component: OrderHistoryDetailComponent },
-          { path: 'inform-create', component: InformCreateSucces }
+          { path: 'order-history', component: OrderHistoryComponent,canActivate: [AuthGuardShoppingService] },
+          { path: 'order-history/:id', component: OrderHistoryDetailComponent,canActivate: [AuthGuardShoppingService] },
+          { path: 'inform-create', component: InformCreateSucces,canActivate: [AuthGuardShoppingService] }
         ]
       },
-      {path: 'order-details/:id', component: OrderDetailsComponent},
+      {path: 'order-details/:id', component: OrderDetailsComponent, canActivate: [AuthGuardShoppingService]},
     ]
   },
 ];

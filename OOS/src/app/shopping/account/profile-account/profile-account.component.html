@@ -6,7 +6,7 @@
         <img src="http://farm9.staticflickr.com/8130/29541772703_6ed8b50c47_b.jpg" class="img-responsive" style="width:200px; height:200px">
       </div>
       <div class="center-content">
-        <h3>{{user.firstName}} {{user.middleName}} {{user.lastName}}</h3>
+        <h3>{{user.FirstName}} {{user.MiddleName}} {{user.LastName}}</h3>
       </div>
       <div class="center-content">
         <a>Edit your photo profile</a>
@@ -39,34 +39,34 @@
           <div class="col-md-4">
             <div class="form-group">
               First Name:
-              <input class="input" placeholder="First Name" [(ngModel)]="user.firstName">
+              <input class="input" placeholder="First Name" [(ngModel)]="user.FirstName">
             </div>
           </div>
           <div class="col-md-4">
             <div class="form-group">
               Middle Name:
-              <input class="input" placeholder="Middle Name" [(ngModel)]="user.middleName">
+              <input class="input" placeholder="Middle Name" [(ngModel)]="user.MiddleName">
             </div>
           </div>
           <div class="col-md-4">
             <div class="form-group">
               Last Name:
-              <input class="input" placeholder="Last Name" [(ngModel)]="user.lastName">
+              <input class="input" placeholder="Last Name" [(ngModel)]="user.LastName">
             </div>
           </div>
         </div>
 
         <div class="form-group">
           Email:
-          <input class="input" placeholder="Email" [disabled]="true" [(ngModel)]="user.email">
+          <input class="input" placeholder="Email" [disabled]="true" [(ngModel)]="user.Email">
         </div>
         <div class="form-group">
           Phone number:
-          <input class="input" placeholder="Phone number" [(ngModel)]="user.phoneNumber">
+          <input class="input" placeholder="Phone number" [(ngModel)]="user.PhoneNumber">
         </div>
         <div class="form-group">
           Gender:
-          <select class=" input custom-select" [(ngModel)]="user.gender">
+          <select class=" input custom-select" [(ngModel)]="user.Gender">
             <option *ngFor="let gender of listGender" [value]="gender">{{genderEnum[gender]}}</option>
           </select>
         </div>
@@ -78,7 +78,7 @@
         </div>
         <div class="form-group">
           Country:
-          <input class="input" placeholder="Country" [(ngModel)]="user.country" [disabled]="true">
+          <input class="input" placeholder="Country" [(ngModel)]="user.Country" [disabled]="true">
         </div>
       </div>
       <div id="order" class="tab-pane fade">

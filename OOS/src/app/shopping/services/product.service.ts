@@ -10,13 +10,14 @@ import { map } from 'rxjs/operator/map';
 import { Subject } from 'rxjs';
 import { timeout } from 'q';
 import { PagingModel } from '../models/paging';
+import { AuthShoppingHttpService } from '../../auth/auth-http-shopping.service';
 
 @Injectable()
 export class ProductService {
   private API_PATH = 'https://eshop-springboot.herokuapp.com/api/Product/';
 
   idProduct: string;
-  constructor(private authHttpService: AuthHttpService) { }
+  constructor(private authHttpService: AuthShoppingHttpService) { }
 
   get(id): Observable<ProductModel> {
     return this.authHttpService.get(this.API_PATH + id).map(res => res.json() || []);

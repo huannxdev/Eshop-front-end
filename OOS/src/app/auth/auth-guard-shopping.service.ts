@@ -16,10 +16,11 @@ export class AuthGuardShoppingService implements CanActivate {
         }
         return true;
     }
-    canActivate(): boolean {
+    canActivateChild(): boolean {
         
         if(this.tokenNotExpired()) {
             sessionStorage.clear();
+            localStorage.removeItem('token-client');
             return true;
         } else {
             this.router.navigate(['/admin/manager']);
@@ -27,12 +28,13 @@ export class AuthGuardShoppingService implements CanActivate {
         }
     }
 
-    canActivateChild(): boolean {
+    canActivate(): boolean {
         if(!this.tokenNotExpired()) {
             return true;
         } else {
             this.router.navigate(['/account/login']);
             sessionStorage.clear();
+            localStorage.removeItem('token-client');
             return false;
         }
     }

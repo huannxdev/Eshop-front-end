@@ -13,7 +13,7 @@ import { AccountService } from '../../services/account.service';
 })
 export class OrderHistoryComponent implements OnInit {
 
-  listOrders: Array<Object>
+  listOrders: any;
   orderToDelete: OrdersModel;
   status = OrderStatus;
 
@@ -36,30 +36,19 @@ export class OrderHistoryComponent implements OnInit {
 
   getOrderList() {
     this.spinnerService.startLoadingSpinner();
-    var userId;
-    this.ss.getUserSession().subscribe(data => userId = data.Id);
+    var username;
+    this.ss.getUserSession().subscribe(data => username = data.UserName);
     this.ss.setUserSession();
-    this.ss.getById(userId).subscribe(data => {
-      this.email = data.email;
+    this.ss.getByUserName(username).subscribe(data => {
+      this.email = data.Email;
       this.ordersService.getList(this.email, this.phone, this.pageSize, this.page).subscribe(data => {
         this.spinnerService.turnOffSpinner();
-        this.listOrders = data.items;
-        this.itemCount = data.totalItemCount;
+        this.listOrders = data;
       });
     });
   }
 
   search() {
     this.getOrderList();
-  }
-
-  getPage(page: number) {
-      this.page = page;
-      this.getOrderList();
-  }
-
-  getPageSize(pageSize: number) {
-      this.pageSize = pageSize;
-      this.getOrderList();
   }
 }

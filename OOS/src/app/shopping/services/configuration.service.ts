@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { AuthHttpService } from '../../auth/auth-http.service';
 import { Observable } from 'rxjs/Observable';
 import { ConfigurationModel } from '../models/configuration';
+import { AuthShoppingHttpService } from '../../auth/auth-http-shopping.service';
 
 @Injectable()
 export class ConfigurationService {
   private API_PATH = 'https://eshop-springboot.herokuapp.com/api/Configuration/';
 
-  constructor(private authHttpService: AuthHttpService) { }
+  constructor(private authHttpService: AuthShoppingHttpService) { }
   get(): Observable<ConfigurationModel> {
     return this.authHttpService.get(this.API_PATH)
       .map(res => res.json());
