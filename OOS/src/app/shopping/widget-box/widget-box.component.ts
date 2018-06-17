@@ -69,7 +69,8 @@ export class WidgetBoxComponent implements OnInit {
       Image: this.productDetail.ProductTails[0].Image,
       Size: this.productDetail.ProductTails[0].Size,
       Color: this.productDetail.ProductTails[0].Color,
-      Quantity: this.productDetail.ProductTails[0].Quantity
+      Quantity: this.productDetail.ProductTails[0].Quantity,
+      Code: this.productDetail.Code
     }
     this.cartService.set(productCart, 1);
     this.spinnerService.turnOffSpinner();

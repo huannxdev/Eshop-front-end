@@ -7,7 +7,7 @@
       <p>Email
         <b>(This mail will be used to confirm your order)</b>
         <p>
-          <input type="email" class="input" placeholder="Email" [(ngModel)]="order.email" [ngModelOptions]="{standalone: true}">
+          <input type="email" class="input" placeholder="Email" [(ngModel)]="order.Email" [ngModelOptions]="{standalone: true}">
     </div>
   </div>
   <div class="form-row">
@@ -19,24 +19,24 @@
     <div class="form-group col-md-6">
 
       <p>Name</p>
-      <input type="text" class="input" id="inputName" [(ngModel)]="order.address[0].name" [ngModelOptions]="{standalone: true}">
+      <input type="text" class="input" id="inputName" [(ngModel)]="order.Address[0].Name" [ngModelOptions]="{standalone: true}">
 
     </div>
     <div class="form-group col-md-6">
       <p>Phone</p>
-      <input type="text" class="input" id="inputPhone" [(ngModel)]="order.address[0].phone" [ngModelOptions]="{standalone: true}">
+      <input type="text" class="input" id="inputPhone" [(ngModel)]="order.Address[0].Phone" [ngModelOptions]="{standalone: true}">
     </div>
     <div class="form-group col-md-4">
       <p>Province</p>
-      <input type="text" class="input" id="inputPhone" [(ngModel)]="order.address[0].province" [ngModelOptions]="{standalone: true}">
+      <input type="text" class="input" id="inputPhone" [(ngModel)]="order.Address[0].Province" [ngModelOptions]="{standalone: true}">
     </div>
     <div class="form-group col-md-4">
       <p>District</p>
-      <input type="text" class="input" id="inputPhone" [(ngModel)]="order.address[0].district" [ngModelOptions]="{standalone: true}">
+      <input type="text" class="input" id="inputPhone" [(ngModel)]="order.Address[0].District" [ngModelOptions]="{standalone: true}">
     </div>
     <div class="form-group col-md-4">
       <p>Street</p>
-      <input type="text" class="input" id="inputStreet" [(ngModel)]="order.address[0].street" [ngModelOptions]="{standalone: true}">
+      <input type="text" class="input" id="inputStreet" [(ngModel)]="order.Address[0].Street" [ngModelOptions]="{standalone: true}">
     </div>
   </div>
   <div class="form-row">
@@ -47,54 +47,26 @@
     </div>
     <div class="form-group col-md-6">
       <p>Name</p>
-      <input type="text" class="input" id="inputName" [(ngModel)]="order.address[1].name" [ngModelOptions]="{standalone: true}">
+      <input type="text" class="input" id="inputName" [(ngModel)]="order.Address[1].Name" [ngModelOptions]="{standalone: true}">
     </div>
     <div class="form-group col-md-6">
       <p>Phone</p>
-      <input type="text" class="input" id="inputPhone" [(ngModel)]="order.address[1].phone" [ngModelOptions]="{standalone: true}">
+      <input type="text" class="input" id="inputPhone" [(ngModel)]="order.Address[1].Phone" [ngModelOptions]="{standalone: true}">
     </div>
     <div class="form-group col-md-4">
       <p>Province</p>
-      <input type="text" class="input" id="inputPhone" [(ngModel)]="order.address[1].province" [ngModelOptions]="{standalone: true}">
+      <input type="text" class="input" id="inputPhone" [(ngModel)]="order.Address[1].Province" [ngModelOptions]="{standalone: true}">
     </div>
     <div class="form-group col-md-4">
       <p>District</p>
-      <input type="text" class="input" id="inputPhone" [(ngModel)]="order.address[1].district" [ngModelOptions]="{standalone: true}">
+      <input type="text" class="input" id="inputPhone" [(ngModel)]="order.Address[1].District" [ngModelOptions]="{standalone: true}">
     </div>
     <div class="form-group col-md-4">
       <p>Street</p>
-      <input type="text" class="input" id="inputStreet" [(ngModel)]="order.address[1].street" [ngModelOptions]="{standalone: true}">
+      <input type="text" class="input" id="inputStreet" [(ngModel)]="order.Address[1].Street" [ngModelOptions]="{standalone: true}">
     </div>
   </div>
-  <!--
-    <table class="table">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col" class="col-md-1">ID</th>
-          <th scope="col" class="col-md-6">Name Product</th>
-          <th scope="col" class="col-md-1">Price</th>
-          <th scope="col" class="col-md-1">Quantity</th>
-          <th scope="col" class="col-md-2">Total Price</th>
-          <th scope="col" class="col-md-1"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let orderDetail of order.orderDetails">
-          <th scope="row">{{orderDetail.idProduct}}</th>
-          <td>{{orderDetail.nameProduct}}</td>
-          <td>{{orderDetail.price}}</td>
-          <td>
-            <input type="number" class="input" id="inputQuantity" [(ngModel)]="{{orderDetail.quantity}}">
-          </td>
-          <td>{{orderDetail.totalPrice}}</td>
-          <td>
-            <button class="btn btn-danger">Delete</button>
-          </td>
-        </tr>
   
-      </tbody>
-    </table>
-  -->
   <div class="col-md-12">
     <div class="order-summary clearfix">
       <div class="section-title">
@@ -107,7 +79,7 @@
         <ul class="list-group" style="position:absolute; z-index:100; width:100%">
           <!-- <li class="list-group-item list-group-item-action" *ngFor="let product of listProduct | async"> -->
           <a style="cursor: pointer;" class="list-group-item list-group-item-action" *ngFor="let product of listProduct | async" (click)="chooseProduct(product)"
-            disabled="disabled">{{product.name}}</a>
+            disabled="disabled">{{product.Name}}</a>
           <!-- </li> -->
         </ul>
 
@@ -127,17 +99,17 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let orderDetail of order.orderDetails">
+          <tr *ngFor="let orderDetail of order.OrderDetails">
             <td class="details">
 
-              <a href="#">{{orderDetail.code}}</a>
+              <a href="#">{{orderDetail.Code}}</a>
             </td>
             <td class="price text-center">
-              <strong>{{orderDetail.nameProduct}}</strong>
+              <strong>{{orderDetail.NameProduct}}</strong>
 
             </td>
             <td class="price text-center">
-              <strong>{{orderDetail.price}}</strong>
+              <strong>{{orderDetail.Price | number }}</strong>
               <br>
             </td>
 
@@ -147,7 +119,7 @@
             </td>
 
             <td class="total text-center">
-              <strong class="primary-color">{{orderDetail.totalPrice}}</strong>
+              <strong class="primary-color">{{orderDetail.TotalPrice | number}}</strong>
             </td>
             <td class="text-right">
               <button class="main-btn icon-btn" data-toggle="modal" data-target="#myModal" (click)="setDetailDelete(orderDetail)">
@@ -194,7 +166,7 @@
           <tr>
             <th class="empty" colspan="3"></th>
             <th>TOTAL</th>
-            <th colspan="2" class="total">{{order.total}}</th>
+            <th colspan="2" class="total">{{order.Total | number}}</th>
           </tr>
         </tfoot>
       </table>

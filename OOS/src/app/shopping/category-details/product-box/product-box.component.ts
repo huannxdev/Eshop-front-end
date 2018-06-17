@@ -60,6 +60,7 @@ export class ProductBoxComponent implements OnInit {
       Color: this.productDetail.ProductTails[0].Color,
       Size: this.productDetail.ProductTails[0].Size,
       Quantity: this.productDetail.ProductTails[0].Quantity,
+      Code: this.productDetail.Code
     }
     this.cartService.set(productCart, 1);
     this.spinnerService.turnOffSpinner();

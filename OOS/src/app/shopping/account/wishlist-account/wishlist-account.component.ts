@@ -72,7 +72,8 @@ export class WishlistAccountComponent implements OnInit {
       Image: product.ProductTails[0].Image,
       Size: product.ProductTails[0].Size,
       Color: product.ProductTails[0].Color,
-      Quantity:product.ProductTails[0].Quantity
+      Quantity:product.ProductTails[0].Quantity,
+      Code: product.Code
     }
     this.cartService.set(productToAdd, 1);
       //pop up toaster

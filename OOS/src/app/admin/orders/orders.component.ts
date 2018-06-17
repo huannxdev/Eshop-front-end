@@ -21,6 +21,7 @@ export class OrdersComponent implements OnInit {
   phone: string = "";
   itemCount: number;
   pNow: number = 1;
+  orderId: string;
   constructor(
     private ordersService: OrdersService,
     private router: Router,
@@ -62,15 +63,14 @@ export class OrdersComponent implements OnInit {
   
 
   get(orderId) {
-    this.ordersService.getById(orderId).subscribe(data => { this.orderToDelete = data });
+    this.orderId = orderId;
   }
 
   delete() {
     this.spinnerService.startLoadingSpinner();
-    this.ordersService.delete(this.orderToDelete.Id).subscribe(() => {
+    this.ordersService.delete(this.orderId).subscribe(() => {
       this.spinnerService.turnOffSpinner();
       this.getOrderList();
-      console.log(this.orderToDelete.Id);
     });
   }
 

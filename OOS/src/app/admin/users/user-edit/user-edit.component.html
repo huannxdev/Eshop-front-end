@@ -9,7 +9,7 @@
   
         Email:
   
-        <input name="email" [(ngModel)]="user.email" type="text" disabled class="input" #email_validation="ngModel" ngModel required EmailValidator>
+        <input name="email" [(ngModel)]="user.Email" type="text" disabled class="input" #email_validation="ngModel" ngModel required EmailValidator>
         <show-errors [control]="email_validation"></show-errors>
   
       </div>
@@ -18,7 +18,7 @@
   
         First Name:
   
-        <input name="firstName" [(ngModel)]="user.firstName" type="text" class="input" required>
+        <input name="firstName" [(ngModel)]="user.FirstName" type="text" class="input" required>
   
       </div>
   
@@ -26,7 +26,7 @@
   
         Last Name:
   
-        <input name="lastName" [(ngModel)]="user.lastName" type="text" class="input" required>
+        <input name="lastName" [(ngModel)]="user.LastName" type="text" class="input" required>
   
       </div>
 
@@ -34,7 +34,7 @@
   
           Phone:
     
-          <input name="phoneNumber" [(ngModel)]="user.phoneNumber" type="text" class="input" required>
+          <input name="phoneNumber" [(ngModel)]="user.PhoneNumber" type="text" class="input" required>
     
         </div>
   
@@ -42,7 +42,7 @@
   
         Gender:
   
-        <select name="gender" class="input" [(ngModel)]="user.gender">
+        <select name="gender" class="input" [(ngModel)]="user.Gender">
             <option *ngFor="let item of listGender" [value]="item">{{genderEnum[item]}}</option>
         </select>
   
@@ -52,9 +52,9 @@
   
         Image:
   
-        <input name="image" [(ngModel)]="user.photo" type="text" class="input">
+        <input name="image" [(ngModel)]="user.Photo" type="text" class="input">
         <td>
-          <img src="{{user.photo}}" class="img-responsive" style="width:200px; height:200px">
+          <img src="{{user.Photo}}" class="img-responsive" style="width:200px; height:200px">
         </td>
   
       </div>

@@ -13,6 +13,7 @@ export class OverviewUsersComponent implements OnInit {
   listUsers: Array<UserModel>;
 
   userDel = new UserModel;
+  currentId: string;
 
   //for paging
   itemCount: number;
@@ -30,10 +31,8 @@ export class OverviewUsersComponent implements OnInit {
     this.getUsersList();
   }
 
-  get(id) {
-    this.userService.getById(id).subscribe(data => {
-      this.userDel = data;
-    })
+  get(id: string){
+    this.currentId = id;
   }
 
   getUsersList() {
@@ -60,7 +59,7 @@ export class OverviewUsersComponent implements OnInit {
   delete() {
     this.spinnerService.startLoadingSpinner();
 
-    this.userService.delete(this.userDel).subscribe(data => {
+    this.userService.delete(this.currentId).subscribe(data => {
       this.spinnerService.turnOffSpinner();
       this.getUsersList();
     });

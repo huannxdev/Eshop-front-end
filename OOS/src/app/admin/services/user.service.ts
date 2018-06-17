@@ -16,7 +16,7 @@ export class UserService {
       .map(res => res.json() || []);
   }
   getById(id): Observable<UserModel> {
-    return this.authHttpService.get(this.API_PATH + "/" + id)
+    return this.authHttpService.get(this.API_PATH + "/id=" + id)
       .map(res => res.json());
   }
 
@@ -28,8 +28,8 @@ export class UserService {
     return this.authHttpService.put(this.API_PATH + "/" + task.Id, task);
   }
 
-  delete(user: UserModel): Observable<any>{
-    var url: string = this.API_PATH + "/" + user.Id;
+  delete(id: string): Observable<any>{
+    var url: string = this.API_PATH + "/" + id;
     return this.authHttpService.delete(url)
   }
 

@@ -31,7 +31,7 @@ export class ProductService {
   }
 
   postProduct(product) {
-    return this.authHttpService.post(this.API_PATH, product);
+    return this.authHttpService.post(this.API_PATH+'/', product);
   }
 
   putProduct(task: ProductModel): Observable<any> {

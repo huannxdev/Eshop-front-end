@@ -1,5 +1,6 @@
 export class ProductCartModel {
     Id: string;
+    Code: string;
     Name: string;
     Price: number;
     Description: string;

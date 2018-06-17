@@ -1,34 +1,34 @@
 <div class="col-md-6">
   <div class="billing-details">
     <div class="section-title">
-      <h3 class="title">{{user.lastName}}'s Detail</h3>
+      <h3 class="title">{{user.LastName}}'s Detail</h3>
     </div>
     <div class="form-group">
-      <p><b>Id: </b>{{user.id}}</p>
+      <p><b>Id: </b>{{user.Id}}</p>
     </div>
     <div class="form-group">
-      <p><b>Username: </b>{{user.username}}</p>
+      <p><b>Username: </b>{{user.Username}}</p>
     </div>
     <div class="form-group">
-      <p><b>Password: </b>{{user.password}}</p>
+      <p><b>Password: </b>{{user.Password}}</p>
     </div>
     <div class="form-group">
-      <p><b>First Name: </b>{{user.firstName}}</p>
+      <p><b>First Name: </b>{{user.FirstName}}</p>
     </div>
     <div class="form-group">
-      <p><b>Last Name: </b>{{user.lastName}}</p>
+      <p><b>Last Name: </b>{{user.LastName}}</p>
     </div>
     <div class="form-group">
-      <p><b>Gender: </b>{{user.gender}}</p>
+      <p><b>Gender: </b>{{user.Gender}}</p>
     </div>
     <div class="form-group">
-      <p><b>Image: </b>{{user.image}}</p>
+      <p><b>Image: </b>{{user.Image}}</p>
     </div>
     <div class="form-group">
-      <p><b>Email: </b>{{user.email}}</p>
+      <p><b>Email: </b>{{user.Email}}</p>
     </div>
   </div>
-  <a routerLink="../edit/{{user.id}}" routerLinkActive="active" class="btn primary-btn">
+  <a routerLink="../edit/{{user.Id}}" routerLinkActive="active" class="btn primary-btn">
     Edit
   </a>
   <button class="primary-btn" (click)="deleteUser(user)">Delete</button>

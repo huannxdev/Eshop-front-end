@@ -182,7 +182,8 @@ export class ProductDetailComponent implements OnInit {
       Price: this.price,
       Color: this.colorSelected,
       Size: this.sizeSelected,
-      Quantity: this.quantityAvailble
+      Quantity: this.quantityAvailble,
+      Code: this.product.Code
     }
     this.cartService.set(product, this.quantity);
     //pop up toaster
