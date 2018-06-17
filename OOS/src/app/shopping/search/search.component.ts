@@ -52,7 +52,7 @@ export class SearchComponent implements OnInit {
       if (element.MinPrice>= this.range[0] && element.MinPrice<= this.range[1])
       this.products.push(element);
     });
-    // this.sort
+    this.sortListProduct();
 
     if (this.products.length == 0) this.check = true;
     else this.check = false;
@@ -64,5 +64,27 @@ export class SearchComponent implements OnInit {
       this.sortAndFiltePrice();
     }
   }
-
+  sortListProduct(){
+    if(this.sort =='name')
+    this.products.sort(function(a,b){
+      var nameA = a.Name.toUpperCase();
+      var nameB = b.Name.toUpperCase();
+      if(nameA < nameB){
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      return 0;
+    });
+    if(this.sort=='price'){
+      this.products.sort(function(a,b){
+        if(a.MinPrice < b.MinPrice)
+          return -1;
+        if(a.MinPrice > b.MinPrice)
+          return 1;
+        return 0;
+      });
+    }
+  }
 }
