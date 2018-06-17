@@ -14,7 +14,7 @@ export class OrderService {
   constructor(private authHttpService: AuthShoppingHttpService) { }
 
 
-  private API_PATH = 'https://eshop-springboot.herokuapp.com/api/order/';  
+  private API_PATH = 'https://eshop-springboot.herokuapp.com/api/Order/';  
 
   add(order: OrdersModel): Observable<any> {
     return this.authHttpService.post(this.API_PATH, order);      
@@ -41,8 +41,8 @@ export class OrderService {
     return this.order;
   }
 
-  getList(email: string, phone: string, pageSize: number, page: number): Observable<PagingModel> {
-    return this.authHttpService.get(this.API_PATH)
+  getList(username: string) {
+    return this.authHttpService.get(this.API_PATH+'listOrder/'+ username)
       .map(res => res.json() || [])
   }
 

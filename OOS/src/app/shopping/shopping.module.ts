@@ -47,6 +47,7 @@ import { SharedModule } from '../shared/modules/shared.module';
 import { WishlistAccountComponent } from './account/wishlist-account/wishlist-account.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { NouisliderModule } from 'ng2-nouislider';
+import { SocialNetworkService } from './services/socialnetwork.service';
 
 //self-services
 //import { SpinnerService } from '../shared/services/spinner.service';
@@ -108,6 +109,7 @@ import { NouisliderModule } from 'ng2-nouislider';
     AccountService,
     ConfigurationService,
     MetaDataService,  
+    SocialNetworkService,
   ]
 })
 export class ShoppingModule { }

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProductModel } from '../models/product';
 import { ProductService } from '../services/product.service';
 import { BannerModel } from '../models/banner';
-import { ConfigurationService } from '../../admin/services/configuration.service';
 import { AccountService } from '../services/account.service';
+import { ConfigurationService } from '../services/configuration.service';
 
 
 @Component({

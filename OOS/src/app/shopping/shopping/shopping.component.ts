@@ -15,8 +15,11 @@ import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-t
 import { CreateUserModel } from '../models/user/create-user/create-user';
 import { AccountService } from '../services/account.service';
 import { SocialNetworkModel } from '../../admin/models/SocialNetworkModel';
-import { SocialNetworkService } from '../../admin/services/socialnetwork.service';
+
 import { UserModel } from '../models/user/user';
+import {JwtHelper} from  'angular2-jwt';
+import * as jwt_decode from "jwt-decode";
+import { SocialNetworkService } from '../services/socialnetwork.service';
 
 @Component({
   selector: 'app-shopping',
@@ -62,7 +65,8 @@ export class ShoppingComponent implements OnInit, PipeTransform {
     private emailService: EmailService,
     private spinnerService: SpinnerService,
     private toasterService: ToasterService,
-    private socialNetworkService: SocialNetworkService
+    private socialNetworkService: SocialNetworkService,
+    private jwtHelper: JwtHelper
   ) {
     router.events.subscribe(event => {
       if (event instanceof ChildActivationEnd) {
@@ -73,25 +77,24 @@ export class ShoppingComponent implements OnInit, PipeTransform {
   }
 
   ngOnInit() {
+    this.accountService.getUserSession().subscribe(data => {
+      if(data)
+      this.user = data
+    });
+    if(this.tokenNotExpired()){
+      localStorage.removeItem('token-client');
+    }
+    else
+    {
+      let token = jwt_decode(localStorage.getItem("token-client"));
+      this.user.UserName = token.sub;
+      sessionStorage.setItem('user-client', JSON.stringify(this.user));
+      this.accountService.setUserSession();
+    }
     this.categoryService.get().subscribe(data => {
       this.categories = data;
     });
-
-    // this.listProduct = this.searchTerms.pipe(
-
-    //   // wait 50ms after each keystroke before considering the term
-    //   debounceTime(50),
-
-    //   // ignore new term if same as previous term
-    //   //distinctUntilChanged(),
-
-    //   // switch to new search observable each time the term changes
-    //   switchMap((term: string) => this.productService.searchProduct(this.idCategory, term))
-    // );
     this.getfoter();
-    this.accountService.getUserSession().subscribe(data => {
-      this.user = data
-    });
   }
 
   search(term: string): void {
@@ -99,6 +102,16 @@ export class ShoppingComponent implements OnInit, PipeTransform {
     else this.hidden = false;
     this.searchTerms.next(term);
   }
+
+  tokenNotExpired(){
+    let token: string;
+    if(localStorage.getItem('token-client'))
+    {
+        token = localStorage.getItem('token-client');
+        return token != null && this.jwtHelper.isTokenExpired(token);
+    }
+    return true;
+}
 
   hide() {
     this.hidden = true;

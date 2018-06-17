@@ -67,7 +67,7 @@ export class ProductDetailComponent implements OnInit {
       let tempProduct = data
       this.user = this.accountService.currentUser.getValue()
       if (this.user != null) {
-        this.accountService.checkWishProduct(this.user.Id, tempProduct.Id).subscribe(data => {
+        this.accountService.checkWishProduct(this.user.UserName, tempProduct.Id).subscribe(data => {
           if (data.isWishProduct)
             tempProduct.IsLove = true
         }
@@ -194,7 +194,7 @@ export class ProductDetailComponent implements OnInit {
 
   wish() {
     if (this.user != null) {
-      let idUser = this.user.Id
+      let idUser = this.user.UserName
       this.accountService.addWishProduct(idUser, this.product.Id).subscribe(data => {
         this.toasterService.pop("success", "success", "You have successfully added item to wishlist")
         this.product.IsLove = true;

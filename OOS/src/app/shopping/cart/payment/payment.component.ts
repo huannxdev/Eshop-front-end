@@ -7,6 +7,8 @@ import { AddressModel } from '../../models/address';
 import { CartService } from '../../services/cart.service';
 import { SpinnerService } from '../../../shared/services/spinner.service';
 import { Observable } from 'rxjs/Observable';
+import { AccountService } from '../../services/account.service';
+
 declare var google: any;
 
 @Component({
@@ -23,7 +25,7 @@ export class PaymentComponent implements OnInit {
   paymentMethod: number = 1;
 
   constructor(private orderService: OrderService,
-    private router: Router, private cartService: CartService, private spinner: SpinnerService, private route: ActivatedRoute) {
+    private router: Router, private cartService: CartService, private spinner: SpinnerService, private route: ActivatedRoute, private ss : AccountService) {
   }
   get() {
     var total = 0;
@@ -65,6 +67,10 @@ export class PaymentComponent implements OnInit {
 
   Checkout() {
     this.order.Status = 0;
+    var username;
+    this.ss.getUserSession().subscribe(data => username = data.UserName);
+    this.ss.setUserSession();
+    this.order.UserId = username;
     this.orderService.add(this.order).subscribe(() => {
       localStorage.removeItem("paymentMethod");
       localStorage.setItem("paymentMethod", this.paymentMethod.toString());
@@ -102,7 +108,7 @@ export class PaymentComponent implements OnInit {
         //get direction info
         var htmlReturn = '';
         var route = response.routes[0];
-        var money = 0.5 * route.legs[0].distance.value;    
+        var money = 2 * route.legs[0].distance.value;    
         this.shippingFee = money;
         this.order.Total = this.total + money;
         htmlReturn += "Distance: <strong>" + route.legs[0].distance.text + "</strong>";

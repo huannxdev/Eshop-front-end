@@ -39,12 +39,9 @@ export class OrderHistoryComponent implements OnInit {
     var username;
     this.ss.getUserSession().subscribe(data => username = data.UserName);
     this.ss.setUserSession();
-    this.ss.getByUserName(username).subscribe(data => {
-      this.email = data.Email;
-      this.ordersService.getList(this.email, this.phone, this.pageSize, this.page).subscribe(data => {
-        this.spinnerService.turnOffSpinner();
-        this.listOrders = data;
-      });
+    this.ordersService.getList(username).subscribe(data => {
+      this.spinnerService.turnOffSpinner();
+      this.listOrders = data;
     });
   }
 

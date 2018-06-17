@@ -27,12 +27,16 @@ export class WishlistAccountComponent implements OnInit {
     private spinnerService:SpinnerService,
     private cartService: CartService,
     private toasterService:ToasterService,
-    private router: Router
+    private router: Router,
+    private ss: AccountService
   ) { }
 
   ngOnInit() {
+    var username;
+    this.ss.getUserSession().subscribe(data => username = data.UserName);
+    this.ss.setUserSession();
     this.spinnerService.startLoadingSpinner();
-    this.getWishListProduct(this.userId);
+    this.getWishListProduct(username);
     this.spinnerService.turnOffSpinner();
   }
 

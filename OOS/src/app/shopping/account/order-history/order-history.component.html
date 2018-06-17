@@ -17,13 +17,13 @@
     </thead>
     <tbody *ngFor="let order of listOrders; let i = index">
       <tr>
-        <td>{{order.idBill}}</td>
+        <td>{{order.IdBill}}</td>
         <!-- <td>{{order.createdDate| date: 'dd/MM/yyyy'}}</td> -->
-        <td >{{order.createdDate | date:'MMM d, y, h:mm a'}}</td>
-        <td class="text-center">{{order.total | number}} VND</td>
-        <td class="text-center">{{status[order.status]}}</td>
+        <td >{{order.CreatedDate | date:'MMM d, y, h:mm a'}}</td>
+        <td class="text-center">{{order.Total | number}} VND</td>
+        <td class="text-center">{{status[order.Status]}}</td>
         <td class="text-right">
-          <button class="main-btn icon-btn" routerLink="/account/order-history/{{order.id}}" routerLinkActive="active">
+          <button class="main-btn icon-btn" routerLink="/account/order-history/{{order.Id}}" routerLinkActive="active">
             <i class="fa fa-edit"></i>
           </button>
         </td>

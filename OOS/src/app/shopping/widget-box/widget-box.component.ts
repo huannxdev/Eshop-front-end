@@ -80,7 +80,7 @@ export class WidgetBoxComponent implements OnInit {
   wish() {
     let user = this.accountService.currentUser.getValue()
     if (user != null) {
-      let idUser = user.Id
+      let idUser = user.UserName
       this.accountService.addWishProduct(idUser, this.productDetail.Id).subscribe(data => {
         this.toasterService.pop("success", "success", "You have successfully added item to wishlist")
         this.productDetail.IsLove = true;

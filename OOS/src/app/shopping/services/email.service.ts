@@ -6,7 +6,7 @@ import { AuthShoppingHttpService } from '../../auth/auth-http-shopping.service';
 
 @Injectable()
 export class EmailService {
-  private API_PATH = 'https://eshop-springboot.herokuapp.com/api/contact/';
+  private API_PATH = 'https://eshop-springboot.herokuapp.com/api/Contact/';
 
   constructor(private authHttpService: AuthShoppingHttpService) { }
 

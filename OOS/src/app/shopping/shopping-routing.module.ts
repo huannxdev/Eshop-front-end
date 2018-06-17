@@ -29,6 +29,7 @@ import { OrderHistoryComponent } from './account/order-history/order-history.com
 import { OrderHistoryDetailComponent } from './account/order-history/order-history-detail/order-history-detail.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { AuthGuardShoppingService } from '../auth/auth-guard-shopping.service';
+import {WishlistAccountComponent} from './account/wishlist-account/wishlist-account.component'
 
 
 
@@ -79,7 +80,8 @@ const shoppingRoutes: Routes = [
           { path: 'login', component: LoginAccountComponent },
           { path: 'order-history', component: OrderHistoryComponent,canActivate: [AuthGuardShoppingService] },
           { path: 'order-history/:id', component: OrderHistoryDetailComponent,canActivate: [AuthGuardShoppingService] },
-          { path: 'inform-create', component: InformCreateSucces,canActivate: [AuthGuardShoppingService] }
+          { path: 'inform-create', component: InformCreateSucces,canActivate: [AuthGuardShoppingService] },
+          { path:'wishlist', component: WishlistAccountComponent, canActivate: [AuthGuardShoppingService]}
         ]
       },
       {path: 'order-details/:id', component: OrderDetailsComponent, canActivate: [AuthGuardShoppingService]},

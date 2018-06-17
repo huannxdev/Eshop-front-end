@@ -70,11 +70,11 @@ export class AccountService {
   }
 
   addWishProduct(id:string, idProduct:string) :Observable<any> {
-    return this.authHttpService.post(this.API_PATH + id + "/product/" + idProduct + "/addWishProduct",null);
+    return this.authHttpService.get(this.API_PATH + id + "/product/" + idProduct + "/addWishProduct",null);
   }
 
   checkWishProduct(id:string, idProduct:string): Observable<any> {
-    return this.authHttpService.post(this.API_PATH + id + "/product/" + idProduct + "/checkWishProduct",null)
+    return this.authHttpService.get(this.API_PATH + id + "/product/" + idProduct + "/checkWishProduct",null)
     .map(res => {
       return res.json() || []
     })

@@ -7,16 +7,16 @@
       </div>
       <div class="form-group">
         <label>Name: </label>
-        <strong>{{ order.address && order.address[1].name}}</strong>
+        <strong>{{ order.Address && order.Address[1].Name}}</strong>
       </div>
       <div class="form-group">
         <label>Phone: </label>
-        <strong>{{order.address && order.address[1].phone}}</strong>
+        <strong>{{order.Address && order.Address[1].Phone}}</strong>
       </div>
       <div class="form-group">
         <label>Address: </label>
-        <strong>{{order.address && order.address[1].street}} street, {{order.address && order.address[1].district}} district, {{order.address
-          && order.address[1].province}} province</strong>
+        <strong>{{order.Address && order.Address[1].Street}}, {{order.Address && order.Address[1].District}}, {{order.Address
+          && order.Address[1].Province}}</strong>
       </div>
 
     </div>
@@ -28,16 +28,16 @@
       </div>
       <div class="form-group">
         <label>Name: </label>
-        <strong>{{order.address && order.address[0].name}}</strong>
+        <strong>{{order.Address && order.Address[0].Name}}</strong>
       </div>
       <div class="form-group">
         <label>Phone: </label>
-        <strong>{{order.address && order.address[0].phone}}</strong>
+        <strong>{{order.Address && order.Address[0].Phone}}</strong>
       </div>
       <div class="form-group">
         <label>Address: </label>
-        <strong>{{order.address && order.address[0].street}} street, {{order.address && order.address[0].district}} district, {{order.address
-          && order.address[0].province}} province</strong>
+        <strong>{{order.Address && order.Address[0].Street}}, {{order.Address && order.Address[0].District}}, {{order.Address
+          && order.Address[0].Province}}</strong>
       </div>
       <!-- Shipping Address -->
     </div>
@@ -47,7 +47,7 @@
       <div class="order-summary clearfix">
         <div class="section-title">
           <h3 class="title">Order Details</h3>
-          <div class="pull-right idbill">{{order.idBill}} - <span class="status">{{status[order.status]}}</span></div>
+          <div class="pull-right idbill">{{order.IdBill}} - <span class="status">{{status[order.Status]}}</span></div>
         </div>
         <table class="shopping-cart-table table">
           <thead>
@@ -59,10 +59,10 @@
               <th class="text-center">Total</th>
             </tr>
           </thead>
-          <tbody *ngFor="let orderDetail of order.orderDetails">
+          <tbody *ngFor="let orderDetail of order.OrderDetails">
             <tr>
               <td class="detail">
-                <h4>{{orderDetail.nameProduct}}</h4>
+                <h4>{{orderDetail.NameProduct}}</h4>
                 <ul>
                   <li *ngIf="orderDetail.color">
                     <span>Color:
@@ -70,19 +70,19 @@
                     </span>
                   </li>
                   <li *ngIf="orderDetail.size">
-                    <span>Size: {{orderDetail.size}}</span>
+                    <span>Size: {{orderDetail.Size}}</span>
                   </li>
                 </ul>
               </td>
               <td class="price text-center">
-                <strong>{{orderDetail.price | number}} VND</strong>
+                <strong>{{orderDetail.Price | number}} VND</strong>
               </td>
               <td></td>
               <td class="price text-center">
-                <strong>{{orderDetail.quantity | number}}</strong>
+                <strong>{{orderDetail.Quantity | number}}</strong>
               </td>
               <td class="total text-center">
-                <strong>{{orderDetail.totalPrice | number}} VND</strong>
+                <strong>{{orderDetail.TotalPrice | number}} VND</strong>
               </td>
             </tr>
           </tbody>
@@ -90,7 +90,7 @@
             <tr>
               <th class="empty" colspan="3"></th>
               <th>TOTAL</th>
-              <th colspan="2" class="total">{{order.total | number}} VND</th>
+              <th colspan="2" class="total">{{order.Total | number}} VND</th>
             </tr>
           </tfoot>
         </table>
@@ -109,7 +109,7 @@
           <div class="modal-dialog">
 
             <!-- Modal content-->
-            <div class="modal-content" *ngIf="order.status == 0; else cantdelete">
+            <div class="modal-content" *ngIf="order.Status == 0; else cantdelete">
               <div class="modal-body">
                 <div class="section-title">
                   <h4 class="modal-title">Confirm</h4>

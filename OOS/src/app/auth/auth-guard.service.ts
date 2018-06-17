@@ -20,6 +20,7 @@ export class AuthGuardService implements CanActivate {
         
         if(this.tokenNotExpired()) {
             sessionStorage.clear();
+            localStorage.removeItem('token');
             return true;
         } else {
             this.router.navigate(['/admin/manager']);
@@ -33,6 +34,7 @@ export class AuthGuardService implements CanActivate {
         } else {
             this.router.navigate(['/admin/login']);
             sessionStorage.clear();
+            localStorage.removeItem('token');
             return false;
         }
     }

@@ -1,5 +1,5 @@
 <div class="col-md-12">
-   <table class="shopping-cart-table table" *ngIf="wishListProduct.length > 0">
+   <table class="shopping-cart-table table">
     <thead>
       <tr>
         <th class="text-center">Image</th>
@@ -11,27 +11,27 @@
     <tbody>
       <tr *ngFor="let product of wishListProduct; let i = index">
         <td class="thumb">
-          <img src="{{product.basicImage}}" alt="">
+          <img src="{{product.BasicImage}}" alt="">
         </td>
         <td class="details">
-          <a (click)="routeProduct(product)" class="primary-color" >{{product.name}}</a>
+          <a (click)="routeProduct(product)" class="primary-color" >{{product.Name}}</a>
           <ul>
             <li>
-              <span><strong>Code:</strong> {{product.code}}</span>
+              <span><strong>Code:</strong> {{product.Code}}</span>
             </li>
             <li>
-              <span><strong>Category:</strong> {{product.categoryName}}</span>
+              <span><strong>Category:</strong> {{product.CategoryName}}</span>
             </li>
           </ul>
         </td>
         <td class="qty text-center">
-          {{product.minPrice | number}}
+          {{product.MinPrice | number}}
         </td>
         <td class="text-right">
           <button class="primary-btn add-to-cart" [disabled]="flagCartButton" (click)="addToCart(product)">
             Add to cart
           </button>
-          <button class="main-btn icon-btn" data-toggle="modal" data-target="#myModal" (click)="setId(product.id)">
+          <button class="main-btn icon-btn" data-toggle="modal" data-target="#myModal" (click)="setId(product.Id)">
             <i class="fa fa-close"></i>
           </button>
         </td>

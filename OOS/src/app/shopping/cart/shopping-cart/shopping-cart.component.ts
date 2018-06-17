@@ -57,8 +57,8 @@ export class ShoppingCartComponent implements OnInit {
   updateQuantity(product, quantity) {
     if (quantity < 1)
       quantity = 1;
-    if (quantity >= product.quantity)
-      quantity = product.quantity;
+    if (quantity >= product.Quantity)
+      quantity = product.Quantity;
     this.cartService.updateQuantity(product, quantity);
     this.updateTotal();
   }
