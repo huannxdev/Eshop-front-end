@@ -3,6 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { OrderService } from '../../services/order.service';
 import { OrdersModel } from '../../models/order';
 import { CartService } from '../../services/cart.service';
+import { Currency } from '../../models/configuration';
+import { MetaDataService } from '../../services/meta-data.service';
 
 declare let paypal: any;
 
@@ -13,12 +15,14 @@ declare let paypal: any;
 })
 export class PaypalComponent {
   @Input() order: OrdersModel;
-  constructor(private router: Router, private route: ActivatedRoute, private orderService: OrderService, private cartService: CartService) {
+  constructor(private router: Router, private route: ActivatedRoute, private orderService: OrderService, private cartService: CartService,private metadataService: MetaDataService) {
     cartService.paypalLoad.asObservable().subscribe(x => this.addScript = x);
   }
 
   addScript: boolean = false;
   total: number = 0;
+  currency: number;
+  public currencyDefine = Currency;
 
   paypalConfig = {
     env: "sandbox",
@@ -38,9 +42,9 @@ export class PaypalComponent {
           transactions: [
             {
               amount: {
-                total: this.order.Total, currency: 'USD',
+                total: this.order.Total, currency: this.currencyDefine[this.metadataService.getCurrency()],
               },
-              description: "Orient Online Shop Payment Description",
+              description: "Eshop Online Shop Payment Description",
             },
           ]
         },
@@ -56,7 +60,6 @@ export class PaypalComponent {
       return actions.payment.execute().then((payment) => {
         this.order.Status = 1;
         this.orderService.add(this.order).subscribe(()=>{
-          console.log("Authorized)");
           localStorage.removeItem("paymentMethod");
           localStorage.setItem("paymentMethod", "1");
           this.router.navigate(['../thankyou'], { relativeTo: this.route });
