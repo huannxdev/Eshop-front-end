@@ -105,8 +105,13 @@
               <a href="#">{{orderDetail.Code}}</a>
             </td>
             <td class="price text-center">
-              <strong>{{orderDetail.NameProduct}}</strong>
-
+              <h4>{{orderDetail.NameProduct}}</h4>
+              <ul>
+                <li *ngIf="orderDetail.Color">
+                  <span>Color:
+                    <span class="product-color" [style.background]="orderDetail.Color">&nbsp;&nbsp;&nbsp;</span>
+                  </span>
+                </li></ul>
             </td>
             <td class="price text-center">
               <strong>{{orderDetail.Price | number }}</strong>

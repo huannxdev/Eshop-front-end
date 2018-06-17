@@ -41,6 +41,7 @@ export class PaymentComponent implements OnInit {
           total += detail.TotalPrice = detail.Price * detail.Quantity;
           detail.Color = value.Product.Color;
           detail.Size = value.Product.Size;
+          detail.Code = value.Product.Code;
           this.order.OrderDetails.push(detail);
         })
       }
@@ -118,7 +119,7 @@ export class PaymentComponent implements OnInit {
       } else {
         var htmlReturn = '';
         var route = response.routes[0];
-        htmlReturn = "Dia chi nay khong ton tai";
+        htmlReturn = "Địa chỉ không tồn tại hoặc không thể tìm thấy";
         this.shippingFee = 0;
         this.order.Total = this.total + money;
         document.getElementById('infoDirections').innerHTML = htmlReturn;
