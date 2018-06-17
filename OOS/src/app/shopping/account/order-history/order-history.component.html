@@ -17,7 +17,7 @@
     </thead>
     <tbody *ngFor="let order of listOrders; let i = index">
       <tr>
-        <td>{{order.IdBill}}</td>
+        <td>{{order.Id}}</td>
         <!-- <td>{{order.createdDate| date: 'dd/MM/yyyy'}}</td> -->
         <td >{{order.CreatedDate | date:'MMM d, y, h:mm a'}}</td>
         <td class="text-center">{{order.Total | number}} VND</td>
