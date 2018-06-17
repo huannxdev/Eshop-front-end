@@ -75,13 +75,4 @@ export class ProductService {
     return this.authHttpService.get(path).map(res => res.json() || []);
   }
 
-  searchProductByIdCategory(idCategory: string, keyword: string, sort: string, minPrice: number, maxPrice: number, pageSize: number, page: number): Observable<PagingModel> {
-    if (!keyword.trim()) {
-      // if not search term, return empty array.
-      return of();
-    }
-    var path = this.API_PATH + "/search?" + "IdCategory=" + idCategory + "&Keyword=" + keyword + 
-    "&Sort=" + sort + "&MinInPrice=" + minPrice + "&MaxInPrice=" + maxPrice + "&PageSize=" + pageSize + "&Page=" + page;
-    return this.authHttpService.get(path).map(res => res.json() || []);
-  }
 }

@@ -4,6 +4,7 @@ import { ProductService } from '../services/product.service';
 import 'rxjs/add/operator/filter';
 import { delay } from 'rxjs/operators';
 import { SpinnerService } from '../../shared/services/spinner.service';
+import { ProductModel } from '../models/product';
 
 @Component({
   selector: 'app-search',
@@ -14,13 +15,13 @@ export class SearchComponent implements OnInit {
   idCategory: string;
   keyword: string;
   sort: string = "name";
-  range: number[] = [0, 3000];
-  newrange: number[] = [0, 3000];
+  range: number[] = [0, 1000000];
+  newrange: number[] = [0, 100000];
+  products_: ProductModel[] = [];
   products: any[] = [];
   check: boolean = false;
 
-  pageSize: number;
-  page: number;
+
   itemCount: number;
   pNow: number = 1;
   constructor(private activatedRoute: ActivatedRoute, private productService: ProductService, private spinner: SpinnerService) { }
@@ -38,40 +39,29 @@ export class SearchComponent implements OnInit {
 
   loadProducts() {
     this.spinner.startLoadingSpinner();
-    this.productService.searchProductByIdCategory(this.idCategory, this.keyword, this.sort, this.range[0], this.range[1], this.pageSize, this.page)
+    this.productService.searchProduct(this.idCategory, this.keyword)
       .subscribe(data => {
         this.spinner.turnOffSpinner();
-        this.products = data.items;
-        this.itemCount = data.totalItemCount;
-        if (this.products.length == 0) this.check = true;
-        else this.check = false;
+        this.products_ = data;
+        this.sortAndFiltePrice();
       });
   }
+  sortAndFiltePrice(){
+    this.products.splice(0,this.products.length);
+    this.products_.forEach(element => {
+      if (element.MinPrice>= this.range[0] && element.MinPrice<= this.range[1])
+      this.products.push(element);
+    });
+    // this.sort
 
-  getPage(page: number) {
-    if (this.page != page) {
-      this.page = page;
-      this.loadProducts();
-    }
-  }
-
-  getPageSize(pageSize: number) {
-    if (this.pageSize != pageSize) {
-      this.pageSize = pageSize;
-      this.loadProducts();
-    }
-  }
-
-  changeSort() {
-    this.page = 1;
-    this.loadProducts();
+    if (this.products.length == 0) this.check = true;
+    else this.check = false;
   }
 
   changePrice() {
     if (this.range[0] != this.newrange[0] || this.range[1] != this.newrange[1]) {
-      this.page = 1;
-      this.loadProducts();
       this.newrange = this.range;
+      this.sortAndFiltePrice();
     }
   }
 
