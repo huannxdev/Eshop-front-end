@@ -6,7 +6,7 @@
       <div class="col-md-6">
           <div class="product-body">
               <div class="section-title">
-                  <h3 class="title">Edit Product</h3>
+                  <h3 class="title">Sửa sản phẩm</h3>
                 </div>
           </div>
       </div>
@@ -16,20 +16,20 @@
     <div class="row">
       <div class="col-md-6">
         <p>
-          <strong>Name:</strong>
+          <strong>Tên:</strong>
           <input [(ngModel)]="product.Name" class="input search-input">
         </p>
       </div>
       <div class="col-md-6">
         <p>
-          <strong>Code:</strong>
+          <strong>Mã:</strong>
           <input [(ngModel)]="product.Code" class="input search-input">
         </p>
       </div>
     </div>
     <div class="row">
       <div class="col-md-6">
-        <strong>Category:</strong>
+        <strong>Danh mục:</strong>
         <div>
           <p>
             <select class=" input custom-select" [(ngModel)]="product.IdCategory">
@@ -39,7 +39,7 @@
         </div>
       </div>
       <div class="col-md-6">
-        <strong>Status:</strong>
+        <strong>Trạng thái:</strong>
         <div>
           <p>
             <select class="input custom-select" [(ngModel)]="product.Status">
@@ -52,31 +52,31 @@
     <div class="row">
       <div class="col-md-6">
         <p>
-          <strong>Description:</strong>
+          <strong>Chi tiết:</strong>
           <input [(ngModel)]="product.Description" class="input search-input">
         </p>
       </div>
         
      <div class="col-md-6">
       <p>
-        <strong>Discount(%):</strong>
+        <strong>Giảm giá(%):</strong>
         <input [(ngModel)]="product.Discount" class="input search-input" type="number" min="0">
       </p>
      </div>   
     </div>
   </div>
-  <p><strong>Details:</strong></p>
+  <p><strong>Miêu tả:</strong></p>
   <div [froalaEditor] [(froalaModel)]="product.Details"></div>
   <hr />
   <ng2-smart-table [settings]="settings" [source]="data"></ng2-smart-table>
   <div class="product-body" style="margin-top:15px">
     <div>
-      <button class="primary-btn" routerLink="/admin/manager/products'" routerLinkActive="active" (click)="update()">Save</button>
-      <button class="main-btn" routerLink="/admin/manager/products" routerLinkActive="active">Back</button>
+      <button class="primary-btn" routerLink="/admin/manager/products'" routerLinkActive="active" (click)="update()">Lưu</button>
+      <button class="main-btn" routerLink="/admin/manager/products" routerLinkActive="active">Trở lại</button>
     </div>
   </div>
   
 </ng-template>
 <ng-template #other_content>
-  <h2>Page note found(ID is invalid).</h2>
+  <h2>Trang không tìm thấy(ID không có).</h2>
 </ng-template>

@@ -4,16 +4,16 @@
 			<div class="order-summary clearfix">
 				<div *ngIf="cart.length; else shopping">
 					<div class="section-title">
-						<h3 class="title">Order Review</h3>
+						<h3 class="title">Xem lại đơn hàng</h3>
 					</div>
 					<table class="shopping-cart-table table">
 						<thead>
 							<tr>
-								<th>Product</th>
+								<th>Sản phẩm</th>
 								<th></th>
-								<th class="text-center">Price</th>
-								<th class="text-center">Quantity</th>
-								<th class="text-center">Total</th>
+								<th class="text-center">Giá</th>
+								<th class="text-center">Số lượng</th>
+								<th class="text-center">Tổng giá</th>
 								<th class="text-right"></th>
 							</tr>
 						</thead>
@@ -26,12 +26,12 @@
 									<a style="cursor: pointer" (click)="routeProduct(item.Product.Name,item.Product.Id)">{{item.Product.Name}}</a>
 									<ul>
 										<li *ngIf="item.Product.Color">
-											<span>Color:
+											<span>Màu:
 												<span class="product-color" [style.background]="item.Product.Color">&nbsp;&nbsp;&nbsp;</span>
 											</span>
 										</li>
 										<li *ngIf="item.Product.Size">
-											<span>Size: {{item.Product.Size}}</span>
+											<span>Cỡ: {{item.Product.Size}}</span>
 										</li>
 									</ul>
 								</td>
@@ -58,21 +58,21 @@
 						<tfoot>
 							<tr>
 								<th class="empty" colspan="3"></th>
-								<th>TOTAL</th>
+								<th>TỔNG GIÁ</th>
 								<th colspan="2" class="total">{{total | number}}</th>
 							</tr>
 						</tfoot>
 					</table>
 					<div class="pull-right">
-						<button class="primary-btn" routerLink="payment">Place Order</button>
+						<button class="primary-btn" routerLink="payment">Đặt hàng</button>
 					</div>
 				</div>
 				<ng-template #shopping>
 					<div align="center">
 						<div>
-							<h4>Your cart is empty.</h4>
+							<h4>Giỏ hàng trống.</h4>
 						</div>
-						<button class="primary-btn" routerLink="/">Continue Shopping</button>
+						<button class="primary-btn" routerLink="/">Tiếp tục mua sắm</button>
 					</div>
 				</ng-template>
 			</div>

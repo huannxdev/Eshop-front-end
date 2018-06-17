@@ -2,67 +2,67 @@
   <div class="form-row">
     <div class="form-group col-md-12">
       <div class="section-title">
-        <h3 class="title">ORDER INFORMATION</h3>
+        <h3 class="title">THÔNG TIN ĐƠN HÀNG</h3>
       </div>
       <p for="inputEmail">Email
-      <b>(This mail will be used to confirm your order)</b></p>
+      <b>(Mail này sẽ dùng để xác nhận đơn hàng)</b></p>
       <input type="email" class="input" placeholder="Email" [(ngModel)]="Email">
     </div>
   </div>
   <div class="form-row">
     <div class="col-md-12">
       <div class="section-title">
-        <h5 class="title">Shipping Address</h5>
+        <h5 class="title">Địa chỉ nhận hàng</h5>
       </div>
     </div>
     <div class="form-group col-md-6">
-      <p for="inputName">Name </p>
+      <p for="inputName">Tên </p>
       <input type="text" class="input" id="inputName" [(ngModel)]="NameBill">
     </div>
     <div class="form-group col-md-6">
-      <p for="inputPhone">Phone</p>
+      <p for="inputPhone">Số điện thoại</p>
       <input type="text" class="input" id="inputPhone" [(ngModel)]="PhoneBill">
     </div>
     <div class="form-group col-md-4">
-      <p for="inputProvince">Province</p>
+      <p for="inputProvince">Tỉnh</p>
       <input type="text" class="input" id="inputProvince" placeholder="Province" [(ngModel)]="ProvinceBill">
     </div>
     <div class="form-group col-md-4">
-      <p for="inputDistrict">District</p>
+      <p for="inputDistrict">Huyện</p>
       <input type="text" class="input" id="inputDistrict" placeholder="District" [(ngModel)]="DistrictBill">
     </div>
     <div class="form-group col-md-4">
-      <p for="inputStreet">Street</p>
+      <p for="inputStreet">Đường</p>
       <input type="text" class="input" id="inputStreet" [(ngModel)]="StreetBill">
     </div>
     <div class="col-md-12">
-      <button (click)="copy()" class="main-btn">Copy To Billing Address</button>
+      <button (click)="copy()" class="main-btn">Sao chép đến Địa chỉ thanh toán</button>
     </div>
   </div>
   <div class="form-row">
     <div class="col-md-12">
       <div class="section-title">
-        <h5 class="title">Billing Address</h5>
+        <h5 class="title">Địa chỉ thanh toán</h5>
       </div>
     </div>
     <div class="form-group col-md-6">
-      <p for="inputName">Name </p>
+      <p for="inputName">Tên </p>
       <input type="text" class="input" id="inputName2" [(ngModel)]="Name" value="Name">
     </div>
     <div class="form-group col-md-6">
-      <p for="inputPhone">Phone</p>
+      <p for="inputPhone">Số điện thoại</p>
       <input type="text" class="input" id="inputPhone2" [(ngModel)]="Phone" value="Phone">
     </div>
     <div class="form-group col-md-4">
-      <p for="inputProvince">Province</p>
+      <p for="inputProvince">Tỉnh</p>
       <input type="text" class="input" id="inputProvince2" placeholder="Province" [(ngModel)]="Province" value="Province">
     </div>
     <div class="form-group col-md-4">
-      <p for="inputDistrict">District</p>
+      <p for="inputDistrict">Huyện</p>
       <input type="text" class="input" id="inputDistrict2" placeholder="District" [(ngModel)]="District" value="District">
     </div>
     <div class="form-group col-md-4">
-      <p for="inputStreet">Street</p>
+      <p for="inputStreet">Đường</p>
       <input type="text" class="input" id="inputStreet2" [(ngModel)]="Street" value="Street">
     </div>
   </div>
@@ -70,7 +70,7 @@
   <div class="col-md-12">
     <div class="order-summary clearfix">
       <div class="section-title">
-        <h3 class="title">Order Review</h3>
+        <h3 class="title">Xem lại đơn hàng</h3>
       </div>
       <div class="section-title-search">
           <!-- (blur)="hide()" -->
@@ -86,10 +86,10 @@
         <thead>
           <tr>
             <th>Code</th>
-            <th class="text-center">Product</th>
-            <th class="text-center">Price</th>
-            <th class="text-center">Quantity</th>
-            <th class="text-center">Total</th>
+            <th class="text-center">Sản phẩm</th>
+            <th class="text-center">Giá</th>
+            <th class="text-center">Số lượng</th>
+            <th class="text-center">Tổng giá</th>
             <th class="text-right"></th>
           </tr>
         </thead>
@@ -127,10 +127,10 @@
         </tfoot>
       </table>
       <div class="pull-left">
-        <a routerLink="/admin/manager/orders" routerLinkActive="active" class="main-btn">Back</a>
+        <a routerLink="/admin/manager/orders" routerLinkActive="active" class="main-btn">Trở lại</a>
       </div>
       <div class="pull-right">
-        <button class="primary-btn" (click)="create()">Create Order</button>
+        <button class="primary-btn" (click)="create()">Tạo đơn hàng</button>
       </div>
     </div>
     <br>

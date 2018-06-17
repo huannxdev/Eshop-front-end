@@ -1,21 +1,21 @@
 <div class="col-md-6">
   <div class="billing-details">
     <div class="section-title">
-      <h3 class="title">{{category.Name}}'s Detail</h3>
+      <h3 class="title">Chi tiết {{category.Name}}</h3>
     </div>
     <div class="form-group">
       <p><b>Id: </b>{{category.Id}}</p>
     </div>
     <div class="form-group">
-        <p><b>Name: </b>{{category.Name}}</p>
+        <p><b>Tên: </b>{{category.Name}}</p>
     </div>
     <div class="form-group">
-        <p><b>Description: </b>{{category.Description}}</p>
+        <p><b>Chi tiết: </b>{{category.Description}}</p>
     </div>
   </div>
   <a routerLink="../edit/{{category.Id}}" routerLinkActive="active" class="btn primary-btn">
-    Edit
+    Sửa
   </a>
-  <button class="primary-btn" (click)="deleteCategory(category)">Delete</button>
-  <a routerLink="../" routerLinkActive="active" class="btn primary-btn">Go back</a>
+  <button class="primary-btn" (click)="deleteCategory(category)">Xoá</button>
+  <a routerLink="../" routerLinkActive="active" class="btn primary-btn">Trở lại</a>
 </div>

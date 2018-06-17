@@ -44,11 +44,11 @@
 							</div>
 							</div>
 							<div class="product-options color" style="display:inline ; border-top: none;" *ngIf="SizeExisted">
-								<!-- <span class="text-uppercase">Color:</span>
+								<!-- <span class="text-uppercase">Màu:</span>
 								<p style="display: inline;"><select class=" input custom-select" [(ngModel)]="colorSelected" (change)="onChange()"style="width:auto" [style.background]="colorSelected">
 								<option *ngFor="let color of listColor" [value]="color" [style.background]="color" ></option>
 								</select></p> -->
-								<span class="text-uppercase">Size:</span>
+								<span class="text-uppercase">Cỡ:</span>
 								<p style="display: inline;"><select class=" input custom-select" [(ngModel)]="sizeSelected" style="width:auto" (change)="onChangeColor()">
 								<option *ngFor="let tail of listSize" [value]="tail" >{{tail}}</option>
 								</select></p>
@@ -61,7 +61,7 @@
 
 						<div class="product-btns" style="margin-top:10px">
 							<div class="qty-input">
-								<span class="text-uppercase">QTY: </span>
+								<span class="text-uppercase">Số lượng: </span>
 								<input class="input" type="number" min="0" [max] ="quantityAvailble" [(ngModel)]="quantity">
 							</div>
 							<button class="primary-btn add-to-cart" [disabled]="flagCartButton" (click)="AddToCart()"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
@@ -160,7 +160,7 @@
 										</div>
 									</div>
 									<div class="col-md-6">
-										<h4 class="text-uppercase">Write Your Review</h4>
+										<h4 class="text-uppercase">Viết nhận xét</h4>
 										<p>Your email address will not be published.</p>
 										<form class="review-form">
 											<div class="form-group">
@@ -174,7 +174,7 @@
 											</div>
 											<div class="form-group">
 												<div class="input-rating">
-													<strong class="text-uppercase">Your Rating: </strong>
+													<strong class="text-uppercase">Chấm điểm: </strong>
 													<div class="stars">
 														<input type="radio" id="star5" name="rating" value="5" /><label for="star5"></label>
 														<input type="radio" id="star4" name="rating" value="4" /><label for="star4"></label>

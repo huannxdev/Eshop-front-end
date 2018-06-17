@@ -26,12 +26,12 @@
                 <div class="header-btns-icon">
                   <i class="fa fa-user-o"></i>
                 </div>
-                <strong class="text-uppercase"> My Account
+                <strong class="text-uppercase"> Tài khoản
                   <i class="fa fa-caret-down"></i>
                 </strong>
               </div>
-              <a routerLink="/account/login" class="text-uppercase">Login</a> /
-              <a class="text-uppercase" routerLink="/account/register">Join</a>
+              <a routerLink="/account/login" class="text-uppercase">Đăng nhập</a> /
+              <a class="text-uppercase" routerLink="/account/register">Đăng ký</a>
             </li>
             <!-- /Account -->
 
@@ -61,38 +61,38 @@
                   <i class="fa fa-caret-down"></i>
                 </strong>
               </div>
-              <span class="text-uppercase">Account</span>
+              <span class="text-uppercase">Tài khoản</span>
               <ul class="custom-menu">
                 <li>
                   <a routerLink="/account/profile">
-                    <i class="fa fa-user-o"></i> My Account</a>
+                    <i class="fa fa-user-o"></i> Tài khoản</a>
                 </li>
                 <li>
                   <a routerLink="/account/order-history">
-                    <i class="fa fa-book"></i> Order History</a>
+                    <i class="fa fa-book"></i> Lịch sử đặt hàng</a>
                 </li>
                 <li>
 
                   <a routerLink="/account/profile">
-                    <i class="fa fa-heart-o"></i> My Wishlist
+                    <i class="fa fa-heart-o"></i> Yêu thích
                   </a>
 
                   <li>
                     <a>
-                      <i class="fa fa-exchange"></i> Compare</a>
+                      <i class="fa fa-exchange"></i> So sánh</a>
                   </li>
                   <li>
                     <a>
-                      <i class="fa fa-check"></i> Checkout</a>
+                      <i class="fa fa-check"></i> Kiểm tra</a>
                   </li>
                   <li>
                     <a routerLink="/account/register">
-                      <i class="fa fa-user-plus"></i> Create An Account
+                      <i class="fa fa-user-plus"></i> Đăng ký
                     </a>
                   </li>
                   <li>
                     <a (click)="logout()">
-                      <i class="fa fa-check"></i> Logout</a>
+                      <i class="fa fa-check"></i> Đăng xuất</a>
                   </li>
               </ul>
               </li>
@@ -126,7 +126,7 @@
                 </button>
 
                 <input class="input search-input input-group" [(ngModel)]="keyword" name="keyword" (blur)="hide()" #searchBox (keyup)="search(searchBox.value)"
-                  (click)="search(searchBox.value)" type="text" autocomplete="off" placeholder="Enter your keyword" aria-describedby="basic-addon2"
+                  (click)="search(searchBox.value)" type="text" autocomplete="off" placeholder="Nhập từ khoá tìm kiếm" aria-describedby="basic-addon2"
                   value="{{searchResult}}">
 
                 <div class="input-group" id="suggest-box">
@@ -141,7 +141,7 @@
                 </div>
 
                 <select class="input search-categories" (change)="search(searchBox.value)" [(ngModel)]="idCategory" name="idCategory" style="max-width:140px">
-                  <option value="all">All Categories</option>
+                  <option value="all">Tất cả danh mục</option>
                   <option *ngFor="let category of categories" [ngValue]="category.Id">{{category.Name}}</option>
                 </select>
 
@@ -162,12 +162,12 @@
                   <div class="header-btns-icon">
                     <i class="fa fa-user-o"></i>
                   </div>
-                  <strong class="text-uppercase"> My Account
+                  <strong class="text-uppercase"> Tài khoản
                     <i class="fa fa-caret-down"></i>
                   </strong>
                 </div>
-                <a routerLink="/account/login" class="text-uppercase">Login</a> /
-                <a class="text-uppercase" routerLink="/account/register">Join</a>
+                <a routerLink="/account/login" class="text-uppercase">Đăng nhập</a> /
+                <a class="text-uppercase" routerLink="/account/register">Đăng ký</a>
               </li>
               <!-- /Account -->
 
@@ -189,37 +189,37 @@
                     <i class="fa fa-caret-down"></i>
                   </strong>
                 </div>
-                <span class="text-uppercase">Account</span>
+                <span class="text-uppercase">Tài khoản</span>
                 <ul class="custom-menu">
                   <li>
                     <a routerLink="/account/profile">
-                      <i class="fa fa-user-o"></i> My Account</a>
+                      <i class="fa fa-user-o"></i>Tài khoản</a>
                   </li>
                   <li>
                     <a routerLink="/account/order-history">
-                      <i class="fa fa-book"></i> Order History</a>
+                      <i class="fa fa-book"></i>Lịch sử đặt hàng</a>
                   </li>
                   <li>
 
                     <a routerLink="/account/wishlist">
-                      <i class="fa fa-heart-o"></i> My Wishlist</a>
+                      <i class="fa fa-heart-o"></i> Yêu thích</a>
 
                     <li>
                       <a>
-                        <i class="fa fa-exchange"></i> Compare</a>
+                        <i class="fa fa-exchange"></i> So sánh</a>
                     </li>
                     <li>
                       <a>
-                        <i class="fa fa-check"></i> Checkout</a>
+                        <i class="fa fa-check"></i> Kiểm tra</a>
                     </li>
                     <li>
                       <a routerLink="/account/register">
-                        <i class="fa fa-user-plus"></i> Create An Account
+                        <i class="fa fa-user-plus"></i> Đăng ký
                       </a>
                     </li>
                     <li>
                       <a (click)="logout()">
-                        <i class="fa fa-check"></i> Logout</a>
+                        <i class="fa fa-check"></i> Đăng xuất</a>
                     </li>
                 </ul>
                 </li>
@@ -274,7 +274,7 @@
     <div id="responsive-nav">
       <!-- category nav -->
       <div class="category-nav">
-        <span class="category-header dropdown-toggle" data-toggle="dropdown">Categories
+        <span class="category-header dropdown-toggle" data-toggle="dropdown">DANH MỤC SẢN PHẨM
           <i class="fa fa-list"></i>
         </span>
         <!-- <app-list-categories [hidden]="categoryHidden"></app-list-categories> -->
@@ -432,7 +432,7 @@
         <!-- footer copyright -->
         <div class="footer-copyright">
           <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-          Copyright &copy; Orient E-Shop
+          Copyright &copy; Nhóm 26 SE325.I21 - E-Shop
           <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
         </div>
         <!-- /footer copyright -->

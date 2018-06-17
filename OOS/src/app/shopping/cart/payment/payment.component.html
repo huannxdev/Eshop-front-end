@@ -4,7 +4,7 @@
     <!-- Billing Address -->
     <div class="col-md-6">
       <div class="section-title">
-        <h3 class="title">Billing Address</h3>
+        <h3 class="title">Địa chỉ thanh toán</h3>
       </div>
       <div class="form-group">
         <label>Email: </label>
@@ -36,7 +36,7 @@
       <!-- Shipping Address -->
       <div class="row">
         <div class="section-title">
-          <h3 class="title">Shipping Address</h3>
+          <h3 class="title">Địa chỉ nhận hàng</h3>
         </div>
         <div class="form-group">
           <input class="input" type="text" [(ngModel)]="order.Address[0].Name" placeholder="Name">
@@ -67,7 +67,7 @@
       <!-- Payments Methods -->
       <div class="row">
         <div class="section-title">
-          <h3 class="title">Payments Methods</h3>
+          <h3 class="title">Phương thức thanh toán</h3>
         </div>
         <div class="input-checkbox">
           <input type="radio" name="payments" [(ngModel)]="paymentMethod" [value]="1" checked>
@@ -88,16 +88,16 @@
       <!-- Order Review -->
       <div class="order-summary clearfix">
         <div class="section-title">
-          <h3 class="title">Order Review</h3>
+          <h3 class="title">Xem lại đơn hàng</h3>
         </div>
         <table class="shopping-cart-table table">
           <thead>
             <tr>
-              <th>Product</th>
-              <th class="text-center">Price</th>
+              <th>Sản phẩm</th>
+              <th class="text-center">Giá</th>
               <th></th>
-              <th class="text-center">Quantity</th>
-              <th class="text-center">Total</th>
+              <th class="text-center">Số lượng</th>
+              <th class="text-center">Tổng giá</th>
             </tr>
           </thead>
           <tbody *ngFor="let detail of order.OrderDetails">
@@ -106,12 +106,12 @@
                 <h4>{{detail.NameProduct}}</h4>
                 <ul>
                   <li *ngIf="detail.Color">
-                    <span>Color:
+                    <span>Màu:
                       <span class="product-color" [style.background]="detail.Color">&nbsp;&nbsp;&nbsp;</span>
                     </span>
                   </li>
                   <li *ngIf="detail.size">
-                    <span>Size: {{detail.Size}}</span>
+                    <span>Cỡ: {{detail.Size}}</span>
                   </li>
                 </ul>
               </td>
@@ -130,20 +130,20 @@
           <tfoot>
             <tr>
               <th class="empty" colspan="3"></th>
-              <th>SHIPPING</th>
+              <th>Phí vận chuyển</th>
               <td colspan="2" id="shipfee">{{shippingFee | number}}</td>
             </tr>
 
             <tr>
               <th class="empty" colspan="3"></th>
-              <th>TOTAL</th>
+              <th>Tổng chi phí</th>
               <th colspan="2" class="total">{{order.Total | number}}</th>
             </tr>
           </tfoot>
         </table>
         <div class="pull-right">
           <div *ngIf="paymentMethod !== 1">
-            <button class="primary-btn" (click)="Checkout()">Place Order</button>
+            <button class="primary-btn" (click)="Checkout()">Đặt hàng</button>
           </div>
           <!-- Paypal -->
           <div class="form-group" [hidden]="paymentMethod!==1">

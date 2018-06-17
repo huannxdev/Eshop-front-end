@@ -2,7 +2,7 @@
 
     <form #editUserForm="ngForm">
       <div class="section-title">
-        <h3 class="title">Edit User</h3>
+        <h3 class="title">Sửa thông tin</h3>
       </div>      
   
       <div class="form-group">
@@ -16,7 +16,7 @@
   
       <div class="form-group">
   
-        First Name:
+        Họ:
   
         <input name="firstName" [(ngModel)]="user.FirstName" type="text" class="input" required>
   
@@ -24,7 +24,7 @@
   
       <div class="form-group">
   
-        Last Name:
+        Tên:
   
         <input name="lastName" [(ngModel)]="user.LastName" type="text" class="input" required>
   
@@ -32,7 +32,7 @@
 
       <div class="form-group">
   
-          Phone:
+          Số điện thoại:
     
           <input name="phoneNumber" [(ngModel)]="user.PhoneNumber" type="text" class="input" required>
     
@@ -40,7 +40,7 @@
   
       <div class="form-group">
   
-        Gender:
+        Giới tính:
   
         <select name="gender" class="input" [(ngModel)]="user.Gender">
             <option *ngFor="let item of listGender" [value]="item">{{genderEnum[item]}}</option>
@@ -50,7 +50,7 @@
   
       <div class="form-group">
   
-        Image:
+        Hình ảnh:
   
         <input name="image" [(ngModel)]="user.Photo" type="text" class="input">
         <td>
@@ -59,8 +59,8 @@
   
       </div>
   
-      <button type="submit" [disabled]="!editUserForm.valid" class="primary-btn" [disabled]="isDisabled" (click)="edit()">Save</button>
-      <button routerLink='../' class="main-btn">Back</button>
+      <button type="submit" [disabled]="!editUserForm.valid" class="primary-btn" [disabled]="isDisabled" (click)="edit()">Lưu</button>
+      <button routerLink='../' class="main-btn">Trở lại</button>
   
     </form>
   </div>

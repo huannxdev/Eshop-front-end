@@ -4,7 +4,7 @@
   <div class="col-md-6">
       <div class="product-body">
           <div class="section-title">
-              <h3 class="title">Create Product</h3>
+              <h3 class="title">Tạo sản phẩm</h3>
             </div>
       </div>
   </div>
@@ -15,7 +15,7 @@
   <div class="col-md-6">
       <div class="product-body">
           <p>
-              <strong>Name:</strong>
+              <strong>Tên:</strong>
               <input [(ngModel)]="name" class="input search-input">
             </p>
       </div>
@@ -23,7 +23,7 @@
   <div class="col-md-6">
       <div class="product-body">
           <p>
-              <strong>Code:</strong>
+              <strong>Mã:</strong>
               <input [(ngModel)]="code" class="input search-input">
             </p>
       </div>
@@ -32,7 +32,7 @@
 <div class="row">
   <div class="col-md-6">
       <div class="product-body">
-          <strong>Category:</strong>
+          <strong>Danh mục:</strong>
             <div>
               <p>
                 <select class=" input custom-select" [(ngModel)]="idCategory">
@@ -44,7 +44,7 @@
   </div>
   <div class="col-md-6">
       <div class="product-body">
-          <strong>Status:</strong>
+          <strong>Trạng thái:</strong>
       <div>
         <p>
           <select class="input custom-select" [(ngModel)]="status">
@@ -70,7 +70,7 @@
       <div class="product-body">
           <div>
               <p>
-                <strong>Discount:</strong>
+                <strong>Giảm giá:</strong>
                 <input [(ngModel)]="discount" class="input search-input" type="number" min="0">
               </p>
             </div>
@@ -78,14 +78,14 @@
   </div>     
 </div>                      
   </div>
-  <p><strong>Details:</strong></p>
+  <p><strong>Miêu tả:</strong></p>
   <div [froalaEditor] [(froalaModel)]="content"></div>
   <hr />
   <ng2-smart-table [settings]="settings" [source]="data"></ng2-smart-table>
   <div class="product-body" style="margin-top:15px">
     <div>
-        <button class="primary-btn" routerLink="/admin/manager/products" routerLinkActive="active" (click)='create()'>Save</button>
-        <button class="main-btn" routerLink="/admin/manager/products" routerLinkActive="active">Back</button>
+        <button class="primary-btn" routerLink="/admin/manager/products" routerLinkActive="active" (click)='create()'>Lưu</button>
+        <button class="main-btn" routerLink="/admin/manager/products" routerLinkActive="active">Trở lại</button>
       </div>
 </div>
   

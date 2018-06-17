@@ -9,7 +9,7 @@ import { Route } from '@angular/compiler/src/core';
 })
 export class CartOverviewComponent implements OnInit {
   step: number = 1;
-  listtitle: string[] = ["Cart Review", "Payment", "Thank You"];
+  listtitle: string[] = ["Xem lại đơn hàng", "Thanh toán", "Kết thúc"];
   constructor(private route: ActivatedRoute, private router: Router) {
     router.events.subscribe(event => {
       if (event instanceof ChildActivationEnd) {

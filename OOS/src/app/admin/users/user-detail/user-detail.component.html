@@ -1,36 +1,36 @@
 <div class="col-md-6">
   <div class="billing-details">
     <div class="section-title">
-      <h3 class="title">{{user.LastName}}'s Detail</h3>
+      <h3 class="title">Chi tiết{{user.LastName}}</h3>
     </div>
     <div class="form-group">
       <p><b>Id: </b>{{user.Id}}</p>
     </div>
     <div class="form-group">
-      <p><b>Username: </b>{{user.Username}}</p>
+      <p><b>Tên đăng nhập: </b>{{user.Username}}</p>
     </div>
     <div class="form-group">
-      <p><b>Password: </b>{{user.Password}}</p>
+      <p><b>Mật khẩu: </b>{{user.Password}}</p>
     </div>
     <div class="form-group">
-      <p><b>First Name: </b>{{user.FirstName}}</p>
+      <p><b>Họ: </b>{{user.FirstName}}</p>
     </div>
     <div class="form-group">
-      <p><b>Last Name: </b>{{user.LastName}}</p>
+      <p><b>Tên: </b>{{user.LastName}}</p>
     </div>
     <div class="form-group">
-      <p><b>Gender: </b>{{user.Gender}}</p>
+      <p><b>Giới tính: </b>{{user.Gender}}</p>
     </div>
     <div class="form-group">
-      <p><b>Image: </b>{{user.Image}}</p>
+      <p><b>Hình ảnh: </b>{{user.Image}}</p>
     </div>
     <div class="form-group">
       <p><b>Email: </b>{{user.Email}}</p>
     </div>
   </div>
   <a routerLink="../edit/{{user.Id}}" routerLinkActive="active" class="btn primary-btn">
-    Edit
+    Sửa
   </a>
-  <button class="primary-btn" (click)="deleteUser(user)">Delete</button>
-  <a routerLink="../" routerLinkActive="active" class="btn primary-btn">Go back</a>
+  <button class="primary-btn" (click)="deleteUser(user)">Xoá</button>
+  <a routerLink="../" routerLinkActive="active" class="btn primary-btn">Trở lại</a>
 </div>

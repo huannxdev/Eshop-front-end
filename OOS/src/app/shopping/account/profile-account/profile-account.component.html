@@ -9,23 +9,23 @@
         <h3>{{user.FirstName}} {{user.MiddleName}} {{user.LastName}}</h3>
       </div>
       <div class="center-content">
-        <a>Edit your photo profile</a>
+        <a>Sửa ảnh đại diện</a>
       </div>
       <br>
       <div class="category-nav">
-        <h3 class="account-header">My account</h3>
+        <h3 class="account-header">Tài khoản</h3>
         <ul class="category-list" style="position:relative;">
           <li>
-            <a data-toggle="tab" href="#account">Profile</a>
+            <a data-toggle="tab" href="#account">Hồ sơ</a>
           </li>
           <li>
-            <a data-toggle="tab" href="#order">Order Management</a>
+            <a data-toggle="tab" href="#order">Quản lý đơn hàng</a>
           </li>
           <li>
-            <a data-toggle="tab" href="#payment">Payment Information</a>
+            <a data-toggle="tab" href="#payment">Thông tinh thanh toán</a>
           </li>
           <li>
-            <a data-toggle="tab" href="#wishlist">My Wishlist</a>
+            <a data-toggle="tab" href="#wishlist">Danh sách yêu thích</a>
           </li>
         </ul>
       </div>
@@ -33,7 +33,7 @@
     <div class="form-group col-md-9 tab-content">
       <div id="account" class="tab-pane fade in active">
         <div class="section-title">
-          <h3 class="title">Profile</h3>
+          <h3 class="title">Hồ sơ</h3>
         </div>
         <div class="row">
           <div class="col-md-4">
@@ -83,17 +83,17 @@
       </div>
       <div id="order" class="tab-pane fade">
         <div class="section-title">
-          <h3 class="title">Order Management</h3>
+          <h3 class="title">Quản lý đơn hàng</h3>
         </div>
       </div>
       <div id="payment" class="tab-pane fade">
         <div class="section-title">
-          <h3 class="title">Payment Information</h3>
+          <h3 class="title">Thông tin thanh toán</h3>
         </div>
       </div>
       <div id="wishlist" class="tab-pane fade">
         <div class="section-title">
-          <h3 class="title">My Wishlist</h3>
+          <h3 class="title">Danh sách yêu thích</h3>
         </div>
         <app-wishlist-account [userId]="username"></app-wishlist-account>
       </div>

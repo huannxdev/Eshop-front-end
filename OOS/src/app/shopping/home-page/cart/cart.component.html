@@ -4,7 +4,7 @@
       <i class="fa fa-shopping-cart"></i>
       <span class="qty">{{cart.length | number}}</span>
     </div>
-    <strong class="text-uppercase">My Cart:</strong>
+    <strong class="text-uppercase">Giỏ hàng:</strong>
     <br>
     <span>{{total | number}}</span>
   </a>
@@ -29,15 +29,15 @@
         </div>
       </div>
       <div class="shopping-cart-btns">
-        <button class="main-btn" routerLink="/cart">View Cart</button>
-        <button class="primary-btn" routerLink="/cart/payment">Checkout
+        <button class="main-btn" routerLink="/cart">Giỏ hàng</button>
+        <button class="primary-btn" routerLink="/cart/payment">Kiểm tra
           <i class="fa fa-arrow-circle-right"></i>
         </button>
       </div>
     </div>
     <ng-template #empty>
       <div align="center">
-        <h4>Your cart is empty.</h4>
+        <h4>Giỏ hàng trống.</h4>
       </div>
     </ng-template>
   </div>
