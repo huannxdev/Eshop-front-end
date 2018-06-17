@@ -3,6 +3,7 @@ import { AuthShoppingHttpService } from '../../auth/auth-http-shopping.service';
 import { Observable } from 'rxjs/Observable';
 //import { Orders } from '../models/orders';
 import { OrdersModel } from '../models/order';
+import { AuthHttpService } from '../../auth/auth-http.service';
 
 
 @Injectable()
@@ -14,7 +15,7 @@ export class OrdersService {
 
   order: OrdersModel;
 
-  constructor(private authHttpService: AuthShoppingHttpService) { }
+  constructor(private authHttpService: AuthHttpService) { }
 
   sendData(order: OrdersModel)
   {

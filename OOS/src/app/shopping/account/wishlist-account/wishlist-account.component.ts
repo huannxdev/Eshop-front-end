@@ -20,6 +20,7 @@ export class WishlistAccountComponent implements OnInit {
   wishListProduct:any;
   user:UserModel;
   productID:string;
+  username: string;
 
   constructor(
     private productService:ProductService,
@@ -32,11 +33,10 @@ export class WishlistAccountComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    var username;
-    this.ss.getUserSession().subscribe(data => username = data.UserName);
+    this.ss.getUserSession().subscribe(data => this.username = data.UserName);
     this.ss.setUserSession();
     this.spinnerService.startLoadingSpinner();
-    this.getWishListProduct(username);
+    this.getWishListProduct(this.username);
     this.spinnerService.turnOffSpinner();
   }
 
@@ -56,8 +56,8 @@ export class WishlistAccountComponent implements OnInit {
   deleteProduct()
   {
     this.spinnerService.startLoadingSpinner();
-    this.accountService.removeFromWishList(this.userId, this.productID).subscribe(() => {
-      this.getWishListProduct(this.userId);
+    this.accountService.removeFromWishList(this.username, this.productID).subscribe(() => {
+      this.getWishListProduct(this.username);
       this.spinnerService.turnOffSpinner();
     });
   }
