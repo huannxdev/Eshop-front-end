@@ -48,7 +48,8 @@ export class AdminLoginComponent implements OnInit {
       }
     },
       (error: any) => {
-        alert('Your username or password is incorrect')
+        alert('Tài khoản hoặc mật khẩu không chính xác');
+        this.spinnerService.turnOffSpinner();
       }
     );
   }

@@ -17,7 +17,7 @@
 							<span class="sale" *ngIf="DiscountExisted">{{product.Discount}}%</span>
 						</div>
 						<h2 class="product-name">{{product.Name}}</h2>
-						<h3 class="product-price">{{price}} {{currencyDefine[currency]}}  <del class="product-old-price" *ngIf="DiscountExisted">{{oldPrice}} {{currencyDefine[currency]}}</del></h3>
+						<h3 class="product-price">{{price | number}} {{currencyDefine[currency]}}  <del class="product-old-price" *ngIf="DiscountExisted">{{oldPrice | number}} {{currencyDefine[currency]}}</del></h3>
 						<div>
 							<div class="product-rating">
 								<i class="fa fa-star"></i>

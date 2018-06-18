@@ -16,7 +16,7 @@
             <img src="{{item.Product.Image}}" style="cursor: pointer" (click)="routeProduct(item.Product.Name,item.Product.Id)">
           </div>
           <div class="product-body" style="cursor: pointer" (click)="routeProduct(item.Product.Name,item.Product.Id)">
-            <h3 class="product-price">{{item.Product.Price | number}}
+            <h3 class="product-price">{{item.Product.Price | number}} {{currencyDefine[currency]}}
               <span class="qty">x{{item.Quantity | number}}</span>
             </h3>
             <h2 class="product-name">

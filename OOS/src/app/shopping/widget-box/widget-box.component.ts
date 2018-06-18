@@ -64,7 +64,7 @@ export class WidgetBoxComponent implements OnInit {
     var productCart = {
       Name: this.productDetail.Name,
       Id: this.productDetail.Id,
-      Price: this.productDetail.ProductTails[0].Price,
+      Price: this.productDetail.ProductTails[0].Price - this.productDetail.ProductTails[0].Price * this.productDetail.Discount / 100,
       Description: this.productDetail.Description,
       Image: this.productDetail.ProductTails[0].Image,
       Size: this.productDetail.ProductTails[0].Size,

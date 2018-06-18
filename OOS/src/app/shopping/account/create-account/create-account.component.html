@@ -26,7 +26,7 @@
         
           <div class="form-group">
             Password:
-            <input id="password" name="password" #password="ngModel" [(ngModel)]="user.password"  
+            <input id="password" name="password" #password="ngModel" [(ngModel)]="user.Password"  
               type="password" class="input" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{8,}$">
             <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
               Password must have at least 1 number, 1 letter, 1 special character and contain at least 8 characters.
@@ -38,7 +38,7 @@
         
           <div class="form-group">
             Confirm Password:
-            <input id="confirmPassword" name="confirmPassword" #confirmPassword="ngModel" [(ngModel)]="user.confirmPassword" 
+            <input id="confirmPassword" name="confirmPassword" #confirmPassword="ngModel" [(ngModel)]="user.ConfirmPassword" 
               type="password"  class="input" required (keyup)="checkPassword()">
             <div *ngIf="!isPasswordConfirm && (confirmPassword.dirty || confirmPassword.touched)" class="alert alert-danger">
               Password doesn't match.

@@ -27,8 +27,9 @@ export class AccountService {
 
   add(task: CreateUserModel): Observable<any> {
     const user = {
-      Email: task.Email,
-      Password: task.Password
+      UserName: task.Email,
+      Password: task.Password,
+      Email: task.Email
     }
     return this.authHttpService.post(this.API_PATH, user);
   }

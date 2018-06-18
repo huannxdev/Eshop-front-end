@@ -78,7 +78,6 @@ export class ShoppingComponent implements OnInit, PipeTransform {
 
   ngOnInit() {
     this.accountService.getUserSession().subscribe(data => {
-      if(data)
       this.user = data
     });
     if(this.tokenNotExpired()){
@@ -155,9 +154,9 @@ export class ShoppingComponent implements OnInit, PipeTransform {
 
   logout() {
     sessionStorage.removeItem('user-client');
+    localStorage.removeItem('token-client');
     this.accountService.setUserSession();
     this.router.navigateByUrl("");
-    localStorage.clear();
   }
 
   getfoter() {

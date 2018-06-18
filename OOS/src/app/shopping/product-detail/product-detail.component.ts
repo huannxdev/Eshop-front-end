@@ -148,11 +148,11 @@ export class ProductDetailComponent implements OnInit {
         this.image = tail[i].Image;
         this.quantityAvailble = tail[i].Quantity;
         if (this.quantityAvailble > 0) {
-          this.available = "In Stock";
+          this.available = "Có hàng";
           this.flagCartButton = false;
         }
         else {
-          this.available = "Out of Stock";
+          this.available = "Hết hàng";
           this.flagCartButton = true;
         }
 
@@ -187,7 +187,7 @@ export class ProductDetailComponent implements OnInit {
     }
     this.cartService.set(product, this.quantity);
     //pop up toaster
-    this.toasterService.pop('success', product.Name, 'Added to cart success!');
+    this.toasterService.pop('Thành công', product.Name, 'Thêm thành công vào giỏ hàng!');
   }
   setColor(color) {
     this.colorSelected = color;
@@ -197,19 +197,19 @@ export class ProductDetailComponent implements OnInit {
     if (this.user != null) {
       let idUser = this.user.UserName
       this.accountService.addWishProduct(idUser, this.product.Id).subscribe(data => {
-        this.toasterService.pop("success", "success", "You have successfully added item to wishlist")
+        this.toasterService.pop("Thành công", "thành công", "Đã thêm vào danh mục yêu thích")
         this.product.IsLove = true;
       })
     }
     else {
-      this.toasterService.pop("error", "error", "You have to login first to use this feature")
+      this.toasterService.pop("Lỗi", "lỗi", "Bạn phải đăng nhập để tiếp tục")
     }
   }
 
   removeWish() {
     let idUser = this.user.Id
     this.accountService.removeFromWishList(idUser, this.product.Id).subscribe(data => {
-      this.toasterService.pop("success", "success", "You have successfully removed item from wishlist")
+      this.toasterService.pop("Thành công", "thành công", "Đã xóa khỏi danh mục yêu thích")
       this.product.IsLove = false;
     })
   }
